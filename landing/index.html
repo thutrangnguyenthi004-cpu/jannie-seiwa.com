@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Commitment Code — Jannie & Seiwa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FBFAF8;
+      --warm:     #EDE8E2;
+      --warmer:   #E2DAD0;
+      --border:   #D8D0C6;
+      --dark:     #141412;
+      --dark-soft:#252520;
+      --mid:      #3A3832;
+      --light:    #7A7670;
+      --gray-lt:  #C0BBB4;
+      --accent:   #A8190F;
+      --accent-2: #C42319;
+      --dark-bg:  #0C0B09;
+      --cream-dk: #F5EFE6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin: 0 auto 56px;
+    }
+    .divider::before, .divider::after {
+      content: ''; height: 0.5px; background: var(--border); width: 36px;
+    }
+    .divider .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.12; color: var(--dark); }
+    h1 { font-size: clamp(2.8rem, 6.5vw, 4.4rem); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(2.1rem, 4.8vw, 3rem); letter-spacing: -0.01em; }
+    h3 { font-size: 1.55rem; }
+    p  { color: var(--mid); margin-bottom: 1.2em; font-size: 1.18rem; line-height: 1.7; }
+    p:last-child { margin-bottom: 0; }
+    em { font-style: italic; color: var(--accent); font-weight: 500; }
+    strong { font-weight: 600; color: var(--dark); }
+
+    .eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 80px 24px;
+      background: var(--cream);
+      position: relative;
+    }
+    .hero .eyebrow { margin-bottom: 32px; }
+    .hero h1 {
+      max-width: 720px; margin: 0 auto 32px;
+      font-weight: 500;
+    }
+    .hero-sub {
+      font-size: clamp(1.2rem, 2.8vw, 1.55rem);
+      font-style: italic;
+      color: var(--mid);
+      max-width: 540px;
+      margin: 0 auto 60px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .hero-scroll {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-top: 32px;
+    }
+
+    /* ── MIRROR ── */
+    .mirror { background: var(--warm); }
+    .mirror h2.section-title {
+      text-align: center;
+      margin-bottom: 24px;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+    }
+    .mirror-intro {
+      font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+      font-style: italic;
+      color: var(--mid);
+      text-align: center;
+      margin-bottom: 56px;
+      line-height: 1.55;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mirror-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .mirror-list li {
+      padding: 22px 28px;
+      background: var(--cream);
+      border-left: 4px solid var(--accent);
+      color: var(--mid);
+      font-size: 1.18rem;
+      line-height: 1.65;
+    }
+    .mirror-list li em { color: var(--accent); }
+    .mirror-close {
+      text-align: center;
+      margin-top: 64px;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      color: var(--dark);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .mirror-close em { color: var(--accent); }
+
+    /* ── DIAGNOSIS ── */
+    .diagnosis { text-align: center; }
+    .diagnosis h2 { margin-bottom: 36px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .diagnosis p { max-width: 600px; margin-left: auto; margin-right: auto; }
+    .diagnosis-pull {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-style: italic;
+      color: var(--dark);
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding: 44px 0;
+      margin: 64px auto;
+      line-height: 1.35;
+      max-width: 640px;
+      font-weight: 500;
+    }
+    .diagnosis-pull em { color: var(--accent); }
+
+    /* ── 3 KIỂU CHỜ ĐỢI ── */
+    .waiting { background: var(--cream); }
+    .waiting h2 { text-align: center; margin-bottom: 18px; }
+    .waiting-intro {
+      text-align: center;
+      font-size: 1.18rem;
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto 72px;
+      font-style: italic;
+    }
+    .waiting-card {
+      padding: 36px 36px;
+      background: var(--warm);
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .waiting-card .kind-num {
+      position: absolute;
+      top: -16px; left: 28px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      padding: 8px 16px;
+      text-transform: uppercase;
+    }
+    .waiting-card h3 {
+      font-style: italic;
+      color: var(--dark);
+      margin: 12px 0 22px;
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+    .waiting-card p { margin-bottom: 14px; font-size: 1.1rem; }
+    .waiting-card p:last-child { margin-bottom: 0; }
+    .waiting-card .label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 10px;
+      vertical-align: 2px;
+    }
+
+    /* ── STORY (journey) — REDESIGNED ── */
+    .story { background: var(--warm); padding-top: 100px; }
+    .story-eyebrow { text-align: center; margin-bottom: 28px; }
+    .story h2 { text-align: center; margin-bottom: 56px; }
+    .story h2 em { color: var(--accent); }
+    .story-body { max-width: 640px; margin: 0 auto; }
+    .story-body p { font-size: 1.2rem; line-height: 1.85; color: var(--mid); }
+
+    .story-photo {
+      width: 100%; max-width: 600px;
+      margin: 48px auto;
+      box-shadow: 0 12px 40px rgba(20,20,18,0.12);
+    }
+    .story-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: unset;
+      object-position: unset;
+      max-height: none;
+      min-height: 0;
+      aspect-ratio: auto;
+    }
+
+    .story-pull {
+      border-left: 4px solid var(--accent);
+      padding: 22px 0 22px 32px;
+      margin: 48px 0;
+      font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.4;
+      font-weight: 500;
+      max-width: 580px;
+    }
+    .story-pull em { color: var(--accent); }
+
+    /* ── BIG STATS BLOCK ── */
+    .big-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 64px 0;
+      max-width: 700px;
+      margin-left: auto; margin-right: auto;
+      background: var(--cream);
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .big-stat {
+      padding: 32px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .big-stat:last-child { border-right: none; }
+    .big-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .big-stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      font-weight: 500;
+    }
+    @media (max-width: 600px) {
+      .big-stats { grid-template-columns: 1fr; }
+      .big-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .big-stat:last-child { border-bottom: none; }
+    }
+
+    .story-bridge {
+      text-align: center;
+      max-width: 540px;
+      margin: 56px auto 0;
+      padding: 32px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+    }
+    .story-bridge p {
+      font-size: 1.3rem;
+      color: var(--dark);
+      font-weight: 500;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+    .story-bridge p em { color: var(--accent); font-weight: 500; }
+
+    /* ── PRODUCT INTRO (DARK) ── */
+    .product-intro { background: var(--dark-bg); color: var(--cream-dk); text-align: center; }
+    .product-intro h2 { color: var(--cream-dk); margin-bottom: 22px; font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 500; }
+    .product-intro .product-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 26px;
+    }
+    .product-intro .tagline {
+      font-size: clamp(1.2rem, 2.8vw, 1.55rem);
+      font-style: italic;
+      color: #C4A882;
+      max-width: 560px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+    }
+    .product-intro p { color: #B8A898; max-width: 580px; margin-left: auto; margin-right: auto; font-size: 1.18rem; }
+    .product-intro p em { color: var(--accent); }
+
+    /* ── 7 CODES — REDESIGNED ── */
+    .codes { background: var(--cream); }
+    .codes h2 { text-align: center; margin-bottom: 18px; }
+    .codes .codes-sub {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 72px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--mid);
+    }
+    .code-card {
+      padding: 36px 36px;
+      background: var(--warm);
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .code-num-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+      line-height: 0.9;
+    }
+    .code-card-content h3 {
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .code-card-content .day-tagline {
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    .code-card-content p { font-size: 1.1rem; color: var(--mid); margin-bottom: 0; line-height: 1.65; }
+
+    @media (max-width: 600px) {
+      .code-card { grid-template-columns: 1fr; gap: 12px; padding: 30px 26px; }
+      .code-num-big { font-size: 3rem; }
+    }
+
+    .codes-closer {
+      text-align: center;
+      margin-top: 72px;
+      padding: 48px 32px;
+      background: var(--dark-bg);
+      color: var(--cream-dk);
+    }
+    .codes-closer p:first-child {
+      font-size: clamp(1.5rem, 3.4vw, 2.05rem);
+      font-weight: 500;
+      color: var(--cream-dk);
+      max-width: 540px;
+      margin: 0 auto 12px;
+      line-height: 1.4;
+    }
+    .codes-closer p:last-child {
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin: 0;
+    }
+
+    /* ── REASON sections ── */
+    .reason { background: var(--warm); }
+    .reason-block + .reason-block { margin-top: 88px; padding-top: 80px; border-top: 1px solid var(--border); }
+    .reason-block h2 {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .reason p { font-size: 1.18rem; line-height: 1.85; max-width: 600px; margin-left: auto; margin-right: auto; color: var(--mid); }
+    .reason-quote {
+      border-left: 4px solid var(--accent);
+      padding: 22px 0 22px 36px;
+      margin: 44px auto;
+      max-width: 580px;
+      font-size: clamp(1.3rem, 2.9vw, 1.7rem);
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .reason-quote em { color: var(--accent); }
+
+    /* ── FRIEND ── */
+    .friend { background: var(--cream); }
+    .friend h2 { text-align: center; margin-bottom: 48px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .friend-body { max-width: 600px; margin: 0 auto; }
+    .friend-body p { font-size: 1.18rem; line-height: 1.85; color: var(--mid); }
+    .friend-quote {
+      text-align: center;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-style: italic;
+      color: var(--dark);
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding: 40px 16px;
+      margin: 48px 0;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+    .friend-quote em { color: var(--accent); }
+
+    /* ── FOR WHO ── */
+    .forwho { background: var(--warm); }
+    .forwho h2 { text-align: center; margin-bottom: 64px; }
+    .forwho-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .forwho-col {
+      padding: 40px 32px;
+      background: var(--cream);
+    }
+    .forwho-col.yes { border-top: 5px solid var(--accent); }
+    .forwho-col.no  { border-top: 5px solid var(--gray-lt); }
+    .forwho-col h3 {
+      font-size: 1.4rem;
+      margin-bottom: 28px;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .forwho-col.yes h3 { color: var(--accent); }
+    .forwho-col.no h3  { color: var(--light); }
+    .forwho-col ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .forwho-col li {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--mid);
+      padding-left: 22px;
+      position: relative;
+    }
+    .forwho-col.yes li::before {
+      content: '✓'; position: absolute; left: 0; top: 1px;
+      color: var(--accent); font-size: 0.95rem; font-weight: bold;
+    }
+    .forwho-col.no li::before {
+      content: '×'; position: absolute; left: 2px; top: -1px;
+      color: var(--light); font-size: 1.1rem; font-weight: bold;
+    }
+    @media (max-width: 640px) {
+      .forwho-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── OFFER ── */
+    .offer { background: var(--cream); }
+    .offer h2 { text-align: center; margin-bottom: 64px; }
+    .offer-card {
+      background: var(--warm);
+      padding: 44px 36px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .offer-card.bonus { background: var(--dark-bg); color: var(--cream-dk); }
+    .offer-card.bonus h3 { color: var(--cream-dk); }
+    .offer-card.bonus p  { color: #B8A898; }
+    .offer-card.bonus strong { color: var(--cream-dk); }
+    .offer-card.bonus .offer-card-title { color: var(--accent); }
+    .offer-card.bonus ol li { color: #C4A882; border-color: #2a2520; }
+    .offer-card.bonus .offer-value { color: #C4A882; border-color: #3a342c; }
+
+    .offer-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .offer-card h3 {
+      font-size: clamp(1.5rem, 3.4vw, 1.95rem);
+      font-weight: 600;
+      margin-bottom: 22px;
+      line-height: 1.25;
+    }
+    .offer-card p { font-size: 1.1rem; line-height: 1.7; }
+    .offer-card .offer-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+      font-weight: 500;
+    }
+    .offer-card ol {
+      list-style: none;
+      padding: 0;
+      margin: 26px 0 0;
+      counter-reset: bonus-list;
+    }
+    .offer-card ol li {
+      counter-increment: bonus-list;
+      padding: 18px 0 18px 44px;
+      position: relative;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      border-top: 1px solid #2a2520;
+    }
+    .offer-card ol li:first-child { border-top: none; padding-top: 12px; }
+    .offer-card ol li::before {
+      content: counter(bonus-list, decimal-leading-zero);
+      position: absolute; left: 0; top: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--warm); text-align: center; }
+    .pricing h2 { margin-bottom: 24px; }
+    .pricing-questions { margin-bottom: 56px; }
+    .pricing-questions p {
+      font-size: 1.18rem;
+      font-style: italic;
+      color: var(--mid);
+      max-width: 580px;
+      margin: 0 auto 14px;
+    }
+    .pricing-questions p:last-child { margin-bottom: 0; }
+    .pricing-statement {
+      font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+      max-width: 580px;
+      margin: 0 auto 64px;
+      color: var(--dark);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .pricing-statement em { color: var(--accent); }
+    .pricing-table {
+      max-width: 480px;
+      margin: 0 auto 36px;
+      background: var(--cream);
+      padding: 36px 36px;
+      border: 1px solid var(--border);
+    }
+    .pricing-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 1.1rem;
+      color: var(--mid);
+    }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-row.total { font-weight: 600; color: var(--dark); font-size: 1.18rem; }
+    .pricing-row.total .amount { font-size: 1.4rem; }
+    .pricing-row.strike {
+      color: var(--light);
+      text-decoration: line-through;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 1.5px;
+    }
+    .pricing-row.strike .amount { color: var(--light); }
+    .pricing-row.preorder {
+      background: var(--accent); color: #fff;
+      margin: 16px -36px -36px;
+      padding: 28px 36px;
+    }
+    .pricing-row.preorder span:first-child { font-weight: 500; }
+    .pricing-row.preorder .amount {
+      font-size: 2rem; font-weight: 600; font-style: italic; line-height: 1;
+    }
+    .pricing-deadline {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .pricing-note {
+      font-size: 1rem;
+      color: var(--light);
+    }
+    .pricing-final {
+      font-size: 1.18rem;
+      color: var(--mid);
+      max-width: 540px;
+      margin: 40px auto 0;
+      font-style: italic;
+    }
+    .pricing-final em { color: var(--accent); font-weight: 500; }
+
+    /* ── GUARANTEE ── */
+    .guarantee { background: var(--cream); padding: 80px 0; }
+    .guarantee-box {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 56px 40px;
+      border: 2px solid var(--accent);
+      background: var(--warm);
+    }
+    .guarantee-box h2 { margin-bottom: 24px; font-size: clamp(2rem, 4.5vw, 2.6rem); }
+    .guarantee-box h2 em { color: var(--accent); }
+    .guarantee-box p { font-size: 1.18rem; color: var(--dark); margin-bottom: 18px; line-height: 1.55; }
+    .guarantee-box p:last-child {
+      margin-bottom: 0;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    /* ── STEPS ── */
+    .steps { background: var(--warm); }
+    .steps h2 { text-align: center; margin-bottom: 64px; }
+    .step-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      align-items: start;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-row:last-child { border-bottom: none; }
+    .step-num {
+      font-size: 3rem;
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+      line-height: 1;
+    }
+    .step-content h3 { margin-bottom: 10px; font-size: 1.4rem; font-weight: 600; }
+    .step-content p { font-size: 1.1rem; color: var(--mid); margin-bottom: 0; }
+    .step-content code {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    /* ── CLOSE / P.S. ── */
+    .close { background: var(--cream); }
+    .close-eyebrow { text-align: center; margin-bottom: 44px; }
+    .close-body { max-width: 620px; margin: 0 auto; }
+    .close-body p {
+      font-size: 1.2rem;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 1.4em;
+    }
+    .close-body p em { color: var(--accent); }
+    .close-pull {
+      text-align: center;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-style: italic;
+      color: var(--dark);
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding: 40px 16px;
+      margin: 56px 0;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .close-pull em { color: var(--accent); }
+    .close-sign {
+      text-align: center;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-top: 44px;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 44px 24px;
+      text-align: center;
+      background: var(--dark-bg);
+      color: var(--gray-lt);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Jannie &amp; Seiwa &nbsp;·&nbsp; The Commitment Code</p>
+    <h1>Sai lầm số 1 khiến phụ nữ thông minh <em>mắc kẹt</em> trong mối quan hệ không có tương lai.</h1>
+    <p class="hero-sub">7 ngày để nhìn rõ. Để quyết định từ <em>sức mạnh</em>, không phải từ sợ hãi.</p>
+    <p class="hero-scroll">↓ &nbsp; Đọc tiếp</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     MIRROR — 6 PAIN
+══════════════════════════════════════════════ -->
+<section class="mirror">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center;display:block;margin-bottom:20px;">Có phải bạn đang sống trong một mối quan hệ mà</p>
+    <p class="mirror-intro">Nếu một trong những điều dưới đây đúng với bạn,<br>mình muốn bạn đọc đến hết bài này.</p>
+    <ul class="mirror-list">
+      <li>Bạn yêu anh ấy thật lòng. Nhưng bạn không biết anh ấy có thật sự <em>coi bạn là duy nhất</em> hay không.</li>
+      <li>Anh ấy nói <em>"anh muốn cưới em"</em>. Nhưng câu đó cứ lặp lại, mà chưa bao giờ có ngày cụ thể.</li>
+      <li>Bạn vẫn được giới thiệu là <em>"bạn gái"</em>. Không phải <em>"vợ sắp cưới"</em>. Không phải <em>"người yêu cuối cùng"</em>.</li>
+      <li>Anh có thể biến mất nhiều ngày. Rồi quay lại như không có gì xảy ra.</li>
+      <li>Bạn luôn đi trên vỏ trứng. Cẩn thận từng câu nói. Sợ làm anh giận. Sợ làm anh xa.</li>
+      <li>Bạn đã viết tin nhắn này cho bạn thân, nhiều lần rồi xoá: <em>"Mình có đang lãng phí thời gian không?"</em></li>
+    </ul>
+    <p class="mirror-close">Sai lầm là: bạn đang chờ sự rõ ràng đến từ <em>anh ấy</em>.<br>Trong khi sự rõ ràng phải đến từ <em>bên trong bạn</em> trước.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     DIAGNOSIS
+══════════════════════════════════════════════ -->
+<section class="diagnosis">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Tại sao chờ anh <em>"sẵn sàng"</em><br>không bao giờ hoạt động</h2>
+    <p>Mình biết câu này nghe ngược. Vì cả xã hội dạy bạn rằng nếu anh ấy yêu bạn đủ, anh sẽ tự muốn cam kết. Nếu anh chưa, là tại bạn chưa đủ tốt. Hoặc tại anh chưa <em>"ready"</em>. Hãy chờ thêm.</p>
+    <p>Nhưng đây là sự thật mình đã học được, từ chính mối quan hệ của mình, và từ hàng trăm tin nhắn các bạn gửi đến bọn mình:</p>
+    <p class="diagnosis-pull">Đàn ông làm được những thứ<br>khi họ <em>thật sự muốn</em>.</p>
+    <p>Anh có thể bay nửa vòng trái đất cho công việc. Có thể tỏ tình 5 lần với người đã từ chối anh, nếu anh thật sự thấy đó là người của đời mình.</p>
+    <p>Nếu một người đàn ông chưa cam kết với bạn, không phải vì anh chưa <em>"ready"</em>. Là vì cam kết với bạn không nằm trong danh sách ưu tiên của anh ngay lúc này.</p>
+    <p>Đây là điều đau lòng. Nhưng cũng là điều giải phóng. Vì bạn không còn phải đoán. Bạn chỉ cần <em>nhìn rõ</em>. Và quyết định.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     3 KIỂU CHỜ ĐỢI
+══════════════════════════════════════════════ -->
+<section class="waiting">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>3 kiểu chờ đợi đang giết<br><em>tương lai</em> của bạn</h2>
+    <p class="waiting-intro">3 kiểu chờ đợi mà bạn có thể đang mắc phải, mà không nhận ra.</p>
+
+    <div class="waiting-card">
+      <span class="kind-num">Kiểu 01</span>
+      <h3>Chờ anh tự nhận ra</h3>
+      <p><span class="label">Bạn nghĩ</span><em>"Một ngày nào đó anh sẽ tự thấy mình quan trọng. Khi đó anh sẽ tự muốn cam kết."</em></p>
+      <p><span class="label">Thực tế</span>Anh đã thấy bạn quan trọng. Anh thấy mỗi ngày. Anh chỉ chưa thấy đủ quan trọng để hành động.</p>
+    </div>
+
+    <div class="waiting-card">
+      <span class="kind-num">Kiểu 02</span>
+      <h3>Chờ "thời điểm phù hợp"</h3>
+      <p><span class="label">Bạn nghĩ</span><em>"Anh đang bận. Đợi anh ổn định tài chính. Đợi anh xong dự án này."</em></p>
+      <p><span class="label">Thực tế</span>Sẽ luôn có một dự án tiếp theo. Anh không đợi cuộc đời ổn định để theo đuổi sự nghiệp. Tại sao anh phải đợi cho điều này?</p>
+    </div>
+
+    <div class="waiting-card">
+      <span class="kind-num">Kiểu 03</span>
+      <h3>Chờ một lý do "đủ lớn" để rời đi</h3>
+      <p><span class="label">Bạn nghĩ</span><em>"Anh không lừa dối, không bạo hành. Bọn mình vẫn có những ngày tốt."</em></p>
+      <p><span class="label">Thực tế</span>Bạn không cần một lý do <em>"đủ lớn"</em>. Bạn chỉ cần một câu hỏi đủ thật: <em>Đây có phải cuộc đời mình muốn sống trong 5 năm tới không?</em></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     STORY — TIGHTER + MECHANISM TEASER + STATS
+══════════════════════════════════════════════ -->
+<section class="story">
+  <div class="container">
+    <p class="eyebrow story-eyebrow">Hành trình của bọn mình</p>
+    <h2>Điều bọn mình đã học được<br>từ <em>10 lần chia tay</em></h2>
+
+    <div class="story-body">
+      <p>Mình tên Jannie. Bọn mình đã chia tay 10 lần trong 6 tháng đầu. Mỗi lần lại hỏi cùng câu hỏi giống bạn: <em>"Bọn mình đang đi về đâu?"</em> Và mỗi lần đều trả lời sai.</p>
+
+      <div class="story-photo">
+        <img src="jannie-seiwa-couple.jpg" alt="Jannie và Seiwa" />
+      </div>
+
+      <p>Bọn mình là một couple đa văn hoá. Mình ở Việt Nam. Anh sinh ở Nhật, lớn lên ở Canada, đi qua hơn 50 quốc gia. Hàng trăm giờ đối thoại sâu. Đã làm thử rồi sai. Đã chiêm nghiệm từng pattern lặp lại. Suốt một quá trình dài, không phải một đêm.</p>
+
+      <div class="big-stats">
+        <div class="big-stat">
+          <div class="big-stat-num">34K+</div>
+          <div class="big-stat-label">Người theo dõi</div>
+        </div>
+        <div class="big-stat">
+          <div class="big-stat-num">142K+</div>
+          <div class="big-stat-label">Lượt yêu thích</div>
+        </div>
+        <div class="big-stat">
+          <div class="big-stat-num">100s</div>
+          <div class="big-stat-label">Tin nhắn / tháng</div>
+        </div>
+      </div>
+
+      <p>Bọn mình đã rút ra <strong>7 quy luật cụ thể</strong> về cách một mối quan hệ chuyển từ mơ hồ sang rõ ràng. 7 quy luật giúp bọn mình đến được điều mà rất nhiều phụ nữ trong mối quan hệ mơ hồ đều âm thầm muốn:</p>
+
+      <p class="story-pull">Một tình yêu mà bạn được chọn làm <em>ưu tiên số một</em>.</p>
+
+      <p>Bọn mình ngồi xuống và viết. Mình từ góc nhìn người phụ nữ đã từng chờ. Anh từ góc nhìn người đàn ông đã từng do dự. 7 quy luật đó trở thành <strong>7 mã</strong> trong cuốn sách này.</p>
+
+      <div class="story-bridge">
+        <p>Nếu bạn đang đứng ở vị trí mình từng đứng,<br>bạn không cần thêm thời gian.<br>Bạn cần một <em>bộ mã</em> để nhìn rõ thời gian mình đang dùng vào đâu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PRODUCT INTRO (DARK)
+══════════════════════════════════════════════ -->
+<section class="product-intro">
+  <div class="container">
+    <p class="product-name">Giới thiệu</p>
+    <h2>The Commitment Code</h2>
+    <p class="tagline">Bộ Mã Cam Kết &nbsp;·&nbsp; Guidebook 7 ngày</p>
+    <p>Đây không phải là một cuốn sách dạy bạn cách <em>"khiến đàn ông cam kết"</em>. Vì sự thật là, không ai có thể khiến đàn ông làm điều mà anh ấy không thật sự muốn.</p>
+    <p style="margin-top:18px;">Đây là guidebook 7 ngày, dạy bạn cách <em>đọc đúng bộ mã</em> đã có sẵn trong mối quan hệ của bạn.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     7 CODES — REDESIGNED
+══════════════════════════════════════════════ -->
+<section class="codes">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>7 Mã &nbsp;·&nbsp; 7 Ngày</h2>
+    <p class="codes-sub">Mỗi ngày một mã. Mỗi mã một bài tập cụ thể để bạn nhìn rõ thêm một lớp.</p>
+
+    <div class="code-card">
+      <div class="code-num-big">01</div>
+      <div class="code-card-content">
+        <h3>Lớp Sương Mơ Hồ</h3>
+        <p class="day-tagline">Nhận diện điều đang giữ bạn lại</p>
+        <p>Sunk cost và 4 cơ chế tâm lý khiến bạn ở lại trong mối quan hệ không rõ ràng, mà bạn chưa từng được dạy.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">02</div>
+      <div class="code-card-content">
+        <h3>4 Kiểu Gắn Bó</h3>
+        <p class="day-tagline">Hiểu pattern cảm xúc của bạn và anh ấy</p>
+        <p>Secure, Anxious, Avoidant, Fearful. Hai kiểu khớp nhau sai cách lặp lại cùng một xung đột suốt nhiều năm.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">03</div>
+      <div class="code-card-content">
+        <h3>Tiêu Chuẩn Thật</h3>
+        <p class="day-tagline">Phân biệt điều bạn muốn vs điều xã hội bảo bạn nên muốn</p>
+        <p>Một bài tập để tách điều bạn thật sự cần ra khỏi điều mọi người nói bạn nên cần.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">04</div>
+      <div class="code-card-content">
+        <h3>4 Trụ Cột Đồng Bộ</h3>
+        <p class="day-tagline">Hai người có đang đi cùng một hướng</p>
+        <p>12 câu hỏi bọn mình kiểm tra mỗi 6 tháng. Trả lời thật, bạn sẽ thấy mọi thứ.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">05</div>
+      <div class="code-card-content">
+        <h3>Cuộc Trò Chuyện Trung Thực</h3>
+        <p class="day-tagline">Hỏi anh về tương lai mà không tạo áp lực</p>
+        <p>Cách hỏi mình đã dùng với Seiwa, không cần năn nỉ, không cần đe doạ, vẫn nhận được câu trả lời thật.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">06</div>
+      <div class="code-card-content">
+        <h3>Giai Đoạn Quan Sát</h3>
+        <p class="day-tagline">Hành động là sự thật, không phải lời hứa</p>
+        <p>Một template 30 ngày, để bạn không tự lừa dối mình bằng lời nói của anh.</p>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-num-big">07</div>
+      <div class="code-card-content">
+        <h3>Hai Đường Tương Lai</h3>
+        <p class="day-tagline">Bài tập "2 timelines" và quyết định có ý thức</p>
+        <p>5 năm sau bạn ở đâu nếu ở lại, ở đâu nếu rời đi. Để nhìn rõ điều bạn đang chọn, mỗi ngày bạn không chọn.</p>
+      </div>
+    </div>
+
+    <div class="codes-closer">
+      <p>Bạn đã ở lại lâu hơn bạn nghĩ là nên ở lại.</p>
+      <p><em>7 mã. 7 ngày. Để biết mình đang đứng ở đâu.</em></p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     REASON SECTIONS — Jannie story + Bước ngoặt
+══════════════════════════════════════════════ -->
+<section class="reason">
+  <div class="container">
+
+    <div class="reason-block">
+      <h2>Tại sao mình viết<br>cuốn sách này</h2>
+      <p>Năm 22 tuổi, mình phát hiện mình có một khối u não. Khoảnh khắc đó, điều đầu tiên mình nghĩ đến không phải là sức khoẻ, mà là sự tiếc nuối. Mình nhận ra mình đã sống quá lâu trong ảo tưởng rằng mình còn nhiều thời gian, nhưng thực tế, không ai biết mình thực sự còn bao nhiêu ngày để sống.</p>
+      <p>Biến cố đó đã gieo vào lòng mình một mầm mống của sự rõ ràng. Mình hiểu rằng:</p>
+      <p class="reason-quote">Sự mơ hồ chính là <em>kẻ trộm thầm lặng</em> lấy đi tài sản quý giá nhất của phụ nữ. Đó là <em>thời gian sống</em>.</p>
+      <p>Mình đã dành nhiều năm sau đó để học cách bảo vệ giá trị này. Mình không còn chấp nhận việc hạ thấp những gì mình cần và gọi đó là <em>"kiên nhẫn"</em>. Mình từ chối ở lại trong trạng thái <em>"để xem thêm đã"</em>, vì mình hiểu cái giá phải trả quá đắt.</p>
+    </div>
+
+    <div class="reason-block">
+      <h2>Bước ngoặt cùng Seiwa</h2>
+      <p>Rồi mình gặp Seiwa.</p>
+      <p>Tháng đầu tiên, bọn mình chia tay 10 lần. Không phải vì không có tình cảm, mà vì mình của năm 27 tuổi đã không còn có thể thoả hiệp với sự mơ hồ thêm một giây nào nữa. Mình cần sự rõ ràng tuyệt đối về cam kết.</p>
+      <p>Mình đã nói với anh:</p>
+      <p class="reason-quote">Thời gian sống của em rất quý. Nếu anh không thể trở thành <em>người đồng hành nghiêm túc</em> trong tương lai của em, thì anh hãy <em>rời khỏi cuộc đời em</em>.</p>
+      <p>Mình nói điều đó không phải để áp lực, mà để bảo vệ sự tôn trọng dành cho chính mình.</p>
+      <p>Cuốn guidebook này ra đời từ chính những trải nghiệm rát lòng đó. Để giúp bạn nhìn rõ thực tại và tự cầm lái cuộc đời, thay vì chờ đợi một sự rõ ràng từ người khác.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FRIEND TESTIMONY
+══════════════════════════════════════════════ -->
+<section class="friend">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Một người bạn đã đọc thử<br>trước khi mình mở pre-order</h2>
+    <div class="friend-body">
+      <p>Mình đã gửi bản thảo cho một người bạn thân, để bạn ấy thử thực hành 7 ngày trước khi mình mở pre-order.</p>
+      <p>Bạn ấy đang trong một mối quan hệ mà không chắc về tương lai. Đã đọc nhiều bài về tình yêu. Đã tham vấn bạn bè. Vẫn không biết mình nên ở lại, hay nói chuyện thẳng.</p>
+      <p>Đến ngày thứ 6, bạn ấy nhắn cho mình một câu duy nhất:</p>
+      <p class="friend-quote">Em đã quan sát anh ấy lâu rồi mà em không nhận ra. Em chỉ đang nghe những gì anh <em>nói</em>. Em chưa bao giờ nhìn anh đang <em>làm gì</em>.</p>
+      <p>Bạn ấy không cần mình nói gì thêm. Bạn ấy đã có câu trả lời.</p>
+      <p>Mình không biết bạn ấy sẽ ở lại hay rời đi. Đó không phải việc của mình. Việc của mình là giúp bạn ấy <em>nhìn rõ</em>. Phần còn lại là sức mạnh của bạn ấy.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FOR WHO
+══════════════════════════════════════════════ -->
+<section class="forwho">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Bộ mã này dành cho ai</h2>
+    <div class="forwho-grid">
+      <div class="forwho-col yes">
+        <h3>Dành cho bạn nếu</h3>
+        <ul>
+          <li>Bạn yêu anh ấy thật, và anh yêu bạn thật, nhưng đang đi vòng tròn không có lối ra</li>
+          <li>Bạn đã từng tự hỏi <em>"mình có đang lãng phí thời gian không"</em>, nhiều hơn một lần</li>
+          <li>Bạn không muốn quyết định từ sợ hãi. Bạn muốn quyết định từ <em>sự rõ ràng</em></li>
+          <li>Bạn sẵn sàng nhìn thẳng vào mối quan hệ của mình, dù câu trả lời có thể không phải điều bạn muốn nghe</li>
+          <li>Bạn tin <em>thời gian</em> của mình có giá trị</li>
+        </ul>
+      </div>
+      <div class="forwho-col no">
+        <h3>Không dành cho bạn nếu</h3>
+        <ul>
+          <li>Bạn muốn tìm mánh để "khiến anh ấy cam kết"</li>
+          <li>Bạn muốn ai đó nói cho bạn rằng "anh sẽ thay đổi"</li>
+          <li>Bạn đang tìm mẹo, bí kíp, hoặc câu thần chú</li>
+          <li>Bạn chưa sẵn sàng nhìn thẳng vào những câu hỏi mình đang né</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     OFFER
+══════════════════════════════════════════════ -->
+<section class="offer">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Bạn nhận được gì<br>khi đăng ký hôm nay</h2>
+
+    <div class="offer-card">
+      <p class="offer-card-title">Guidebook chính</p>
+      <h3>The Commitment Code &nbsp;·&nbsp; 7 Ngày Thực Hành</h3>
+      <p>Không phải đọc cho vui rồi đóng lại. Mỗi ngày có bài tập cụ thể, có câu hỏi để viết ra, có kết quả rõ ràng. Bạn tự đi qua từng lớp. Không cần ai dẫn. Không cần partner đọc cùng.</p>
+      <p class="offer-value">PDF · Đọc được trên mọi thiết bị · Trị giá 500.000đ</p>
+    </div>
+
+    <div class="offer-card bonus">
+      <p class="offer-card-title">Bonus &nbsp;·&nbsp; Dành cho tất cả người mua</p>
+      <h3>Buổi Livestream Riêng với Jannie &amp; Seiwa</h3>
+      <p>Những gì không viết vào sách được, bọn mình sẽ kể trực tiếp. Trong buổi live, <strong>Seiwa</strong> sẽ chia sẻ trực tiếp 3 chủ đề mà các bạn nữ thường hỏi nhưng ít được nghe trả lời thật từ một người đàn ông:</p>
+      <ol>
+        <li>Điều gì khiến một người đàn ông trưởng thành quyết định ở lại.</li>
+        <li>Hành vi và suy nghĩ của đàn ông trước khi cam kết.</li>
+        <li>Hành vi và suy nghĩ của đàn ông sau khi cam kết.</li>
+      </ol>
+      <p style="margin-top:22px;">Bạn được hỏi trực tiếp bất cứ điều gì.</p>
+      <p class="offer-value">Live trong cộng đồng kín · Trị giá 1.000.000đ</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════════ -->
+<section class="pricing" id="buy">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Đầu tư cho<br><em>sự rõ ràng</em></h2>
+
+    <div class="pricing-questions">
+      <p>Bạn đã từng dành bao nhiêu tháng trong một mối quan hệ không rõ ràng?</p>
+      <p>Bạn đã từng dành bao nhiêu giờ tự hỏi <em>"mình có đang sai không"</em>?</p>
+      <p>Bạn đã từng dành bao nhiêu đêm khóc mà không biết khóc vì điều gì?</p>
+    </div>
+
+    <p class="pricing-statement">Mình không bán cho bạn một guidebook để giải quyết tất cả những điều đó. Mình bán cho bạn <em>7 ngày</em>, để bạn không phải dành thêm tháng năm tiếp theo trong sự không rõ ràng.</p>
+
+    <div class="pricing-table">
+      <div class="pricing-row strike"><span>Guidebook giá trị</span><span class="amount">500.000đ</span></div>
+      <div class="pricing-row strike"><span>Buổi livestream giá trị</span><span class="amount">1.000.000đ</span></div>
+      <div class="pricing-row total strike"><span>Tổng giá trị</span><span class="amount">1.500.000đ</span></div>
+      <div class="pricing-row preorder"><span>Pre-order hôm nay</span><span class="amount">199.000đ</span></div>
+    </div>
+
+    <p class="pricing-deadline">Pre-order đóng ngày 29/04/2026</p>
+    <p class="pricing-note">Sau ngày này, giá guidebook quay về 500.000đ.</p>
+
+    <p class="pricing-final">199.000đ. Ít hơn một buổi cà phê mỗi ngày trong 7 ngày. Để đổi lấy <em>sự rõ ràng</em>.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     GUARANTEE
+══════════════════════════════════════════════ -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-box">
+      <h2>Bảo đảm <em>100%</em></h2>
+      <p>Nếu bạn không cảm thấy nội dung trong cuốn sách này có giá trị, mình hoàn lại 100%.</p>
+      <p>Không cần giải thích. Không cần điều kiện.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     STEPS
+══════════════════════════════════════════════ -->
+<section class="steps">
+  <div class="container">
+    <div class="divider"><span class="dot"></span></div>
+    <h2>Cách đặt mua</h2>
+
+    <div class="step-row">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>Chuyển khoản 199.000đ</h3>
+        <p>Nội dung chuyển khoản: <code>Tên bạn + CCM</code></p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>Gửi xác nhận</h3>
+        <p>Nhắn tin trực tiếp cho <strong>@jannie-seiwa</strong> trên Instagram, kèm ảnh chụp màn hình chuyển khoản.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>Nhận guidebook</h3>
+        <p>Bọn mình sẽ xác nhận và gửi form tham gia group qua Instagram trong vòng <strong>24H</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CLOSE / P.S.
+══════════════════════════════════════════════ -->
+<section class="close">
+  <div class="container">
+    <p class="eyebrow close-eyebrow">P.S. &nbsp;·&nbsp; điều mình muốn bạn nhớ</p>
+
+    <div class="close-body">
+      <p>Mình đã từng ở trong một mối quan hệ mà không dám bước ra.</p>
+      <p>Mỗi đêm mình tự hỏi: <em>"Mình có đang lãng phí thời gian không?"</em></p>
+      <p>Mỗi đêm mình tự trả lời: <em>"Đợi thêm một chút nữa."</em></p>
+      <p>Đến khi mình ngồi xuống và nhìn rõ, mình mới nhận ra: mình đã không lãng phí thời gian vì ở với người sai. Mình lãng phí thời gian vì mình đã không cho phép mình <em>nhìn rõ</em>.</p>
+      <p style="text-align:center;font-style:italic;color:var(--accent);font-size:1.4rem;margin:40px 0;font-weight:500;">7 ngày này là cái mình ước có lúc đó.</p>
+      <p>Mình không biết bạn sẽ ở lại hay rời đi sau khi đọc.</p>
+      <p>Mình chỉ biết, bạn sẽ không còn phải sống thêm một năm nữa trong câu hỏi <em>"mình có đang lãng phí thời gian không"</em>.</p>
+      <p class="close-pull">Vì câu trả lời sẽ <em>rõ</em>.<br>Và sự rõ ràng, là điều mà tháng năm chờ đợi không bao giờ cho bạn được.</p>
+      <p class="close-sign">— Jannie &amp; Seiwa</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  © 2026 Jannie &amp; Seiwa &nbsp;·&nbsp; @jannievsseiwa
+</footer>
+
+</body>
+</html>
