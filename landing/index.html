@@ -681,6 +681,51 @@
       border: 1px solid var(--border);
       font-weight: 500;
     }
+    .qr-block {
+      margin-top: 24px;
+      padding: 28px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .qr-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .qr-info {
+      font-size: 0.98rem;
+      color: var(--mid);
+    }
+    .qr-info .qr-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .qr-info .qr-row { margin-bottom: 14px; line-height: 1.5; }
+    .qr-info .qr-row:last-child { margin-bottom: 0; }
+    .qr-info strong { color: var(--dark); font-weight: 600; }
+    .qr-info .qr-account {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .qr-block { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
+      .qr-block img { max-width: 240px; margin: 0 auto; }
+    }
 
     /* ── CLOSE / P.S. ── */
     .close { background: var(--cream); }
@@ -1121,6 +1166,23 @@
       <div class="step-content">
         <h3>Chuyển khoản 199.000đ</h3>
         <p>Nội dung chuyển khoản: <code>Tên bạn + CCM</code></p>
+        <div class="qr-block">
+          <img src="qr-payment.jpg" alt="Mã QR chuyển khoản" />
+          <div class="qr-info">
+            <div class="qr-row">
+              <span class="qr-label">Chủ tài khoản</span>
+              <strong>NGUYEN HONG SON</strong>
+            </div>
+            <div class="qr-row">
+              <span class="qr-label">Số tài khoản</span>
+              <span class="qr-account">100211238</span>
+            </div>
+            <div class="qr-row">
+              <span class="qr-label">Ngân hàng</span>
+              Eximbank &nbsp;·&nbsp; Long Điền
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
