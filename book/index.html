@@ -21,7 +21,6 @@
   --gray-light:#C0BBB4;
 }
 html,body{background:var(--beige);color:var(--black-soft);font-family:'Cormorant Garamond',Georgia,serif;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:smooth}
 body{min-height:100vh;overflow-x:hidden}
 
 /* ================== TOP NAV ================== */
@@ -79,17 +78,32 @@ body{min-height:100vh;overflow-x:hidden}
 /* ================== HOME / DASHBOARD ================== */
 #view-home{padding:0}
 .hero{
-  position:relative;padding:64px 32px 72px;
+  position:relative;padding:0;
   background:linear-gradient(180deg,#0A0907 0%,#1a1612 100%);
-  color:#F8F2E8;text-align:center;overflow:hidden;
+  color:#F8F2E8;text-align:left;overflow:hidden;
+  display:grid;grid-template-columns:3fr 2fr;align-items:stretch;min-height:90vh;
 }
-.hero-svg{position:absolute;top:24px;left:50%;transform:translateX(-50%);opacity:0.5;pointer-events:none}
+.hero-svg{display:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 64px}
+.hero-right{background:#F2EBDF;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.hero-left .hero-div{margin:0 0 22px}
+.hero-left .hero-sub{margin:0 0 20px;text-align:left}
+.hero-left .hero-quote{margin:0;text-align:left;padding:22px 0 0}
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:48px 32px;text-align:center;align-items:center}
+  .hero-right{order:-1;height:55vh}
+  .hero-left .hero-div{margin:0 auto 22px}
+  .hero-left .hero-sub{margin:0 auto 20px;text-align:center}
+  .hero-left .hero-quote{margin:0 auto;text-align:center;padding:22px 28px 0}
+}
 .hero-eye{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.34em;color:var(--red-light);margin-bottom:18px;text-transform:uppercase;position:relative;z-index:2}
 .hero-title{font-size:64px;font-weight:300;line-height:1.0;letter-spacing:0.025em;margin-bottom:18px;position:relative;z-index:2}
 .hero-title strong{font-weight:700;display:block;letter-spacing:0.04em}
 .hero-div{width:60px;height:1.5px;background:var(--red);margin:0 auto 22px;position:relative;z-index:2}
 .hero-sub{font-size:16px;font-weight:300;line-height:1.7;color:rgba(248,242,232,0.78);font-style:italic;max-width:480px;margin:0 auto 20px;position:relative;z-index:2}
-.hero-quote{font-size:13px;font-weight:300;line-height:1.85;color:rgba(248,242,232,0.6);font-style:italic;max-width:520px;margin:0 auto;padding:18px 0 0;border-top:0.5px solid rgba(248,242,232,0.18);position:relative;z-index:2}
+.hero-quote{font-size:15.5px;font-weight:400;line-height:1.85;color:rgba(248,242,232,0.92);font-style:italic;max-width:560px;margin:0 auto;padding:22px 28px 0;border-top:0.5px solid rgba(248,242,232,0.32);position:relative;z-index:2}
 .hero-cta{margin-top:32px;display:inline-block;padding:14px 32px;background:var(--red);color:#F8F2E8;text-decoration:none;font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .25s;position:relative;z-index:2}
 .hero-cta:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 8px 22px rgba(155,27,17,0.4)}
 
@@ -139,7 +153,7 @@ body{min-height:100vh;overflow-x:hidden}
 .card.dark .badge{background:rgba(184,42,30,0.18);color:var(--red-light)}
 
 /* ================== CHAPTER VIEW ================== */
-.chapter-wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 58px);max-width:1240px;margin:0 auto;background:var(--beige)}
+.chapter-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 58px);max-width:1500px;margin:0 auto;background:var(--beige)}
 .chapter-wrap.dark{background:#0A0907}
 .sidebar{
   position:sticky;top:58px;align-self:start;
@@ -168,7 +182,7 @@ body{min-height:100vh;overflow-x:hidden}
 .dark .sb-item.active{color:#F8F2E8;border-left-color:var(--red-light);background:rgba(184,42,30,0.18);font-weight:600}
 .dark .sb-item .num{color:rgba(248,242,232,0.55)}
 
-.chapter-main{padding:48px 64px 80px;min-width:0}
+.chapter-main{padding:48px 40px 80px;min-width:0}
 .dark .chapter-main{background:#0A0907;color:#F8F2E8}
 .subsection{margin-bottom:64px;animation:slideIn .5s ease}
 .subsection:last-child{margin-bottom:0}
@@ -294,6 +308,38 @@ textarea.journal:focus{border-bottom-color:var(--red);background:rgba(255,255,25
 .orn-c .l{height:0.5px;background:var(--gray-light);width:60px}
 .orn-c .d{width:5px;height:5px;border-radius:50%;background:var(--red);opacity:0.7}
 .orn-c .d2{width:3px;height:3px;border-radius:50%;background:var(--gray)}
+.book-photo{margin:40px auto 36px;max-width:420px;display:block}
+.book-photo img{width:100%;height:auto;display:block;border-radius:2px}
+.book-photo .cap{margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:var(--gray);text-align:center;letter-spacing:0.04em}
+.diagram{margin:40px auto 44px;max-width:720px;width:100%;display:block}
+.diagram.portrait{max-width:340px;margin:40px auto 44px;width:auto}
+.diagram.tall{margin:40px auto 44px;max-width:760px;width:100%}
+@media(max-width:640px){.diagram,.diagram.tall{margin:28px auto;width:100%;max-width:100%}}
+.diagram svg{display:block;width:100%;height:auto}
+.diagram .cap{margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:var(--gray);letter-spacing:0.04em;text-align:center;line-height:1.6}
+.tc-result{margin:30px 0 18px}
+.tc-bar-wrap{margin-bottom:32px}
+.tc-bar{display:flex;height:14px;border-radius:7px;overflow:hidden}
+.tc-bar .tc-zone{height:100%}
+.tc-bar .tc-zone.red{flex:7;background:rgba(155,27,17,0.42)}
+.tc-bar .tc-zone.gray{flex:7;background:var(--beige-deeper)}
+.tc-bar .tc-zone.cream{flex:6;background:#EAE3D2}
+.tc-bar-labels{display:flex;margin-top:14px;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:0.06em}
+.tc-bar-labels > div{text-align:center}
+.tc-bar-labels > div:nth-child(1){flex:7}
+.tc-bar-labels > div:nth-child(2){flex:7}
+.tc-bar-labels > div:nth-child(3){flex:6}
+.tc-bar-labels strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;font-weight:500;letter-spacing:0;color:var(--gray);margin-bottom:3px}
+.tc-bar-labels .tcl-l strong{color:var(--red)}
+.tc-bar-labels .tcl-r strong{color:var(--black)}
+.tc-bar-labels span{color:var(--gray);font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.12em}
+.tc-decoder{background:var(--beige-dark);padding:26px 30px}
+.tc-decoder .tcd-tag{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:var(--black);margin-bottom:20px}
+.tc-decoder .tcd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tc-decoder .tcd-col .tcd-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:32px;color:var(--black);line-height:1;margin-bottom:10px}
+.tc-decoder .tcd-col p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--gray);line-height:1.55;margin:0}
+.tc-decoder .tcd-col.red .tcd-num{color:var(--red)}
+@media(max-width:640px){.tc-decoder .tcd-grid{grid-template-columns:1fr;gap:18px}}
 .dark .orn .l,.dark .orn-c .l{background:rgba(248,242,232,0.2)}
 .dark .orn-c .d2{background:rgba(248,242,232,0.4)}
 
@@ -314,7 +360,9 @@ textarea.journal:focus{border-bottom-color:var(--red);background:rgba(255,255,25
 .day-hero{background:#0A0907;color:#F8F2E8;position:relative;padding:60px 56px;min-height:600px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;border-radius:2px}
 .day-bg-num{position:absolute;font-size:380px;font-weight:700;line-height:1;color:rgba(248,242,232,0.025);right:-20px;bottom:-50px;letter-spacing:-0.06em;pointer-events:none;z-index:0;font-family:'Cormorant Garamond',serif}
 .day-svg{position:absolute;bottom:54px;right:54px;z-index:2;opacity:0.85}
-.day-content{position:relative;z-index:2;max-width:580px}
+.day-content{position:relative;z-index:2}
+.day-content > div:first-child{max-width:580px}
+.day-content > .day-tag{max-width:580px}
 .day-label{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:600;letter-spacing:0.32em;color:var(--red-light);text-transform:uppercase;margin-bottom:24px;display:block}
 .day-h{font-size:60px;font-weight:700;line-height:0.98;color:#F8F2E8;letter-spacing:0.01em;text-transform:uppercase;display:block}
 .day-sub{font-size:38px;font-weight:300;font-style:italic;line-height:1.15;color:rgba(248,242,232,0.82);display:block;margin-top:12px}
@@ -322,8 +370,20 @@ textarea.journal:focus{border-bottom-color:var(--red);background:rgba(255,255,25
 .day-tag{font-size:17px;font-style:italic;font-weight:300;color:rgba(248,242,232,0.78);margin-bottom:30px}
 .day-intro{font-size:18px;font-weight:300;line-height:1.9;color:rgba(248,242,232,0.92)}
 .day-intro p{margin-bottom:16px}
+.day-intro p:last-child{margin-bottom:0}
 .day-intro strong{color:#F8F2E8;font-weight:500}
 .day-intro em{font-style:italic}
+.day-intro-frame{position:relative;padding:42px 48px 36px;margin-top:24px;max-width:none}
+.day-intro-frame::before,.day-intro-frame::after,.day-intro-frame .br-tl,.day-intro-frame .br-br{
+  content:"";position:absolute;width:22px;height:22px;border-color:var(--red-light);border-style:solid;border-width:0
+}
+.day-intro-frame::before{top:0;left:0;border-top-width:1.6px;border-left-width:1.6px}
+.day-intro-frame::after{top:0;right:0;border-top-width:1.6px;border-right-width:1.6px}
+.day-intro-frame .br-tl{bottom:0;left:0;border-bottom-width:1.6px;border-left-width:1.6px}
+.day-intro-frame .br-br{bottom:0;right:0;border-bottom-width:1.6px;border-right-width:1.6px}
+.day-intro-frame .di-icon{display:flex;justify-content:center;color:var(--red-light);margin-bottom:24px}
+.day-intro-frame .di-icon svg{width:42px;height:42px}
+.day-intro-frame .di-rule{display:block;width:48px;height:1.6px;background:var(--red-light);margin:0 auto 22px;opacity:0.85}
 .day-c1{position:absolute;bottom:-140px;right:-140px;width:440px;height:440px;border-radius:50%;border:0.5px solid rgba(248,242,232,0.04);z-index:1}
 .day-c2{position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;border:0.5px solid rgba(248,242,232,0.03);z-index:1}
 
@@ -431,13 +491,17 @@ table.tt td:first-child{padding-right:14px;width:62%}
 
 <section class="view active" id="view-home">
 <div class="hero">
-<div class="hero-svg"><svg width="260" height="160" viewBox="0 0 260 160" fill="none"><circle cx="48" cy="50" r="38" stroke="rgba(248,242,232,0.18)" stroke-width="0.8"/><circle cx="112" cy="50" r="38" stroke="rgba(248,242,232,0.18)" stroke-width="0.8"/><path d="M80 12 Q112 30 112 50 Q112 70 80 88 Q48 70 48 50 Q48 30 80 12Z" fill="rgba(155,27,17,0.10)"/><circle cx="80" cy="50" r="3" fill="rgba(184,42,30,0.7)"/><circle cx="80" cy="50" r="11" stroke="rgba(184,42,30,0.25)" stroke-width="0.6" fill="none"/></svg></div>
+<div class="hero-left">
 <div class="hero-eye">Jannie &amp; Seiwa · Guidebook</div>
 <div class="hero-title">THE<br><strong>COMMITMENT</strong>CODE</div>
 <div class="hero-div"></div>
-<div class="hero-sub">7 ngày để lớp sương mờ tan biến và làm chủ mối quan hệ — một hành trình đối thoại với chính mình.</div>
+<div class="hero-sub">7 ngày để lớp sương mờ tan biến và làm chủ mối quan hệ. Một hành trình đối thoại với chính mình.</div>
 <div class="hero-quote">"Tôi không sợ mất một người. Tôi sợ mất nhiều năm của cuộc đời mình trong một mối quan hệ không có tương lai."</div>
 <a class="hero-cta" href="#before">Bắt đầu thay đổi tình yêu của bạn →</a>
+</div>
+<div class="hero-right">
+<img src="cover-jannie-seiwa.jpg" alt="Jannie &amp; Seiwa" />
+</div>
 </div>
 <div class="toc-wrap">
 <div class="toc-section">
@@ -447,7 +511,7 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="c-num">Trước hành trình</div>
 <div class="c-title">Trước Hành Trình</div>
 <div class="c-sub">Tiếng chuông, tuyên ngôn và bản đồ thực tại</div>
-<div class="c-list"><div class="c-li"><span class="c-li-num">01</span>Tiếng Chuông Của Sự Thật</div><div class="c-li"><span class="c-li-num">02</span>Tuyên Ngôn</div><div class="c-li"><span class="c-li-num">03</span>Hành Trình Trở Về</div><div class="c-li"><span class="c-li-num">04</span>Nghi Thức Hiện Diện</div><div class="c-li"><span class="c-li-num">05</span>Câu Hỏi Khởi Hành</div><div class="c-li"><span class="c-li-num">06</span>Temperature Check</div><div class="c-li"><span class="c-li-num">07</span>Relationship Map</div></div>
+<div class="c-list"><div class="c-li"><span class="c-li-num">01</span>Tiếng Chuông Của Sự Thật</div><div class="c-li"><span class="c-li-num">02</span>Tuyên Ngôn</div><div class="c-li"><span class="c-li-num">03</span>Hành Trình Trở Về</div><div class="c-li"><span class="c-li-num">04</span>Nghi Thức Hiện Diện</div><div class="c-li"><span class="c-li-num">05</span>Câu Hỏi Khởi Hành</div><div class="c-li"><span class="c-li-num">06</span>Bản Đo Nhiệt Độ Mối Quan Hệ</div><div class="c-li"><span class="c-li-num">07</span>Bản Đồ Mối Quan Hệ</div></div>
 </a></div>
 </div>
 <div class="toc-section" style="background:#0A0907;color:#F8F2E8;">
@@ -503,7 +567,7 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="c-num">Sau hành trình</div>
 <div class="c-title">Sau Hành Trình</div>
 <div class="c-sub">Tuyên ngôn và lá thư cuối</div>
-<div class="c-list"><div class="c-li"><span class="c-li-num">01</span>Commitment Manifesto</div><div class="c-li"><span class="c-li-num">02</span>Lá Thư Gửi Bạn</div></div>
+<div class="c-list"><div class="c-li"><span class="c-li-num">01</span>Tuyên Ngôn Cam Kết</div><div class="c-li"><span class="c-li-num">02</span>Lá Thư Gửi Bạn</div></div>
 </a></div>
 </div>
 </div>
@@ -515,7 +579,7 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="sb-tag">Khởi đầu</div>
 <div class="sb-title">Trước Hành Trình</div>
 <div class="sb-sub">Tiếng chuông, tuyên ngôn và bản đồ thực tại</div>
-<div class="sb-list"><a class="sb-item" data-sub="intro" href="#before/intro"><span class="num">01</span>Tiếng Chuông Của Sự Thật</a><a class="sb-item" data-sub="manifesto" href="#before/manifesto"><span class="num">02</span>Tuyên Ngôn</a><a class="sb-item" data-sub="invitation" href="#before/invitation"><span class="num">03</span>Hành Trình Trở Về</a><a class="sb-item" data-sub="ritual" href="#before/ritual"><span class="num">04</span>Nghi Thức Hiện Diện</a><a class="sb-item" data-sub="seed" href="#before/seed"><span class="num">05</span>Câu Hỏi Khởi Hành</a><a class="sb-item" data-sub="temp-check" href="#before/temp-check"><span class="num">06</span>Temperature Check</a><a class="sb-item" data-sub="map" href="#before/map"><span class="num">07</span>Relationship Map</a></div>
+<div class="sb-list"><a class="sb-item" data-sub="intro" href="#before/intro"><span class="num">01</span>Tiếng Chuông Của Sự Thật</a><a class="sb-item" data-sub="manifesto" href="#before/manifesto"><span class="num">02</span>Tuyên Ngôn</a><a class="sb-item" data-sub="invitation" href="#before/invitation"><span class="num">03</span>Hành Trình Trở Về</a><a class="sb-item" data-sub="ritual" href="#before/ritual"><span class="num">04</span>Nghi Thức Hiện Diện</a><a class="sb-item" data-sub="seed" href="#before/seed"><span class="num">05</span>Câu Hỏi Khởi Hành</a><a class="sb-item" data-sub="temp-check" href="#before/temp-check"><span class="num">06</span>Bản Đo Nhiệt Độ Mối Quan Hệ</a><a class="sb-item" data-sub="map" href="#before/map"><span class="num">07</span>Bản Đồ Mối Quan Hệ</a></div>
 </aside>
 <main class="chapter-main">
 <div class="subsection" data-sub="intro"><div class="sub-head"><span class="n">01</span>Tiếng Chuông Của Sự Thật</div>
@@ -552,16 +616,20 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="eyebrow-it">Quyền năng của sự rõ ràng</div>
 <div class="h1"><em>Tuyên Ngôn</em></div>
 <div class="div"><div class="div-line"></div><div class="div-dot"></div></div>
-<div class="photo-slot portrait">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh chân dung Jannie</div>
-<div class="ph-hint">Đặt ảnh portrait của Jannie tại đây</div>
-
+<div class="diagram portrait">
+<svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<line x1="80" y1="50" x2="200" y2="50" stroke="#252520" stroke-width="1.4"/>
+<line x1="80" y1="290" x2="200" y2="290" stroke="#252520" stroke-width="1.4"/>
+<line x1="80" y1="50" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
+<line x1="200" y1="50" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
+<line x1="80" y1="290" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
+<line x1="200" y1="290" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
+<path d="M 100 70 L 180 70 L 140 130 Z" fill="#9B1B11" opacity="0.85"/>
+<line x1="140" y1="160" x2="140" y2="200" stroke="#9B1B11" stroke-width="1.4"/>
+<circle cx="140" cy="180" r="1" fill="#9B1B11"/>
+<path d="M 100 280 L 180 280 L 140 220 Z" fill="#9B1B11" opacity="0.9"/>
+<text x="140" y="325" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-style="italic" text-anchor="middle">Thời gian không quay lại.</text>
+</svg>
 </div>
 <p class="t">Năm 22 tuổi, tôi phát hiện mình có khối u não. Cảm giác đầu tiên không phải là sợ hãi, mà là tiếc. Tiếc vì tôi nhận ra rằng thời gian không phải là thứ mình có thể cứ mặc định là còn nhiều. Từ ngày đó, có điều gì đó trong tôi thay đổi. Tôi không còn chờ đợi những thứ mà tôi hoàn toàn có thể nhìn thẳng vào và hỏi thẳng ra.</p>
 <p class="t">Năm năm sau, khi mối quan hệ với Seiwa bắt đầu trở nên mơ hồ, tôi không lặp lại pattern cũ. Tôi nói thẳng với anh — khi tôi vẫn đang yêu anh, khi mọi thứ vẫn đang ổn: “Thời gian của em trong cuộc đời này rất quý. Nếu anh không thể trở thành người đồng hành nghiêm túc trong tương lai của em, thì anh hãy rời khỏi cuộc đời em.”</p>
@@ -620,27 +688,35 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="pull" style="margin:60px 0;"><p style="font-size:26px;line-height:1.5;">“Nếu mối quan hệ này tiếp tục như hiện tại trong 3 năm nữa, bạn có cảm thấy bình yên không?”</p></div>
 <p class="t">Đừng vội vã tìm câu trả lời. Hãy mang theo câu hỏi này như một hạt giống, chúng ta sẽ quay lại với nó khi trái tim bạn đã được soi rọi bởi một ánh sáng mới ở cuối hành trình.</p>
 </div>
-</div><div class="subsection" data-sub="temp-check"><div class="sub-head"><span class="n">06</span>Temperature Check</div>
+</div><div class="subsection" data-sub="temp-check"><div class="sub-head"><span class="n">06</span>Bản Đo Nhiệt Độ Mối Quan Hệ</div>
 <div class="page-body">
 <div class="eyebrow">Bản soi chiếu thực tại</div>
-<div class="h2">Relationship<br><em>Temperature Check</em></div>
+<div class="h2"><em>Bản Đo Nhiệt Độ<br>Mối Quan Hệ</em></div>
 <p class="t" style="font-size:14.5px;color:var(--gray);font-style:italic;margin-top:6px;">Trước khi bắt đầu hành trình trong guidebook này, hãy dành một vài phút để quan sát mối quan hệ của bạn một cách đơn giản nhất. Không cần phân tích quá sâu. Chỉ cần trả lời theo cảm nhận trung thực nhất của bạn ở thời điểm hiện tại.</p>
 <p class="t" style="font-size:14px;color:var(--gray);"><strong style="color:var(--black);">1</strong> = Hoàn toàn không đúng · <strong style="color:var(--black);">5</strong> = Hoàn toàn đúng</p>
 <table class="tt"><tr><td>1. Khi nghĩ đến tương lai, tôi biết khá rõ mối quan hệ này đang hướng đến điều gì.</td><td><div class="dots" data-tc="0"><div class="dot" data-v="1"></div><div class="dot" data-v="2"></div><div class="dot" data-v="3"></div><div class="dot" data-v="4"></div><div class="dot" data-v="5"></div></div></td></tr><tr><td>2. Tôi cảm thấy người kia thật sự coi tôi là một phần quan trọng trong cuộc sống của họ.</td><td><div class="dots" data-tc="1"><div class="dot" data-v="1"></div><div class="dot" data-v="2"></div><div class="dot" data-v="3"></div><div class="dot" data-v="4"></div><div class="dot" data-v="5"></div></div></td></tr><tr><td>3. Khi nói về những chủ đề nghiêm túc (tương lai, giá trị sống, định hướng), chúng tôi có thể nói chuyện một cách thẳng thắn.</td><td><div class="dots" data-tc="2"><div class="dot" data-v="1"></div><div class="dot" data-v="2"></div><div class="dot" data-v="3"></div><div class="dot" data-v="4"></div><div class="dot" data-v="5"></div></div></td></tr><tr><td>4. Tôi cảm thấy an tâm về vị trí của mình trong mối quan hệ này.</td><td><div class="dots" data-tc="3"><div class="dot" data-v="1"></div><div class="dot" data-v="2"></div><div class="dot" data-v="3"></div><div class="dot" data-v="4"></div><div class="dot" data-v="5"></div></div></td></tr><tr><td>5. Nếu một người bạn thân hỏi tôi: “Mối quan hệ này đang đi về đâu?”, tôi có thể trả lời khá rõ ràng.</td><td><div class="dots" data-tc="4"><div class="dot" data-v="1"></div><div class="dot" data-v="2"></div><div class="dot" data-v="3"></div><div class="dot" data-v="4"></div><div class="dot" data-v="5"></div></div></td></tr></table>
-<div class="ex" style="margin-top:18px;">
-<div class="extag">Giải mã thực tại</div>
-<p class="q" style="border:none;padding:0;font-size:14.5px;margin-bottom:6px;"><strong style="font-style:normal;color:var(--black);">20–25 điểm:</strong> Bạn có nền tảng vững chắc của sự rõ ràng. Chúng ta sẽ học cách duy trì và làm sâu sắc hơn sự ổn định đó.</p>
-<p class="q" style="border:none;padding:0;font-size:14.5px;margin-bottom:6px;"><strong style="font-style:normal;color:var(--black);">13–19 điểm:</strong> Có những vùng sáng tích cực, nhưng cũng tồn tại những "vùng mờ" chưa được gọi tên. Guidebook sẽ giúp bạn soi rọi những vùng đó.</p>
-<p class="q" style="border:none;padding:0;font-size:14.5px;margin:0;"><strong style="font-style:normal;color:var(--red);">5–12 điểm:</strong> Bạn đang sống trong sự mơ hồ nhiều hơn bạn tưởng. Đã đến lúc nhìn thẳng vào sự thật để bảo vệ thời gian sống của chính mình.</p>
+<div class="tc-result">
+<div class="tc-bar-wrap">
+<div class="tc-bar"><div class="tc-zone red"></div><div class="tc-zone gray"></div><div class="tc-zone cream"></div></div>
+<div class="tc-bar-labels"><div class="tcl-l"><strong>Sương mù</strong><span>5–12</span></div><div class="tcl-m"><span>13–19</span></div><div class="tcl-r"><strong>Rõ ràng</strong><span>20–25</span></div></div>
+</div>
+<div class="tc-decoder">
+<div class="tcd-tag">Giải mã thực tại</div>
+<div class="tcd-grid">
+<div class="tcd-col"><div class="tcd-num">20–25</div><p>Nền tảng vững chắc của sự rõ ràng.</p></div>
+<div class="tcd-col"><div class="tcd-num">13–19</div><p>Tồn tại những "vùng mờ" chưa được gọi tên.</p></div>
+<div class="tcd-col red"><div class="tcd-num">5–12</div><p>Đã đến lúc nhìn thẳng vào sự thật.</p></div>
+</div>
+</div>
 </div>
 <p class="t">Bài kiểm tra nhỏ này không phải để đánh giá mối quan hệ của bạn là “tốt” hay “xấu”.</p>
 <p class="t">Nó chỉ là một cách để bạn dừng lại một chút và quan sát.</p>
 <p class="t">Bởi vì đôi khi, trước khi tìm kiếm câu trả lời lớn trong tình yêu, điều chúng ta thật sự cần chỉ là một khoảnh khắc thành thật với chính mình.</p>
 </div>
-</div><div class="subsection" data-sub="map"><div class="sub-head"><span class="n">07</span>Relationship Map</div>
+</div><div class="subsection" data-sub="map"><div class="sub-head"><span class="n">07</span>Bản Đồ Mối Quan Hệ</div>
 <div class="page-body">
 <div class="eyebrow">Nhìn toàn bộ mối quan hệ trong một trang</div>
-<div class="h2"><em>Relationship Map</em></div>
+<div class="h2"><em>Bản Đồ Mối Quan Hệ</em></div>
 <div class="div"><div class="div-line"></div><div class="div-dot"></div></div>
 <p class="t" style="font-size:14.5px;color:var(--gray);font-style:italic;">Mỗi mối quan hệ đều có nhiều lớp khác nhau: cảm xúc, sự kết nối, cách hai người xuất hiện trong cuộc sống của nhau, và những giá trị nền tảng mà hai người chia sẻ. Nhưng khi chúng ta ở trong một mối quan hệ, rất dễ để chỉ nhìn thấy từng khoảnh khắc riêng lẻ: một cuộc hẹn vui, một cuộc cãi vã, một lời hứa, một khoảng thời gian im lặng. Từng khoảnh khắc đó có thể khiến cảm xúc của chúng ta thay đổi rất nhanh.</p>
 <p class="t" style="font-size:14.5px;color:var(--gray);font-style:italic;">Trước khi chúng ta bắt đầu hành trình 7 ngày, hãy cùng nhau vẽ lại &quot;vùng thực tại&quot; mà bạn đang đứng. Đừng cố gắng viết những câu văn hoàn chỉnh, hãy viết xuống những từ khóa, những hình ảnh hoặc những sự thật trần trụi nhất hiện lên trong đầu bạn.</p>
@@ -678,10 +754,24 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Khi thực tại cần một cái tên</div>
-    <div class="day-intro"><p>Phần lớn các mối quan hệ không kết thúc vì một sai lầm lớn.</p><p>Chúng kéo dài trong một trạng thái khác, Vùng Mơ Hồ.</p><p>Nơi hai người vẫn quan tâm nhau, vẫn dành thời gian cho nhau, nhưng tương lai thì mơ hồ và không ai thật sự dám hỏi tại sao.</p><p>Không ai nói “không”. Nhưng cũng không ai dám nói “có”.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Phần lớn các mối quan hệ không kết thúc vì một sai lầm lớn.</p><p>Chúng kéo dài trong một trạng thái khác, Vùng Mơ Hồ.</p><p>Nơi hai người vẫn quan tâm nhau, vẫn dành thời gian cho nhau, nhưng tương lai thì mơ hồ và không ai thật sự dám hỏi tại sao.</p><p>Không ai nói “không”. Nhưng cũng không ai dám nói “có”.</p></div></div>
   </div>
 </div>
-</div><div class="subsection" data-sub="fog"><div class="sub-head"><span class="n">02</span>Vùng mơ hồ</div><div class="page-body"><p class="t">Không phải vì ai cố ý làm tổn thương người kia.</p>
+</div><div class="subsection" data-sub="fog"><div class="sub-head"><span class="n">02</span>Vùng mơ hồ</div><div class="page-body">
+<div class="diagram">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<line x1="30" y1="156" x2="190" y2="156" stroke="#252520" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="108" cy="146" r="6.5" stroke="#252520" stroke-width="1" fill="none"/>
+<line x1="108" y1="152.5" x2="108" y2="170" stroke="#252520" stroke-width="1" stroke-linecap="round"/>
+<line x1="100" y1="170" x2="116" y2="170" stroke="#252520" stroke-width="1" stroke-linecap="round"/>
+<path d="M190,156 C 245,150 290,128 340,108 C 410,77 480,54 540,34" stroke="#252520" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+<circle cx="340" cy="108" r="5.5" fill="#9B1B11"/>
+<path d="M340,108 C 400,128 470,148 575,156" stroke="#7A7670" stroke-width="0.9" fill="none" stroke-dasharray="3 4" stroke-linecap="round" opacity="0.6"/>
+<text x="555" y="30" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="20" font-style="italic">Rõ ràng</text>
+<text x="585" y="160" fill="#7A7670" font-family="Cormorant Garamond, Georgia, serif" font-size="18" font-style="italic" opacity="0.78">Mơ hồ</text>
+</svg>
+</div>
+<p class="t">Không phải vì ai cố ý làm tổn thương người kia.</p>
 <p class="t">Đôi khi đơn giản chỉ vì cả hai chưa thật sự rõ ràng với chính mình.</p>
 <p class="t">Nhưng sự mơ hồ có một đặc điểm rất nguy hiểm:</p>
 <p class="t">nó không gây đau đớn đủ để bạn rời đi, nhưng cũng không đủ rõ ràng để bạn thật sự an tâm ở lại.</p>
@@ -700,7 +790,7 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <p class="t">Nhưng có một câu hỏi quan trọng mà linh hồn bạn đang cần đối diện:</p>
 <p class="t">Bạn đang thực sự kiên nhẫn chờ đợi một sự rõ ràng... hay bạn đang trì hoãn việc nhìn vào sự thật?</p></div></div><div class="subsection" data-sub="patient"><div class="sub-head"><span class="n">03</span>Kiên nhẫn vs Trì hoãn</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">Sự khác biệt giữa kiên nhẫn và trì hoãn</span></div><div class="sub">Khi chờ đợi không còn là tử tế</div></div><p class="t">Kiên nhẫn trong tình yêu là điều đẹp.</p>
 <p class="t">Nhưng kiên nhẫn không giống với việc bỏ qua những dấu hiệu quan trọng.</p><p class="t">Một mối quan hệ đang phát triển thường có những dấu hiệu rõ ràng:</p><div class="box"><div class="step"><div class="arr">→</div><div class="step-body"><p>Hai người dần hiểu nhau hơn.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><p>Hai cuộc sống bắt đầu hòa vào nhau nhiều hơn.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><p>Những cuộc trò chuyện về tương lai trở nên tự nhiên hơn.</p></div></div></div><p class="t">Ngay cả khi chưa có câu trả lời cuối cùng,</p>
-<p class="t">bạn vẫn cảm thấy rằng mọi thứ đang tiến về phía trước.</p><p class="t" style="margin-top:14px;">Ngược lại, trong một mối quan hệ mơ hồ kéo dài, thời gian trôi qua nhưng cảm giác bên trong bạn không thay đổi. Bạn vẫn không biết mình đang đứng ở đâu.</p><div class="pull"><p>"đôi khi điều khiến bạn mệt mỏi nhất không phải là câu trả lời. Mà là việc không có câu trả lời."</p></div></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:14px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy dành cho mình sự trung thực tối thượng. Đừng vội vã. Hãy hít một hơi thật sâu, để ngòi bút dẫn lối và trả lời những câu hỏi này bằng sự thật trần trụi nhất của trái tim bạn:</p><div class="q"><strong>1. Thời gian.</strong> Nếu cuộc đời bạn là một tài khoản ngân hàng không thể nạp thêm, bạn đã "chi" ra bao lâu và đang "chi" để chờ đợi điều gì?</div><textarea class="journal" data-key="d1q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>2. Nỗi sợ.</strong> Nếu bạn hỏi thẳng về tương lai của hai người, bạn sợ điều gì sẽ xảy ra? Hãy viết ra cảm giác đầu tiên xuất hiện, không phải câu trả lời bạn nghĩ mình nên có.</div><textarea class="journal" data-key="d1q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>3. Hiện tại.</strong> Nếu tạm gác lại tất cả những gì bạn hy vọng sẽ xảy ra trong tương lai, bạn cảm thấy thế nào về mối quan hệ này ở thời điểm này?</div><textarea class="journal" data-key="d1q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>4. Sự thật.</strong> Viết xuống một điều mà trước đây bạn chưa từng dám thừa nhận về mối quan hệ này.</div><textarea class="journal" data-key="d1q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div><div class="sec-head"><div class="row"><span class="t">Điều khiến nhiều người ngạc nhiên</span></div></div><p class="t">Khi làm bài tập này, nhiều người nhận ra một điều khá bất ngờ.</p>
+<p class="t">bạn vẫn cảm thấy rằng mọi thứ đang tiến về phía trước.</p><p class="t" style="margin-top:14px;">Ngược lại, trong một mối quan hệ mơ hồ kéo dài, thời gian trôi qua nhưng cảm giác bên trong bạn không thay đổi. Bạn vẫn không biết mình đang đứng ở đâu.</p><div class="pull"><p>"Đôi khi điều khiến bạn mệt mỏi nhất không phải là câu trả lời. Mà là việc không có câu trả lời."</p></div></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:14px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy dành cho mình sự trung thực tối thượng. Đừng vội vã. Hãy hít một hơi thật sâu, để ngòi bút dẫn lối và trả lời những câu hỏi này bằng sự thật trần trụi nhất của trái tim bạn:</p><div class="q"><strong>1. Thời gian.</strong> Nếu cuộc đời bạn là một tài khoản ngân hàng không thể nạp thêm, bạn đã "chi" ra bao lâu và đang "chi" để chờ đợi điều gì?</div><textarea class="journal" data-key="d1q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>2. Nỗi sợ.</strong> Nếu bạn hỏi thẳng về tương lai của hai người, bạn sợ điều gì sẽ xảy ra? Hãy viết ra cảm giác đầu tiên xuất hiện, không phải câu trả lời bạn nghĩ mình nên có.</div><textarea class="journal" data-key="d1q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>3. Hiện tại.</strong> Nếu tạm gác lại tất cả những gì bạn hy vọng sẽ xảy ra trong tương lai, bạn cảm thấy thế nào về mối quan hệ này ở thời điểm này?</div><textarea class="journal" data-key="d1q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>4. Sự thật.</strong> Viết xuống một điều mà trước đây bạn chưa từng dám thừa nhận về mối quan hệ này.</div><textarea class="journal" data-key="d1q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div><div class="sec-head"><div class="row"><span class="t">Điều khiến nhiều người ngạc nhiên</span></div></div><p class="t">Khi làm bài tập này, nhiều người nhận ra một điều khá bất ngờ.</p>
 <p class="t">Điều họ sợ không phải là câu trả lời “không”.</p>
 <p class="t">Điều họ sợ là phải bắt đầu lại.</p><p class="t">Bắt đầu lại có nghĩa là: một mình trở lại. một hành trình mới. một mối quan hệ mới chưa biết sẽ ra sao.</p><p class="t">Và thế là họ chọn ở lại.</p>
 <p class="t">Không hẳn vì họ chắc chắn đây là người đúng.</p>
@@ -737,14 +827,29 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Cách chúng ta yêu không bắt đầu từ hôm nay</div>
-    <div class="day-intro"><p>Hôm qua bạn đã nhìn vào mối quan hệ. Hôm nay chúng ta sẽ không nhìn vào anh ấy. Hôm nay chúng ta sẽ nhìn vào bạn.</p><p>Tìm một nơi bạn có thể ở một mình. Ngồi xuống. Đặt hai tay lên đùi, lòng bàn tay ngửa lên.</p><p>Nhắm mắt. Và nhớ lại lần đầu tiên trong cuộc đời bạn cảm thấy rằng mình phải làm gì đó, phải trở thành gì đó, để được giữ lại.</p><p>Không cần biết đó là khi nào. Không cần nhớ rõ. Chỉ cần để cảm giác đó xuất hiện. Nó đang ở đâu trong người bạn?</p><p>Ở lại với nó. Đừng vội đi tiếp. Đây là nơi tất cả bắt đầu.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm qua bạn đã nhìn vào mối quan hệ. Hôm nay chúng ta sẽ nhìn vào chính bản thân bạn.</p><p>Tìm một nơi bạn có thể ở một mình. Ngồi xuống. Đặt hai tay lên đùi, lòng bàn tay ngửa lên.</p><p>Nhắm mắt. Và nhớ lại lần đầu tiên trong cuộc đời bạn cảm thấy rằng mình phải làm gì đó, phải trở thành gì đó, để được giữ lại.</p><p>Không cần biết đó là khi nào. Không cần nhớ rõ. Chỉ cần để cảm giác đó xuất hiện. Nó đang ở đâu trong người bạn?</p><p>Ở lại với nó. Đừng vội đi tiếp. Đây là nơi tất cả bắt đầu.</p></div></div>
   </div>
 </div>
 </div><div class="subsection" data-sub="four-ways"><div class="sub-head"><span class="n">02</span>Bốn cách yêu</div><div class="page-body"><p class="t">Có một điều tôi nhận ra sau nhiều năm, không phải từ sách vở, mà từ chính những lần tôi ngồi với cảm xúc của mình: cách chúng ta yêu không bắt đầu từ người đàn ông đứng trước mặt chúng ta. Nó bắt đầu từ rất lâu trước đó.</p>
 <p class="t">Từ những lần chúng ta được yêu, hoặc không được yêu, theo những cách mà lúc đó chúng ta còn quá nhỏ để hiểu.</p>
 <p class="t">Và thế là chúng ta lớn lên, mang theo những bài học mà chúng ta không bao giờ chọn học. Rằng muốn được giữ lại, phải im lặng. Rằng muốn được yêu, đừng đòi hỏi quá nhiều. Rằng cảm xúc của mình là gánh nặng cho người khác. Rằng tình yêu là thứ phải kiếm được, không phải thứ mình xứng đáng có.</p>
-<p class="t">Tất cả những điều đó tạo ra một cách yêu. Một cách phản ứng. Một pattern. Và pattern đó, dù bạn có nhận ra hay không, đang hiện diện trong mối quan hệ của bạn ngay lúc này.</p><div class="sec-head"><div class="row"><span class="t">Bốn cách chúng ta yêu</span></div><div class="sub">Cách yêu đã có từ rất lâu trước khi gặp họ</div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Đọc từng chân dung dưới đây thật chậm. Không phải để gán nhãn cho mình. Mà để nhận ra đứa trẻ nào đang ẩn bên trong bạn.</p><div class="box"><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ sự bình yên</strong><p>Họ yêu mà không sợ mất. Không phải vì họ không quan tâm, mà vì từ rất lâu trước đó, họ đã học được rằng dù chuyện gì xảy ra, họ vẫn ổn. Rằng cảm xúc của họ được chào đón. Rằng họ không cần phải trở thành ai khác để được yêu. Nên khi mối quan hệ có vấn đề, họ nói thẳng. Khi cần không gian, họ lấy. Khi cần tình yêu, họ hỏi.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ nỗi sợ bị bỏ rơi</strong><p>Họ yêu bằng tất cả những gì họ có. Đôi khi nhiều đến mức chính họ cũng không còn nhận ra mình nữa. Một tin nhắn không được trả lời có thể làm họ suy nghĩ cả buổi tối. Một thái độ hơi khác thường có thể khiến họ tự hỏi mình đã làm gì sai. Họ thu nhỏ mình lại để vừa với khoảng không gian người kia dành cho họ. Họ chờ. Họ hy vọng. Và họ ở lại, dù trong lòng đã biết, vì phần sâu bên trong họ vẫn còn sợ rằng nếu buông tay, sẽ không còn ai ở lại nữa.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ nỗi sợ mất bản thân</strong><p>Họ cũng muốn yêu và được yêu. Nhưng khi ai đó đến quá gần, có điều gì đó trong họ bắt đầu co lại. Không phải vì họ không quan tâm. Mà vì họ đã từng mở ra và bị tổn thương. Nên họ xây những bức tường rất đẹp, rất tinh tế, đến mức đôi khi chính họ cũng không nhận ra chúng là tường. Họ gọi đó là độc lập. Là tự do. Nhưng đêm khuya, khi một mình, họ cũng tự hỏi tại sao mình lại cứ giữ khoảng cách với những người mình thực sự muốn gần.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu trong mâu thuẫn</strong><p>Vừa muốn lại gần, vừa sợ quá gần. Vừa muốn được giữ lại, vừa sợ bị giữ. Họ tiến rồi lùi, nồng nhiệt rồi xa cách, và đôi khi họ cũng không hiểu tại sao mình lại như vậy. Chỉ biết rằng tình yêu với họ chưa bao giờ đơn giản. Chưa bao giờ an toàn. Và phần sâu nhất trong họ vẫn đang chờ đợi ngày mình có thể tin tưởng hoàn toàn vào ai đó, kể cả chính mình.</p></div></div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Bạn nhận ra mình trong chân dung nào? Có thể là một. Có thể là nhiều hơn. Có thể bạn đang khóc mà không biết tại sao. Đó cũng là một câu trả lời.</p></div></div><div class="subsection" data-sub="inner-child"><div class="sub-head"><span class="n">03</span>Đứa trẻ bên trong</div><div class="page-body"><div class="deco-br"></div><div class="sec-head"><div class="row"><span class="t">Đứa trẻ bên trong bạn</span></div><div class="sub">Em ấy chỉ cần được nhìn thấy</div></div><p class="t">Tôi muốn nói với bạn điều này, và tôi muốn bạn thực sự nghe:</p><p class="t"><strong>Những cách yêu này không phải lỗi của bạn.</strong></p><p class="t">Bạn không sinh ra đã biết sợ bị bỏ rơi. Bạn không sinh ra đã biết phải thu mình lại. Bạn không sinh ra đã không tin rằng mình xứng đáng được yêu một cách trọn vẹn.</p>
-<p class="t">Có một đứa trẻ bên trong bạn, đứa trẻ đó đã làm tốt nhất những gì em ấy có thể để được an toàn, để được giữ lại, để được yêu. Trong những hoàn cảnh mà em ấy không có lựa chọn nào khác.</p><div class="pull"><p>"Đứa trẻ đó không cần bạn sửa chữa. Không cần bạn xấu hổ vì em ấy. Em ấychỉ cần một điều: được nhìn thấy."</p></div><p class="t">Hôm nay, bạn đang nhìn thấy em ấy rồi.</p></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:13.5px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy chậm lại, hít thở và để sự trung thực dẫn lối</p><div class="q"><strong>1. Nguồn gốc của sự an tâm.</strong> Cảm giác bình yên trong mối quan hệ này của bạn đang đến từ đâu? Từ bên trong bạn, hay từ cách người kia phản ứng với bạn?</div><textarea class="journal" data-key="d2q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>2. Khoảnh khắc bạn chọn im lặng.</strong> Nhớ lại một lần bạn muốn nói điều gì đó nhưng đã không nói. Điều gì đã giữ bạn lại?</div><textarea class="journal" data-key="d2q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>3. Hình bóng từ trước.</strong> Khi bạn nhìn vào cách mình đang yêu người đàn ông này, bạn có thấy điều gì quen thuộc không?</div><textarea class="journal" data-key="d2q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>4. Lá thư nhỏ.</strong> Nếu đứa trẻ bên trong bạn có thể nói một câu với bạn lúc này, em ấy sẽ nói gì?</div><textarea class="journal" data-key="d2q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div></div></div><div class="subsection" data-sub="anchor"><div class="sub-head"><span class="n">05</span>Chiếc Neo Quyền Năng</div><div class="page-body"><div class="anchor"><span class="br-tl"></span><span class="br-br"></span>
+<p class="t">Tất cả những điều đó tạo ra một cách yêu. Một cách phản ứng. Một pattern. Và pattern đó, dù bạn có nhận ra hay không, đang hiện diện trong mối quan hệ của bạn ngay lúc này.</p><div class="sec-head"><div class="row"><span class="t">Bốn cách chúng ta yêu</span></div><div class="sub">Cách yêu đã có từ rất lâu trước khi gặp họ</div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Đọc từng chân dung dưới đây thật chậm. Không phải để gán nhãn cho mình. Mà để nhận ra đứa trẻ nào đang ẩn bên trong bạn.</p><div class="box"><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ sự bình yên</strong><p>Họ yêu mà không sợ mất. Không phải vì họ không quan tâm, mà vì từ rất lâu trước đó, họ đã học được rằng dù chuyện gì xảy ra, họ vẫn ổn. Rằng cảm xúc của họ được chào đón. Rằng họ không cần phải trở thành ai khác để được yêu. Nên khi mối quan hệ có vấn đề, họ nói thẳng. Khi cần không gian, họ lấy. Khi cần tình yêu, họ hỏi.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ nỗi sợ bị bỏ rơi</strong><p>Họ yêu bằng tất cả những gì họ có. Đôi khi nhiều đến mức chính họ cũng không còn nhận ra mình nữa. Một tin nhắn không được trả lời có thể làm họ suy nghĩ cả buổi tối. Một thái độ hơi khác thường có thể khiến họ tự hỏi mình đã làm gì sai. Họ thu nhỏ mình lại để vừa với khoảng không gian người kia dành cho họ. Họ chờ. Họ hy vọng. Và họ ở lại, dù trong lòng đã biết, vì phần sâu bên trong họ vẫn còn sợ rằng nếu buông tay, sẽ không còn ai ở lại nữa.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu từ nỗi sợ mất bản thân</strong><p>Họ cũng muốn yêu và được yêu. Nhưng khi ai đó đến quá gần, có điều gì đó trong họ bắt đầu co lại. Không phải vì họ không quan tâm. Mà vì họ đã từng mở ra và bị tổn thương. Nên họ xây những bức tường rất đẹp, rất tinh tế, đến mức đôi khi chính họ cũng không nhận ra chúng là tường. Họ gọi đó là độc lập. Là tự do. Nhưng đêm khuya, khi một mình, họ cũng tự hỏi tại sao mình lại cứ giữ khoảng cách với những người mình thực sự muốn gần.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Người yêu trong mâu thuẫn</strong><p>Vừa muốn lại gần, vừa sợ quá gần. Vừa muốn được giữ lại, vừa sợ bị giữ. Họ tiến rồi lùi, nồng nhiệt rồi xa cách, và đôi khi họ cũng không hiểu tại sao mình lại như vậy. Chỉ biết rằng tình yêu với họ chưa bao giờ đơn giản. Chưa bao giờ an toàn. Và phần sâu nhất trong họ vẫn đang chờ đợi ngày mình có thể tin tưởng hoàn toàn vào ai đó, kể cả chính mình.</p></div></div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Bạn nhận ra mình trong chân dung nào? Có thể là một. Có thể là nhiều hơn. Có thể bạn đang khóc mà không biết tại sao. Đó cũng là một câu trả lời.</p></div></div><div class="subsection" data-sub="inner-child"><div class="sub-head"><span class="n">03</span>Đứa trẻ bên trong</div><div class="page-body"><div class="deco-br"></div>
+<div class="diagram">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<circle cx="200" cy="115" r="9" stroke="#9B1B11" stroke-width="1.4" fill="none"/>
+<line x1="200" y1="124" x2="200" y2="160" stroke="#9B1B11" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="190" y1="160" x2="210" y2="160" stroke="#9B1B11" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="440" cy="100" r="13" stroke="#252520" stroke-width="1.4" fill="none"/>
+<line x1="440" y1="113" x2="440" y2="160" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="426" y1="160" x2="454" y2="160" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M 215 110 Q 320 90 425 102" stroke="#7A7670" stroke-width="0.8" stroke-dasharray="2 4" fill="none" opacity="0.7"/>
+<text x="200" y="185" fill="#9B1B11" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-style="italic" text-anchor="middle">em ấy</text>
+<text x="440" y="185" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-style="italic" text-anchor="middle">bạn bây giờ</text>
+<text x="320" y="78" fill="#7A7670" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle" opacity="0.85">được nhìn thấy</text>
+</svg>
+</div>
+<div class="sec-head"><div class="row"><span class="t">Đứa trẻ bên trong bạn</span></div><div class="sub">Em ấy chỉ cần được nhìn thấy</div></div><p class="t">Tôi muốn nói với bạn điều này, và tôi muốn bạn thực sự nghe:</p><p class="t"><strong>Những cách yêu này không phải lỗi của bạn.</strong></p><p class="t">Bạn không sinh ra đã biết sợ bị bỏ rơi. Bạn không sinh ra đã biết phải thu mình lại. Bạn không sinh ra đã không tin rằng mình xứng đáng được yêu một cách trọn vẹn.</p>
+<p class="t">Có một đứa trẻ bên trong bạn, đứa trẻ đó đã làm tốt nhất những gì em ấy có thể để được an toàn, để được giữ lại, để được yêu. Trong những hoàn cảnh mà em ấy không có lựa chọn nào khác.</p><div class="pull"><p>"Đứa trẻ đó không cần bạn sửa chữa. Không cần bạn xấu hổ vì em ấy. em ấy chỉ cần một điều: được nhìn thấy."</p></div><p class="t">Hôm nay, bạn đang nhìn thấy em ấy rồi.</p></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:13.5px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy chậm lại, hít thở và để sự trung thực dẫn lối</p><div class="q"><strong>1. Nguồn gốc của sự an tâm.</strong> Cảm giác bình yên trong mối quan hệ này của bạn đang đến từ đâu? Từ bên trong bạn, hay từ cách người kia phản ứng với bạn?</div><textarea class="journal" data-key="d2q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>2. Khoảnh khắc bạn chọn im lặng.</strong> Nhớ lại một lần bạn muốn nói điều gì đó nhưng đã không nói. Điều gì đã giữ bạn lại?</div><textarea class="journal" data-key="d2q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>3. Hình bóng từ trước.</strong> Khi bạn nhìn vào cách mình đang yêu người đàn ông này, bạn có thấy điều gì quen thuộc không?</div><textarea class="journal" data-key="d2q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q"><strong>4. Lá thư nhỏ.</strong> Nếu đứa trẻ bên trong bạn có thể nói một câu với bạn lúc này, em ấy sẽ nói gì?</div><textarea class="journal" data-key="d2q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div></div></div><div class="subsection" data-sub="anchor"><div class="sub-head"><span class="n">05</span>Chiếc Neo Quyền Năng</div><div class="page-body"><div class="anchor"><span class="br-tl"></span><span class="br-br"></span>
 <div class="a-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="6" r="2"/><line x1="12" y1="8" x2="12" y2="20"/><line x1="8" y1="20" x2="16" y2="20"/><path d="M5 16 Q5 21 12 21 Q19 21 19 16"/></svg></div>
 <span class="atag">Chiếc Neo Quyền Năng · Ngày 2</span>
 <span class="a-rule"></span>
@@ -774,7 +879,7 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Bạn thực sự đang tìm kiếm điều gì giữa cuộc đời này?</div>
-    <div class="day-intro"><p>Hôm nay chúng ta sẽ nói về điều bạn thực sự muốn.</p><p>Ngồi xuống. Đặt tay lên ngực. Nhắm mắt.</p><p>Hỏi chính mình, thật nhẹ, thật chậm: “Nếu không ai nhìn, không ai phán xét, không ai kỳ vọng, tôi muốn được cảm thấy thế nào trong tình yêu?”</p><p>Không cần trả lời ngay. Chỉ để câu hỏi đó lắng xuống. Hít thở. Và bắt đầu.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm nay chúng ta sẽ nói về điều bạn thực sự muốn.</p><p>Ngồi xuống. Đặt tay lên ngực. Nhắm mắt.</p><p>Hỏi chính mình, thật nhẹ, thật chậm: “Nếu không ai nhìn, không ai phán xét, không ai kỳ vọng, tôi muốn được cảm thấy thế nào trong tình yêu?”</p><p>Không cần trả lời ngay. Chỉ để câu hỏi đó lắng xuống. Hít thở. Và bắt đầu.</p></div></div>
   </div>
 </div>
 </div><div class="subsection" data-sub="unwrap"><div class="sub-head"><span class="n">02</span>Lớp vỏ tiêu chuẩn</div><div class="page-body"><p class="t">Sau khi đã dành thời gian nhìn vào cách mình yêu, hôm nay tôi muốn cùng bạn dừng lại trước một câu hỏi khác, tĩnh lặng hơn, và có lẽ khó hơn:</p>
@@ -786,16 +891,24 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <p class="t">Nhưng có bao giờ bạn tự hỏi:</p>
 <p class="t">Tiêu chuẩn đó thực sự đến từ đâu?</p>
 <p class="t">Từ nhu cầu sâu thẳm của chính bạn?</p>
-<p class="t">Hay từ những khuôn mẫu mà bạn vô tình tiếp nhận về một người đàn ông đáng để yêu?</p></div></div><div class="subsection" data-sub="story"><div class="sub-head"><span class="n">03</span>Câu chuyện của tôi</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">Câu chuyện của tôi · Khoảng lặng phía sau những kỳ vọng</span></div></div><div class="photo-slot tall">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh Jannie &amp; Seiwa</div>
-<div class="ph-hint">Khoảnh khắc đầu tiên của Jannie và Seiwa</div>
-
+<p class="t">Hay từ những khuôn mẫu mà bạn vô tình tiếp nhận về một người đàn ông đáng để yêu?</p></div></div><div class="subsection" data-sub="story"><div class="sub-head"><span class="n">03</span>Câu chuyện của tôi</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">Câu chuyện của tôi · Khoảng lặng phía sau những kỳ vọng</span></div></div>
+<div class="diagram tall">
+<svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<line x1="320" y1="60" x2="320" y2="240" stroke="#252520" stroke-width="1"/>
+<line x1="290" y1="240" x2="350" y2="240" stroke="#252520" stroke-width="1"/>
+<line x1="180" y1="78" x2="460" y2="92" stroke="#252520" stroke-width="1.4"/>
+<circle cx="320" cy="85" r="3" fill="#252520"/>
+<line x1="180" y1="78" x2="180" y2="120" stroke="#252520" stroke-width="0.8"/>
+<path d="M150 120 Q 180 135 210 120" stroke="#7A7670" stroke-width="0.9" fill="none"/>
+<line x1="460" y1="92" x2="460" y2="138" stroke="#252520" stroke-width="0.8"/>
+<path d="M428 138 Q 460 155 492 138" stroke="#252520" stroke-width="1" fill="none"/>
+<rect x="158" y="103" width="44" height="6" fill="none" stroke="#7A7670" stroke-width="0.7" opacity="0.55"/>
+<rect x="161" y="111" width="38" height="5" fill="none" stroke="#7A7670" stroke-width="0.6" opacity="0.5"/>
+<circle cx="460" cy="125" r="11" fill="#9B1B11" opacity="0.9"/>
+<text x="180" y="170" fill="#7A7670" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle" opacity="0.85">tiêu chuẩn từ ngoài</text>
+<text x="180" y="190" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.2em" text-anchor="middle" opacity="0.6">CHIỀU CAO · THU NHẬP</text>
+<text x="460" y="180" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-style="italic" text-anchor="middle">sự thấu hiểu</text>
+</svg>
 </div><p class="t">Khi bắt đầu quen Seiwa, tôi cũng từng mang theo một danh sách rất chi tiết:</p><div class="box"><p>• Phải cao trên 1m75.</p><p>• Thu nhập phải bằng hoặc cao hơn tôi.</p><p>• Phải dành cho tôi những princess treatment – sự nâng niu và chăm sóc đặc biệt.</p></div><p class="t">Tôi nghĩ điều đó hoàn toàn hợp lý. Nếu tôi đã có thể tự tạo ra một cuộc sống tốt đẹp cho mình, thì người đàn ông bên cạnh ít nhất cũng phải đối xử với tôi tốt hơn cách tôi đối xử với chính mình.</p>
 <p class="t">Nhưng Seiwa đã khiến tôi bất ngờ. Anh nói anh sống tối giản và không tin vào việc mua những thứ vật chất chỉ để chứng minh giá trị với bất kỳ ai.</p><div class="pull"><p>"Nếu một món đồ không thật sự có ý nghĩa, anh sẽ không mua nó."</p></div><p class="t">Ban đầu, tôi đã hiểu rằng đó là sự giới hạn. Tôi từng nghĩ nếu anh không dùng những biểu tượng vật chất để chiều chuộng tôi, không thể đầu tư cho mối quan hệ với tôi, nghĩa là anh không trân trọng giá trị của tôi. Và tôi đã từ chối anh.</p><p class="t" style="font-style:italic;color:var(--gray);font-size:14.5px;">Nhưng rồi sự thật hiện hiện...</p><div class="orn"><svg width="80" height="16" viewBox="0 0 80 16" fill="none">
 <path d="M5 8 Q15 0 25 8 Q35 16 45 8 Q55 0 65 8 Q70 12 75 8" stroke="currentColor" stroke-width="0.7" opacity="0.5" fill="none"/>
@@ -843,10 +956,26 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Chúng ta đang xây nhà trên cát hay trên đá tảng?</div>
-    <div class="day-intro"><p>Hôm nay chúng ta sẽ dùng đến một phần khác trong bạn. Không phải trái tim. Mà là con mắt của người kiến trúc sư.</p><p>Ngồi thẳng lưng. Đặt hai tay lên đùi. Hít vào thật sâu.</p><p>Hình dung mối quan hệ của bạn như một tòa nhà. Nhìn vào nó thật bình tĩnh. Không phán xét. Không bào chữa. Chỉ quan sát.</p><p>Nền móng của tòa nhà đó đang trông như thế nào?</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm nay chúng ta sẽ dùng đến một phần khác trong bạn. Không phải trái tim. Mà là con mắt của người kiến trúc sư.</p><p>Ngồi thẳng lưng. Đặt hai tay lên đùi. Hít vào thật sâu.</p><p>Hình dung mối quan hệ của bạn như một tòa nhà. Nhìn vào nó thật bình tĩnh. Không phán xét. Không bào chữa. Chỉ quan sát.</p><p>Nền móng của tòa nhà đó đang trông như thế nào?</p></div></div>
   </div>
 </div>
-</div><div class="subsection" data-sub="intro"><div class="sub-head"><span class="n">02</span>Bốn trụ cột</div><div class="page-body"><p class="t">Ngay cả khi bạn đã hiểu rõ cách mình yêu và những giá trị mình cần, một mối quan hệ vẫn cần nhiều hơn là tình yêu để tồn tại. Nó cần sự đồng bộ, alignment, giữa hai cuộc đời.</p>
+</div><div class="subsection" data-sub="intro"><div class="sub-head"><span class="n">02</span>Bốn trụ cột</div><div class="page-body">
+<div class="diagram">
+<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<line x1="60" y1="200" x2="580" y2="200" stroke="#252520" stroke-width="1"/>
+<line x1="140" y1="200" x2="140" y2="100" stroke="#252520" stroke-width="3"/>
+<line x1="260" y1="200" x2="260" y2="115" stroke="#252520" stroke-width="3"/>
+<line x1="380" y1="200" x2="380" y2="105" stroke="#252520" stroke-width="3"/>
+<line x1="500" y1="200" x2="500" y2="120" stroke="#252520" stroke-width="3"/>
+<path d="M 140 100 L 260 115 L 380 105 L 500 120" stroke="#9B1B11" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<text x="320" y="60" fill="#9B1B11" font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="0.32em" text-anchor="middle">BỐN TRỤ CỘT</text>
+<text x="140" y="225" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle">Cảm xúc</text>
+<text x="260" y="225" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle">Tài chính</text>
+<text x="380" y="225" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle">Thân mật</text>
+<text x="500" y="225" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="14" font-style="italic" text-anchor="middle">Định hướng</text>
+</svg>
+</div>
+<p class="t">Ngay cả khi bạn đã hiểu rõ cách mình yêu và những giá trị mình cần, một mối quan hệ vẫn cần nhiều hơn là tình yêu để tồn tại. Nó cần sự đồng bộ, alignment, giữa hai cuộc đời.</p>
 <p class="t">Ở giai đoạn đầu, cảm xúc thường che phủ mọi khác biệt. Bạn yêu cách họ cười, say mê những cuộc trò chuyện thâu đêm. Nhưng khi mối quan hệ bước sang những ngưỡng cửa lớn hơn của trách nhiệm và thực tại, những thứ khác bắt đầu lên tiếng. Và đôi khi, chúng lên tiếng mạnh hơn cả tình yêu.</p>
 <p class="t">Tình yêu là màu sơn, là ánh đèn lung linh. Nền móng mới là thứ quyết định tòa nhà có đứng vững hay không. Đôi khi bạn chỉ nhận ra sự vắng mặt của nó, khi mọi thứ đã muộn hơn bạn tưởng.</p>
 <p class="t">Hôm nay không phải ngày để bạn phán xét mối quan hệ của mình. Hôm nay là ngày để bạn nhìn thấy nó. Đúng như nó đang là.</p><div class="sec-head"><div class="row"><span class="t">Bốn trụ cột của sự tương thích · The Four Alignment Pillars</span></div></div><p class="t">Không có cặp đôi nào hoàn hảo ở cả bốn yếu tố. Nhưng nếu một trụ cột bị lệch quá xa, nó thường trở thành nguồn xung đột lớn nhất trong tương lai. Hôm nay bạn sẽ nhìn vào từng trụ cột không phải để phán xét, mà để thật sự thấy.</p></div></div><div class="subsection" data-sub="p12"><div class="sub-head"><span class="n">03</span>Emotional + Financial</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">1 · Emotional Alignment</span></div></div><p class="t">Tôi từng nghĩ một mối quan hệ tốt là mối quan hệ không có cãi vã. Nhưng tôi đã sai.</p>
@@ -894,23 +1023,31 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Cuộc đối thoại trả lại sự tự do cho chính bạn</div>
-    <div class="day-intro"><p>Hôm nay là ngày khác với tất cả những ngày trước.</p><p>Những ngày trước, bạn nhìn vào bên trong. Hôm nay, bạn sẽ nhìn ra ngoài, về phía người đang đứng trước mặt bạn, và nói thật.</p><p>Ngồi xuống. Đặt tay lên ngực. Hít vào thật sâu.</p><p>Hỏi chính mình một câu:</p><p>Nếu hôm nay là ngày cuối cùng tôi còn có thể nói thật, tôi sẽ nói điều gì?</p><p>Ở lại với câu hỏi đó. Đừng vội đi tiếp.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm nay là ngày khác với tất cả những ngày trước.</p><p>Những ngày trước, bạn nhìn vào bên trong. Hôm nay, bạn sẽ nhìn ra ngoài, về phía người đang đứng trước mặt bạn, và nói thật.</p><p>Ngồi xuống. Đặt tay lên ngực. Hít vào thật sâu.</p><p>Hỏi chính mình một câu:</p><p>Nếu hôm nay là ngày cuối cùng tôi còn có thể nói thật, tôi sẽ nói điều gì?</p><p>Ở lại với câu hỏi đó. Đừng vội đi tiếp.</p></div></div>
   </div>
 </div>
 </div><div class="subsection" data-sub="turning"><div class="sub-head"><span class="n">02</span>Câu chuyện về thời gian</div><div class="page-body"><p class="t">Trong hành trình của mỗi người, luôn có một khoảnh khắc mà mọi thứ buộc phải trở nên rõ ràng.</p>
 <p class="t">Không phải vì có một biến cố lớn, cũng không phải vì một cuộc cãi vã nảy lửa, mà vì cuối cùng, ta đủ dũng cảm để đối diện với sự thật bằng một cuộc trò chuyện trung thực.</p>
 <p class="t">Nhiều mối quan hệ chìm trong sương mù không phải vì hai người không quan tâm nhau, mà vì không ai dám đặt ra những câu hỏi thật.</p>
 <p class="t">Nhưng một mối quan hệ trưởng thành không sợ những câu hỏi khó.</p>
-<p class="t">Chỉ những kết nối thiếu nền tảng mới cần né tránh chúng.</p><div class="eyebrow-it" style="margin-top:24px;">Khoảnh khắc thay đổi cách tôi nhìn tình yêu</div><div class="h2"><em>Câu chuyện về giới hạn của thời gian</em></div><div class="div"><div class="div-line"></div><div class="div-dot"></div></div><div class="photo-slot portrait">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh Jannie</div>
-<div class="ph-hint">Chân dung Jannie — về câu chuyện 22 tuổi</div>
-<div class="ph-caption">Năm 22 tuổi</div>
+<p class="t">Chỉ những kết nối thiếu nền tảng mới cần né tránh chúng.</p><div class="eyebrow-it" style="margin-top:24px;">Khoảnh khắc thay đổi cách tôi nhìn tình yêu</div><div class="h2"><em>Câu chuyện về giới hạn của thời gian</em></div><div class="div"><div class="div-line"></div><div class="div-dot"></div></div><div class="diagram portrait">
+<svg viewBox="0 0 360 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<line x1="140" y1="50" x2="140" y2="320" stroke="#252520" stroke-width="1.2"/>
+<line x1="128" y1="50" x2="152" y2="50" stroke="#252520" stroke-width="1.4"/>
+<text x="162" y="55" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.22em">SINH</text>
+<line x1="133" y1="100" x2="147" y2="100" stroke="#7A7670" stroke-width="0.6" opacity="0.45"/>
+<line x1="133" y1="135" x2="147" y2="135" stroke="#7A7670" stroke-width="0.6" opacity="0.45"/>
+<circle cx="140" cy="170" r="16" stroke="#9B1B11" stroke-width="0.9" fill="none" opacity="0.45"/>
+<circle cx="140" cy="170" r="8" fill="#9B1B11"/>
+<text x="168" y="178" fill="#9B1B11" font-family="Cormorant Garamond, Georgia, serif" font-size="26" font-style="italic" font-weight="500">22</text>
+<text x="168" y="196" fill="#7A7670" font-family="Inter, sans-serif" font-size="9" letter-spacing="0.16em">NHẬN RA THỜI GIAN</text>
+<text x="168" y="210" fill="#7A7670" font-family="Inter, sans-serif" font-size="9" letter-spacing="0.16em">LÀ HỮU HẠN</text>
+<line x1="133" y1="235" x2="147" y2="235" stroke="#7A7670" stroke-width="0.6" opacity="0.45"/>
+<line x1="133" y1="270" x2="147" y2="270" stroke="#7A7670" stroke-width="0.6" opacity="0.45"/>
+<line x1="128" y1="320" x2="152" y2="320" stroke="#252520" stroke-width="1.4"/>
+<text x="162" y="325" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.22em">HÔM NAY</text>
+<text x="180" y="365" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-style="italic" text-anchor="middle">Thời gian là hữu hạn.</text>
+</svg>
 </div><p class="t">Năm 22 tuổi, khi tôi phát hiện mình có một khối u não. Cảm giác rõ ràng nhất lúc đó, không phải sợ chết, Mà là tiếc nuối. Tôi nhận ra mình đã luôn sống như thể mình có cả trăm năm phía trước để lãng phí. Nhưng đứng trước ranh giới đó, tôi hiểu rằng: Không ai thực sự biết mình còn bao nhiêu thời gian.</p><p class="t">Trải nghiệm đó đã thay đổi hoàn toàn thước đo cuộc sống của tôi. Mỗi ngày thức dậy đều là một món quà, và nếu thời gian là hữu hạn, tôi từ chối dành nó cho những điều mơ hồ.</p>
 <p class="t">Năm năm sau, trong mối quan hệ với Seiwa, có một thời điểm mọi thứ bắt đầu trở nên mơ hồ. Mỗi khi tôi hỏi về tương lai, câu trả lời của anh thường lơ lửng. Không phải anh không quan tâm, nhưng anh không thể nói chắc chắn điều gì.</p><p class="t">Lúc này, nền tảng đó - sự hiểu biết về sự hữu hạn của thời gian - đã giúp tôi không lặp lại pattern cũ. Tôi không chờ. Không tự thuyết phục. Không hy vọng mơ hồ.</p>
 <p class="t">Tôi nói thẳng với anh, khi tôi vẫn đang yêu anh, khi mọi thứ vẫn đang ổn:</p><div class="insight-box"><span class="br-tl"></span><span class="br-br"></span><p>"Thời gian của em trong cuộc đời này rất quý. Nếu anh không thể trở thành người đồng hành nghiêm túc trong tương lai của em, thì anh hãy rời khỏi cuộc đời em."</p><cite>— Jannie nói với Seiwa</cite></div><p class="t">Đó không phải là một lời đe dọa. Đó chỉ là sự thật mà tôi cần nói ra.</p>
@@ -956,24 +1093,72 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Để hành động định nghĩa lại sự thật</div>
-    <div class="day-intro"><p>Hôm nay không cần làm gì nhiều.</p><p>Chỉ cần ngồi xuống. Nhắm mắt. Và hỏi cơ thể một câu rất đơn giản: kể từ cuộc trò chuyện đó đến giờ, mình cảm thấy thế nào?</p><p>Không phải trong đầu. Mà trong ngực. Trong bụng. Trong cái cách bạn thức dậy mỗi sáng.</p><p>Cơ thể không biết nói dối. Hôm nay hãy lắng nghe nó.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm nay không cần làm gì nhiều.</p><p>Chỉ cần ngồi xuống. Nhắm mắt. Và hỏi cơ thể một câu rất đơn giản: kể từ cuộc trò chuyện đó đến giờ, mình cảm thấy thế nào?</p><p>Không phải trong đầu. Mà trong ngực. Trong bụng. Trong cái cách bạn thức dậy mỗi sáng.</p><p>Cơ thể không biết nói dối. Hôm nay hãy lắng nghe nó.</p></div></div>
   </div>
 </div>
 </div><div class="subsection" data-sub="shifts"><div class="sub-head"><span class="n">02</span>Khi lời hứa cần hình hài</div><div class="page-body"><p class="t">Sau một cuộc trò chuyện trung thực, chúng ta thường rơi vào một áp lực vô hình: Phải quyết định ngay. Ở lại hay rời đi? Tiếp tục hay kết thúc?</p>
-<p class="t">Nhưng đôi khi, điều khôn ngoan nhất không phải là ép mình đưa ra phán quyết ngay lập tức, mà là cho phép mình được Quan sát. Đây không phải là sự quan sát trong nghi ngờ hay xét nét, mà là một khoảng nghỉ để sự thật tự hiện hình.</p><div class="sec-head"><div class="row"><span class="t">Khi lời hứa cần một hình hài cụ thể</span></div></div><div class="photo-slot tall">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh Jannie &amp; Seiwa</div>
-<div class="ph-hint">Khoảnh khắc anh ấy bắt đầu hiện diện</div>
-
+<p class="t">Nhưng đôi khi, điều khôn ngoan nhất không phải là ép mình đưa ra phán quyết ngay lập tức, mà là cho phép mình được Quan sát. Đây không phải là sự quan sát trong nghi ngờ hay xét nét, mà là một khoảng nghỉ để sự thật tự hiện hình.</p><div class="sec-head"><div class="row"><span class="t">Khi lời hứa cần một hình hài cụ thể</span></div></div>
+<div class="diagram tall">
+<svg viewBox="0 0 640 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<path d="M 60 80 C 160 80 260 110 320 130" stroke="#7A7670" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity="0.65"/>
+<path d="M 60 180 C 160 180 260 150 320 130" stroke="#7A7670" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity="0.65"/>
+<circle cx="320" cy="130" r="6" fill="#9B1B11"/>
+<path d="M 320 130 C 400 130 470 130 540 130" stroke="#252520" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+<line x1="535" y1="125" x2="545" y2="130" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="535" y1="135" x2="545" y2="130" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<text x="60" y="65" fill="#7A7670" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-style="italic" opacity="0.85">lời hứa</text>
+<text x="60" y="200" fill="#7A7670" font-family="Cormorant Garamond, Georgia, serif" font-size="15" font-style="italic" opacity="0.85">hành động</text>
+<text x="555" y="135" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-style="italic">hình hài</text>
+</svg>
 </div><p class="t">Sau cuộc nói chuyện nghiêm túc về tương lai, tôi đã không gật đầu ngay. Anh nói rằng anh muốn nghiêm túc với mối quan hệ này. Anh viết ra những điều anh hứa sẽ thay đổi và sẽ cố gắng. Nhưng tôi không nói “đồng ý” ngay lúc đó. Tôi chỉ nói với anh một điều rất đơn giản: “Em cho anh 1 tháng để chứng minh”</p>
 <p class="t">Không phải vì tôi muốn thử thách, mà vì tôi thấu hiểu một chân lý nghiệt ngã: Lời nói là gió, hành động mới là mỏ neo.</p>
 <p class="t">Trong giai đoạn quan sát, tôi không nhìn vào những đại ngôn hay những lời thề non hẹn biển. Tôi nhìn vào cách anh đặt mối quan hệ này vào trong nhịp sống mỗi ngày của anh.</p><div class="box"><div class="step"><div class="arr">→</div><div class="step-body"><strong>Từ "bận rộn" sang "hiện diện"</strong><p>Trước đây, &quot;bận công việc&quot; luôn là lý do để anh im lặng. Sau đó, anh bắt đầu chủ động chia sẻ lịch trình, hỏi han tôi mỗi ngày. Sự hiện diện của anh không còn là một đặc ân ban phát lúc rảnh rỗi, mà là một sự ưu tiên tự nhiên.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Từ "bóng tối" ra "ánh sáng"</strong><p>Anh từng nói muốn giữ sự chuyên nghiệp nên không công khai chuyện tình cảm. Nhưng sau đó, anh bắt đầu chủ động gắn tên tôi, đăng ảnh chúng tôi lên mạng xã hội. Không phải để khoe khoang, mà vì anh không còn cảm thấy cần phải giấu tôi vào một góc riêng tư bí mật nào nữa.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Từ "phức tạp" sang "gắn kết"</strong><p>Những lý do về gia đình phức tạp hay chưa đúng thời điểm được thay thế bằng những lời mời gặp gỡ bạn bè, đối tác và người thân. Anh bắt đầu nhắc đến tôi trong những câu chuyện của anh với thế giới bên ngoài.</p></div></div></div><div class="pull"><p>"Tôi không phân tích từng chi tiết nhỏ để bắt lỗi. Tôi chỉ quan sát một điều duy nhất: Anh có thực sự muốn xây dựng tương lai này cùng tôi không?"</p><cite>Jannie</cite></div><div class="orn-c"><div class="l"></div><div class="d"></div><div class="l"></div></div><div class="sec-head"><div class="row"><span class="t">Khi thời gian trả lời thay cho những lời hứa</span></div></div><p class="t">Sau cuộc trò chuyện ở Ngày 5, bạn đã làm rất tốt phần việc của mình: Nói ra sự thật của bạn. Bây giờ, điều dịu dàng nhất bạn có thể làm cho chính mình không phải là vội vàng đưa ra phán quyết, mà là lùi lại một bước để quan sát dòng chảy của mọi thứ.</p>
-<p class="t">Tôi gọi đây là Khoảng lặng của sự tỉnh thức.</p></div></div><div class="subsection" data-sub="roadmap"><div class="sub-head"><span class="n">03</span>Lộ trình 30 ngày</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">Những chuyển dịch khẽ khàng · Lộ trình 30 ngày</span></div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Ba mươi ngày không phải để bạn &quot;chấm điểm&quot; đối phương, mà là để bạn đo lường mức độ bình yên của chính mình. Mỗi chặng đường trôi qua, hãy dành một phút tĩnh lặng để ghi lại những cảm nhận chân thật nhất.</p><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 1 · Ngày 1–7 · Những xao động ban đầu</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Sau cuộc đối thoại, trái tim bạn đang cảm thấy nhẹ nhõm hơn hay vẫn còn những gợn sóng lo âu? Điều gì khiến bạn thấy ấm áp hơn, và điều gì vẫn khiến bạn lấn cấn?</p><textarea class="journal" data-key="d6r1" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 2 · Ngày 8–14 · Nhịp điệu thực tế</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Khi sự nồng nhiệt ban đầu lắng xuống, hành động của anh ấy có còn nhất quán với những gì đã nói? Anh ấy có chủ động xuất hiện khi bạn cần không, hay bạn vẫn đang là người giữ mọi thứ không rơi?</p><textarea class="journal" data-key="d6r2" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 3 · Ngày 15–21 · Dòng chảy của mối quan hệ</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Bạn thấy hai người đang thực sự cùng nhau tiến về phía trước, hay chỉ đang giậm chân tại một điểm mông lung với những lời hứa cũ?</p><textarea class="journal" data-key="d6r3" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 4 · Ngày 22–30 · Kết luận của trực giác</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Nhìn lại một tháng qua, bạn thấy mình rạng rỡ, tràn đầy năng lượng hơn hay đang héo mòn vì phải tiếp tục đóng vai “người quan sát”?</p><textarea class="journal" data-key="d6r4" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div class="ex" style="background:var(--beige-dark);border-left-color:var(--black);"><div class="extag" style="color:var(--black);">Bản tổng kết sau 30 ngày</div><p class="t" style="font-style:italic;color:var(--gray);">Sau 30 ngày quan sát, tôi nhận ra rằng:</p><textarea class="journal" data-key="d6sum" rows="2" placeholder="Viết tự do tại đây…"></textarea><p class="q" style="border:none;padding:0;font-size:14px;color:var(--black);font-style:normal;">Mối quan hệ hiện tại khiến tôi:</p><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt1"> Cảm thấy bình yên và được bảo vệ.</label><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt2"> Cảm thấy vẫn còn những khoảng trống mơ hồ.</label><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt3"> Cảm thấy kiệt sức và muốn tìm lại tự do cho chính mình.</label></div></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work + Anchor</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:13.5px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy chậm lại. Hít thở. Và trả lời thật.</p><div class="q">1. Gạt bỏ những lời hứa sang một bên, hành động cụ thể nhất mà anh ấy đã làm để bảo vệ sự bình yên của bạn trong tuần qua là gì?</div><textarea class="journal" data-key="d6q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">2. Trong 30 ngày này, có khoảnh khắc nào bạn cảm thấy mình đang chờ đợi anh ấy thay vì đang sống cùng anh ấy không?</div><textarea class="journal" data-key="d6q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">3. Nếu nhịp điệu sống này lặp lại trong nhiều năm tới, bạn có thấy mình hạnh phúc và bình yên không?</div><textarea class="journal" data-key="d6q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">4. Nếu người bạn thân nhất của bạn đang ở trong mối quan hệ này, bạn sẽ nói gì với cô ấy?</div><textarea class="journal" data-key="d6q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div><div class="anchor"><span class="br-tl"></span><span class="br-br"></span>
+<p class="t">Tôi gọi đây là Khoảng lặng của sự tỉnh thức.</p></div></div><div class="subsection" data-sub="roadmap"><div class="sub-head"><span class="n">03</span>Lộ trình 30 ngày</div><div class="page-body">
+<div class="diagram">
+<svg viewBox="0 0 640 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<circle cx="50" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="68" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="86" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="104" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="122" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="140" cy="50" r="3" fill="#7A7670" opacity="0.5"/>
+<circle cx="158" cy="50" r="5" fill="#9B1B11"/>
+<circle cx="176" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="194" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="212" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="230" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="248" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="266" cy="50" r="3" fill="#7A7670" opacity="0.6"/>
+<circle cx="284" cy="50" r="5" fill="#9B1B11"/>
+<circle cx="302" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="320" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="338" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="356" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="374" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="392" cy="50" r="3" fill="#252520" opacity="0.7"/>
+<circle cx="410" cy="50" r="5" fill="#9B1B11"/>
+<circle cx="428" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="446" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="464" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="482" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="500" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="518" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="536" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="554" cy="50" r="3" fill="#252520" opacity="0.85"/>
+<circle cx="572" cy="50" r="6" fill="#9B1B11"/>
+<text x="104" y="90" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="13" font-style="italic" text-anchor="middle">Xao động</text>
+<text x="104" y="108" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.18em" text-anchor="middle">1–7</text>
+<text x="221" y="90" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="13" font-style="italic" text-anchor="middle">Nhịp điệu</text>
+<text x="221" y="108" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.18em" text-anchor="middle">8–14</text>
+<text x="347" y="90" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="13" font-style="italic" text-anchor="middle">Dòng chảy</text>
+<text x="347" y="108" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.18em" text-anchor="middle">15–21</text>
+<text x="491" y="90" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="13" font-style="italic" text-anchor="middle">Kết luận</text>
+<text x="491" y="108" fill="#7A7670" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.18em" text-anchor="middle">22–30</text>
+</svg>
+</div>
+<div class="sec-head"><div class="row"><span class="t">Những chuyển dịch khẽ khàng · Lộ trình 30 ngày tựa vào chính mình</span></div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Lộ trình 30 ngày này không nằm trong 7 ngày của guidebook. Nó bắt đầu ngay sau khi bạn hoàn thành ngày 5 và bước ra ngoài thực tế. Đây là phần bạn sống, không phải phần bạn đọc.</p>
+<p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Ba mươi ngày không phải để bạn &quot;chấm điểm&quot; đối phương, mà là để bạn đo lường mức độ bình yên của chính mình.</p>
+<p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Mỗi chặng đường trôi qua, hãy dành một phút tĩnh lặng để ghi lại những cảm nhận chân thật nhất.</p><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 1 · Ngày 1–7 · Những xao động ban đầu</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Sau cuộc đối thoại, trái tim bạn đang cảm thấy nhẹ nhõm hơn hay vẫn còn những gợn sóng lo âu? Điều gì khiến bạn thấy ấm áp hơn, và điều gì vẫn khiến bạn lấn cấn?</p><textarea class="journal" data-key="d6r1" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 2 · Ngày 8–14 · Nhịp điệu thực tế</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Khi sự nồng nhiệt ban đầu lắng xuống, hành động của anh ấy có còn nhất quán với những gì đã nói? Anh ấy có chủ động xuất hiện khi bạn cần không, hay bạn vẫn đang là người giữ mọi thứ không rơi?</p><textarea class="journal" data-key="d6r2" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 3 · Ngày 15–21 · Dòng chảy của mối quan hệ</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Bạn thấy hai người đang thực sự cùng nhau tiến về phía trước, hay chỉ đang giậm chân tại một điểm mông lung với những lời hứa cũ?</p><textarea class="journal" data-key="d6r3" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div style="border-left:2.5px solid var(--red);padding-left:18px;margin-bottom:18px;"><div style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Chặng 4 · Ngày 22–30 · Kết luận của trực giác</div><p style="font-size:13px;line-height:1.7;color:var(--gray);font-style:italic;margin-bottom:8px;">Nhìn lại một tháng qua, bạn thấy mình rạng rỡ, tràn đầy năng lượng hơn hay đang héo mòn vì phải tiếp tục đóng vai “người quan sát”?</p><textarea class="journal" data-key="d6r4" rows="2" placeholder="Viết tự do tại đây…"></textarea></div><div class="ex" style="background:var(--beige-dark);border-left-color:var(--black);"><div class="extag" style="color:var(--black);">Bản tổng kết sau 30 ngày</div><p class="t" style="font-style:italic;color:var(--gray);">Sau 30 ngày quan sát, tôi nhận ra rằng:</p><textarea class="journal" data-key="d6sum" rows="2" placeholder="Viết tự do tại đây…"></textarea><p class="q" style="border:none;padding:0;font-size:14px;color:var(--black);font-style:normal;">Mối quan hệ hiện tại khiến tôi:</p><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt1"> Cảm thấy bình yên và được bảo vệ.</label><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt2"> Cảm thấy vẫn còn những khoảng trống mơ hồ.</label><label class="opt" style="display:flex;gap:10px;margin:8px 0;font-size:13.5px;color:var(--black-soft);"><input type="checkbox" data-key="d6opt3"> Cảm thấy kiệt sức và muốn tìm lại tự do cho chính mình.</label></div></div></div><div class="subsection" data-sub="deep"><div class="sub-head"><span class="n">04</span>Deep Work + Anchor</div><div class="page-body"><div class="ex"><div class="extag">Deep Work · Khoảnh khắc soi chiếu</div><p class="t" style="font-size:13.5px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy chậm lại. Hít thở. Và trả lời thật.</p><div class="q">1. Gạt bỏ những lời hứa sang một bên, hành động cụ thể nhất mà anh ấy đã làm để bảo vệ sự bình yên của bạn trong tuần qua là gì?</div><textarea class="journal" data-key="d6q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">2. Trong 30 ngày này, có khoảnh khắc nào bạn cảm thấy mình đang chờ đợi anh ấy thay vì đang sống cùng anh ấy không?</div><textarea class="journal" data-key="d6q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">3. Nếu nhịp điệu sống này lặp lại trong nhiều năm tới, bạn có thấy mình hạnh phúc và bình yên không?</div><textarea class="journal" data-key="d6q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">4. Nếu người bạn thân nhất của bạn đang ở trong mối quan hệ này, bạn sẽ nói gì với cô ấy?</div><textarea class="journal" data-key="d6q4" rows="3" placeholder="Viết tự do tại đây…"></textarea></div><div class="anchor"><span class="br-tl"></span><span class="br-br"></span>
 <div class="a-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="6" r="2"/><line x1="12" y1="8" x2="12" y2="20"/><line x1="8" y1="20" x2="16" y2="20"/><path d="M5 16 Q5 21 12 21 Q19 21 19 16"/></svg></div>
 <span class="atag">Chiếc Neo Quyền Năng · Ngày 6</span>
 <span class="a-rule"></span>
@@ -1003,10 +1188,28 @@ table.tt td:first-child{padding-right:14px;width:62%}
     </div>
     <div class="day-line"></div>
     <div class="day-tag">Bước tiếp cùng nhau hay trở về với chính mình?</div>
-    <div class="day-intro"><p>Hôm nay là ngày cuối cùng.</p><p>Không cần làm gì vội. Chỉ cần ngồi xuống, nhắm mắt, và cho phép mình ở lại với tất cả những gì đã xảy ra trong bảy ngày qua.</p><p>Những điều bạn đã nhìn thấy. Những điều bạn đã viết ra. Những điều bạn đã dám thừa nhận lần đầu tiên.</p><p>Đặt tay lên ngực. Hít vào thật sâu.</p><p>Hỏi chính mình: sau tất cả những điều đó, tôi đang cảm thấy gì?</p><p>Không cần trả lời hoàn hảo. Chỉ cần thật.</p></div>
+    <div class="day-intro-frame"><span class="br-tl"></span><span class="br-br"></span><div class="di-icon"><svg viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="2" y1="22" x2="34" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 22 A9 9 0 0 1 27 22" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="18" y1="3" x2="18" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="6" y1="7" x2="9" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="30" y1="7" x2="27" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="day-intro"><p>Hôm nay là ngày cuối cùng.</p><p>Không cần làm gì vội. Chỉ cần ngồi xuống, nhắm mắt, và cho phép mình ở lại với tất cả những gì đã xảy ra trong bảy ngày qua.</p><p>Những điều bạn đã nhìn thấy. Những điều bạn đã viết ra. Những điều bạn đã dám thừa nhận lần đầu tiên.</p><p>Đặt tay lên ngực. Hít vào thật sâu.</p><p>Hỏi chính mình: sau tất cả những điều đó, tôi đang cảm thấy gì?</p><p>Không cần trả lời hoàn hảo. Chỉ cần thật.</p></div></div>
   </div>
 </div>
-</div><div class="subsection" data-sub="reflect"><div class="sub-head"><span class="n">02</span>Nhìn lại 6 ngày</div><div class="page-body"><p class="t">Chúng ta đã cùng nhau đi qua 6 chặng đường bóc tách từng lớp sương mù. Từ việc nhìn vào cách mình yêu, định nghĩa lại những giá trị cốt lõi, đo lường sự đồng bộ của hai cuộc đời, cho đến cuộc đối thoại trung thực và 30 ngày chứng nghiệm.</p>
+</div><div class="subsection" data-sub="reflect"><div class="sub-head"><span class="n">02</span>Nhìn lại 6 ngày</div><div class="page-body">
+<div class="diagram">
+<svg viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<circle cx="100" cy="100" r="22" stroke="#7A7670" stroke-width="0.6" fill="none" opacity="0.3" stroke-dasharray="2 4"/>
+<circle cx="170" cy="120" r="14" stroke="#7A7670" stroke-width="0.5" fill="none" opacity="0.22" stroke-dasharray="2 4"/>
+<line x1="60" y1="160" x2="580" y2="160" stroke="#252520" stroke-width="1"/>
+<circle cx="300" cy="138" r="9" stroke="#252520" stroke-width="1.4" fill="none"/>
+<line x1="300" y1="147" x2="300" y2="178" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="290" y1="178" x2="310" y2="178" stroke="#252520" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="500" cy="100" r="22" stroke="#9B1B11" stroke-width="1.4" fill="none"/>
+<line x1="500" y1="68" x2="500" y2="58" stroke="#9B1B11" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="475" y1="80" x2="468" y2="73" stroke="#9B1B11" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="525" y1="80" x2="532" y2="73" stroke="#9B1B11" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="468" y1="100" x2="458" y2="100" stroke="#9B1B11" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="532" y1="100" x2="542" y2="100" stroke="#9B1B11" stroke-width="1.2" stroke-linecap="round"/>
+<text x="300" y="200" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-style="italic" text-anchor="middle">Em đã thấy.</text>
+</svg>
+</div>
+<p class="t">Chúng ta đã cùng nhau đi qua 6 chặng đường bóc tách từng lớp sương mù. Từ việc nhìn vào cách mình yêu, định nghĩa lại những giá trị cốt lõi, đo lường sự đồng bộ của hai cuộc đời, cho đến cuộc đối thoại trung thực và 30 ngày chứng nghiệm.</p>
 <p class="t">Hôm nay, sương mù đã tan. Trước mắt bạn không còn là những giả định hay hy vọng mơ hồ.</p>
 <p class="t">Chỉ còn sự thật.</p><p class="t">Quyết định của Ngày 7 không phải là một bài kiểm tra đúng sai. Đó là một lời cam kết với chính thời gian sống của bạn. Như tôi đã chia sẻ về biến cố năm 22 tuổi: Khi hiểu rằng thời gian là hữu hạn, mỗi lựa chọn đều trở thành một hành động tự yêu thương.</p><p class="t">Đến thời điểm này, câu hỏi quan trọng nhất không còn là:</p><p class="t" style="font-style:italic;font-size:18px;">"Người kia có phù hợp với mình không?"</p><p class="t">Mà là:</p><p class="t" style="font-style:italic;font-weight:600;font-size:18px;color:var(--black);">"Nếu tiếp tục con đường này, cuộc đời mình sẽ trông như thế nào?"</p></div></div><div class="subsection" data-sub="timelines"><div class="sub-head"><span class="n">03</span>Hai dòng thời gian</div><div class="page-body"><div class="sec-head"><div class="row"><span class="t">Bài tập · Hai dòng thời gian</span></div></div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Hãy tưởng tượng cuộc sống của bạn sau ba năm nữa.</p><div class="cols2"><div class="col-card"><div class="ch">Dòng thời gian 1 · Tiếp tục</div><p class="desc">Bạn tiếp tục mối quan hệ này. Cuộc sống của bạn trông như thế nào? Hai người sống ở đâu? Hai người đối xử với nhau ra sao mỗi ngày? Bạn cảm thấy bình yên, được tôn trọng và được yêu thương không?</p><textarea class="journal" data-key="d7tl1" rows="5" placeholder="Viết tự do tại đây…"></textarea></div><div class="col-card alt"><div class="ch">Dòng thời gian 2 · Bước tiếp một mình</div><p class="desc">Bạn không tiếp tục mối quan hệ này. Bạn bước ra khỏi mối quan hệ và bắt đầu lại cuộc sống của mình. Cuộc sống của bạn trông như thế nào? Bạn có thể cảm thấy buồn trong một thời gian, nhưng bạn có cảm thấy nhẹ nhõm không? Bạn có cảm thấy mình đang mở ra một con đường mới cho cuộc đời không?</p><textarea class="journal" data-key="d7tl2" rows="5" placeholder="Viết tự do tại đây…"></textarea></div></div></div></div><div class="subsection" data-sub="final-reflect"><div class="sub-head"><span class="n">04</span>Khoảnh khắc soi chiếu cuối cùng</div><div class="page-body"><div class="ex"><div class="extag">Khoảnh khắc soi chiếu cuối cùng</div><p class="t" style="font-size:13.5px;font-style:italic;color:var(--gray);margin-bottom:14px;">Hãy chậm lại. Đặt tay lên ngực. Và viết cho phiên bản tương lai của chính mình.</p><div class="q">1. Nhìn vào dòng thời gian bạn vừa viết — dòng nào khiến cơ thể bạn thở nhẹ hơn?</div><textarea class="journal" data-key="d7q1" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">2. Điều gì khiến bạn sợ hãi nhất khi bước vào dòng thời gian đó? Nỗi sợ đó đang bảo vệ bạn, hay đang cầm tù bạn?</div><textarea class="journal" data-key="d7q2" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">3. Nhìn lại hành trình vừa qua, điều gì là khám phá lớn nhất về chính mình mà bạn tìm thấy?</div><textarea class="journal" data-key="d7q3" rows="3" placeholder="Viết tự do tại đây…"></textarea><div class="q">4. Hãy viết một lời hứa với chính mình cho chặng đường sắp tới, bất kể có người đàn ông đó bên cạnh hay không.</div><textarea class="journal" data-key="d7q4" rows="4" placeholder="Viết tự do tại đây…"></textarea></div><div class="ex" style="background:var(--beige);border-left-color:var(--black);"><div class="extag" style="color:var(--black);">Nhìn lại hạt giống đầu tiên</div><p class="t">Ngày đầu tiên, bạn đã mang theo một câu hỏi:</p><p class="q" style="font-size:18px;color:var(--black);border:none;padding:0;">"Nếu mối quan hệ này tiếp tục như hiện tại trong 3 năm nữa, bạn có cảm thấy bình yên không?"</p><p class="t" style="font-style:italic;color:var(--gray);">Bây giờ, sau khi sương mù đã tan, hãy trả lời lại một lần nữa. Câu trả lời của bạn có thay đổi không?</p><textarea class="journal" data-key="d7seed" rows="3" placeholder="Viết tự do tại đây…"></textarea></div></div></div><div class="subsection" data-sub="decision"><div class="sub-head"><span class="n">05</span>Trang quyết định</div><div class="page-body"><div class="decision"><div class="dh">Trang quyết định · Quyết định của tôi</div><p class="t" style="font-style:italic;color:var(--gray);font-size:13.5px;">Sau khi hoàn thành guidebook này, tôi nhận ra rằng:</p><textarea class="journal" data-key="d7decide" rows="3" placeholder="Viết tự do tại đây…"></textarea><p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--black);margin:18px 0 10px;">Tôi chọn:</p><label class="opt"><input type="checkbox" data-key="d7c1"> Tiếp tục xây dựng mối quan hệ này một cách nghiêm túc.</label><label class="opt"><input type="checkbox" data-key="d7c2"> Dành thêm thời gian để quan sát và hiểu rõ hơn.</label><label class="opt"><input type="checkbox" data-key="d7c3"> Bước ra khỏi mối quan hệ này để mở ra một con đường mới cho cuộc đời mình.</label><p style="font-size:11.5px;font-style:italic;color:var(--gray);line-height:1.7;margin:18px 0 14px;">Tôi cam kết với sự lựa chọn của mình và chịu trách nhiệm với kết quả của lựa chọn này.</p><div style="display:flex;gap:32px;margin-top:8px;"><div style="min-width:140px;"><div style="font-family:'Inter',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;">Ngày</div><textarea class="journal" data-key="d7date" rows="1" placeholder="Viết tự do tại đây…"></textarea></div><div style="flex:1;"><div style="font-family:'Inter',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;">Chữ ký của tôi</div><textarea class="journal" data-key="d7sig" rows="1" placeholder="Viết tự do tại đây…"></textarea></div></div></div><p class="t" style="margin-top:18px;font-style:italic;color:var(--gray);">Dù bạn vừa khoanh tròn lựa chọn nào, trang này dành cho bạn. Vì quyết định chỉ là điểm bắt đầu. Điều quan trọng hơn là cách bạn bước tiếp từ đây.</p></div></div><div class="subsection" data-sub="crossroad"><div class="sub-head"><span class="n">06</span>Ngã rẽ của sự thật</div><div class="page-body"><div class="deco-tl"></div><div class="eyebrow-it">Ngã rẽ của sự thật</div><div class="h2">Bạn chọn phiên bản<br><em>nào của chính mình?</em></div><div class="div"><div class="div-line"></div><div class="div-dot"></div></div><div class="cols2"><div class="col-card"><div class="ch">Ngã rẽ 1 · Cùng nhau xây dựng</div><p style="font-size:13.5px;line-height:1.85;color:var(--black-soft);">Nếu hành động của đối phương đã nhất quán với lời nói, nếu bạn cảm thấy sự bình yên đang dần lấp đầy những khoảng trống cũ, thì đây là lúc để mở lòng. Sự rõ ràng đã tạo ra một nền móng vững chãi. Bạn không còn phải gồng mình để đoán lòng người, mà có thể thảnh thơi để cùng họ vun xới khu vườn chung.</p></div><div class="col-card alt"><div class="ch">Ngã rẽ 2 · Trở về với tự do</div><p style="font-size:13.5px;line-height:1.85;color:var(--black-soft);">Nếu sau mọi nỗ lực đối thoại và quan sát, sự mơ hồ vẫn hiện diện, hoặc bạn cảm thấy kiệt sức vì phải chờ đợi một tiềm năng không bao giờ tới. Rời đi không phải là thất bại. Rời đi là cách bạn trả lại cho mình quyền được hạnh phúc đúng nghĩa. Đôi khi, hành động yêu thương nhất bạn có thể làm cho một mối quan hệ không phù hợp chính là buông tay.</p></div></div><div class="sec-head"><div class="row"><span class="t">Nghệ thuật của sự dứt khoát dịu dàng</span></div></div><p class="t">Nếu bạn chọn rời đi, hãy làm điều đó bằng sự tự tôn cao nhất. Không trách móc, không dằn vặt. Bạn rời đi vì bạn đã hiểu rõ tọa độ của mình và của họ không còn giao nhau.</p><div class="box"><div class="step"><div class="arr">→</div><div class="step-body"><strong>Chấp nhận sự thật</strong><p>Họ không sai, bạn cũng không sai. Chỉ là định hướng sống của cả hai đã rẽ lối.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Biết ơn hành trình</strong><p>Cảm ơn những kỷ niệm đã dạy bạn biết mình thực sự cần gì.</p></div></div><div class="step"><div class="arr">→</div><div class="step-body"><strong>Thu hồi năng lượng</strong><p>Ngừng cố gắng sửa chữa người khác. Hãy dành năng lượng đó để chữa lành và nâng cấp cuộc đời chính bạn.</p></div></div></div><p class="t" style="text-align:center;font-style:italic;color:var(--gray);margin-top:20px;">Và cuối cùng, dù bạn chọn ngã rẽ nào, bạn xứng đáng được nghe những điều sau đây.​​​​​</p></div></div>
 <div class="chap-nav"><a href="#day-6"><span>← Phần trước</span>Khoảng Lặng Của Sự Nghiệm Chứng</a><a class="next" href="#after"><span>Phần tiếp theo →</span>Sau Hành Trình</a></div>
@@ -1019,12 +1222,12 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="sb-tag">Kết thúc</div>
 <div class="sb-title">Sau Hành Trình</div>
 <div class="sb-sub">Tuyên ngôn và lá thư cuối</div>
-<div class="sb-list"><a class="sb-item" data-sub="manifesto-final" href="#after/manifesto-final"><span class="num">01</span>Commitment Manifesto</a><a class="sb-item" data-sub="closing" href="#after/closing"><span class="num">02</span>Lá Thư Gửi Bạn</a></div>
+<div class="sb-list"><a class="sb-item" data-sub="manifesto-final" href="#after/manifesto-final"><span class="num">01</span>Tuyên Ngôn Cam Kết</a><a class="sb-item" data-sub="closing" href="#after/closing"><span class="num">02</span>Lá Thư Gửi Bạn</a></div>
 </aside>
 <main class="chapter-main">
-<div class="subsection" data-sub="manifesto-final"><div class="sub-head"><span class="n">01</span>Commitment Manifesto</div>
+<div class="subsection" data-sub="manifesto-final"><div class="sub-head"><span class="n">01</span>Tuyên Ngôn Cam Kết</div>
 <div class="man-content">
-<div class="man-eye">Commitment Manifesto</div>
+<div class="man-eye">Tuyên Ngôn Cam Kết</div>
 <div class="man-h">Tuyên ngôn của một người phụ nữ<br>trưởng thành trong tình yêu</div>
 <div class="man-line"></div>
 <div class="man-body"><p>Tôi không tìm một người đàn ông hoàn hảo. Tôi tìm một người đàn ông rõ ràng.</p><p>Tôi không yêu để lấp đầy sự cô đơn, tôi yêu để xây dựng một cuộc đời có ý nghĩa.</p><p>Tôi không sợ câu trả lời “không”. Điều tôi thật sự sợ là những năm tháng mơ hồ, nơi một mối quan hệ tồn tại nhưng không ai biết nó đang đi về đâu.</p><p>Tôi không cần một người nói những lời đẹp.</p><p>Tôi cần một người sống đúng với những gì họ nói. Một người hiểu rằng tình yêu không chỉ là cảm xúc, mà còn là trách nhiệm, sự hiện diện và những lựa chọn mỗi ngày.</p><p>Tôi không ép ai phải chọn tôi. Nhưng tôi luôn chọn tôn trọng chính mình. Thời gian của tôi trong cuộc đời này là hữu hạn. Tuổi trẻ của tôi là hữu hạn. Cơ hội để yêu một cách trọn vẹn cũng là hữu hạn.</p><p>Vì vậy tôi không ở lại trong những mối quan hệ không có hướng đi. Nếu chúng tôi cùng nhìn về một tương lai, tôi sẵn sàng đi cùng anh. Nếu không, tôi cũng đủ can đảm để bước tiếp.</p><p>Không phải vì tôi không yêu.</p><p>Mà vì tôi yêu cuộc đời của mình quá nhiều để sống trong sự mơ hồ.</p></div>
@@ -1070,16 +1273,9 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <p class="t" style="font-style:italic;line-height:2.05;">Chúc bạn luôn đủ bình tĩnh để nghe thấy chính mình. Đủ dũng cảm để sống đúng với điều mình tin là quan trọng. Đủ mạnh mẽ để bảo vệ sự bình yên của mình. Và đủ dịu dàng để đón nhận một tình yêu thật sự xứng đáng với bạn.</p>
 <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--black);margin-top:22px;">Thương bạn.<br><strong>Jannie &amp; Seiwa</strong></p>
 </div>
-<div class="photo-slot ">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh đóng cuốn</div>
-<div class="ph-hint">Một khoảnh khắc cuối — Jannie &amp;amp; Seiwa cùng nhau</div>
-
+<div class="book-photo">
+<img src="closing-jannie-seiwa.jpg" alt="Jannie &amp; Seiwa" />
+<div class="cap">Jannie &amp; Seiwa</div>
 </div>
 </div>
 </div>
