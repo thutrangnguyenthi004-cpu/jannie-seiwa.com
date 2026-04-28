@@ -84,13 +84,13 @@ body{min-height:100vh;overflow-x:hidden}
   display:grid;grid-template-columns:3fr 2fr;align-items:stretch;min-height:90vh;
 }
 .hero-svg{display:none}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 64px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 36px 80px 120px}
 .hero-right{background:#F2EBDF;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .hero-left .hero-div{margin:0 0 22px}
 .hero-left .hero-sub{margin:0 0 20px;text-align:left}
 .hero-left .hero-quote{margin:0 0 28px;text-align:left;padding:22px 0 0}
-.hero-left .hero-cta{align-self:flex-end}
+.hero-left .hero-cta{align-self:flex-start}
 @media(max-width:880px){
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-left{padding:48px 32px;text-align:center;align-items:center}
@@ -589,17 +589,6 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="h1">Tiếng Chuông<br><em>Của Sự Thật</em></div>
 <div class="subtitle">Gửi bạn, người phụ nữ đang đứng giữa vùng sương mù của chính mình.</div>
 <div class="div"><div class="div-line"></div><div class="div-dot"></div></div>
-<div class="photo-slot tall">
-<div class="ph-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-<rect x="4" y="8" width="32" height="24" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
-<circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
-<circle cx="30" cy="13" r="1.2" fill="currentColor"/>
-</svg></div>
-<div class="ph-label">Ảnh mở đầu</div>
-<div class="ph-hint">Một khoảnh khắc của Jannie &amp; Seiwa — đặt ảnh ngang khổ rộng tại đây</div>
-<div class="ph-caption">Jannie &amp;amp; Seiwa</div>
-</div>
 <p class="t">Nếu bạn đang cầm trên tay cuốn Guidebook này, có lẽ trong lòng bạn đang có một tiếng nói nhỏ mà bạn chưa thật sự muốn đối diện. Ở đâu đó trong trái tim của bạn, vẫn tồn tại một câu hỏi quan trọng:</p>
 <div class="pull"><p>“Bọn mình đang đi về đâu?”</p></div>
 <p class="t">Anh ấy không làm gì sai. Anh ấy vẫn ở đây, vẫn nhắn tin, vẫn gặp nhau, vẫn có những khoảnh khắc khiến bạn nghĩ: “Có lẽ mình đang nghĩ nhiều quá.”</p>
@@ -619,17 +608,15 @@ table.tt td:first-child{padding-right:14px;width:62%}
 <div class="div"><div class="div-line"></div><div class="div-dot"></div></div>
 <div class="diagram portrait">
 <svg viewBox="0 0 280 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-<line x1="80" y1="50" x2="200" y2="50" stroke="#252520" stroke-width="1.4"/>
-<line x1="80" y1="290" x2="200" y2="290" stroke="#252520" stroke-width="1.4"/>
-<line x1="80" y1="50" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
-<line x1="200" y1="50" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
-<line x1="80" y1="290" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
-<line x1="200" y1="290" x2="140" y2="170" stroke="#252520" stroke-width="1.4"/>
-<path d="M 100 70 L 180 70 L 140 130 Z" fill="#9B1B11" opacity="0.85"/>
-<line x1="140" y1="160" x2="140" y2="200" stroke="#9B1B11" stroke-width="1.4"/>
-<circle cx="140" cy="180" r="1" fill="#9B1B11"/>
-<path d="M 100 280 L 180 280 L 140 220 Z" fill="#9B1B11" opacity="0.9"/>
-<text x="140" y="325" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-style="italic" text-anchor="middle">Thời gian không quay lại.</text>
+<rect x="58" y="40" width="164" height="14" fill="#252520" rx="1.5"/>
+<rect x="58" y="290" width="164" height="14" fill="#252520" rx="1.5"/>
+<polygon points="80,55 200,55 144,168 136,168" fill="none" stroke="#252520" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="80,289 200,289 144,172 136,172" fill="none" stroke="#252520" stroke-width="1.8" stroke-linejoin="round"/>
+<polygon points="98,68 182,68 144,128 136,128" fill="#9B1B11" opacity="0.92"/>
+<line x1="140" y1="155" x2="140" y2="195" stroke="#9B1B11" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="140" cy="178" r="1.5" fill="#9B1B11"/>
+<polygon points="100,285 180,285 144,218 136,218" fill="#9B1B11" opacity="0.95"/>
+<text x="140" y="335" fill="#252520" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-style="italic" text-anchor="middle">Thời gian không quay lại.</text>
 </svg>
 </div>
 <p class="t">Năm 22 tuổi, tôi phát hiện mình có khối u não. Cảm giác đầu tiên không phải là sợ hãi, mà là tiếc. Tiếc vì tôi nhận ra rằng thời gian không phải là thứ mình có thể cứ mặc định là còn nhiều. Từ ngày đó, có điều gì đó trong tôi thay đổi. Tôi không còn chờ đợi những thứ mà tôi hoàn toàn có thể nhìn thẳng vào và hỏi thẳng ra.</p>
