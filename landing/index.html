@@ -425,24 +425,57 @@
     }
     .reason-quote em { color: var(--accent); }
 
-    /* ── FRIEND ── */
-    .friend { background: var(--cream); }
-    .friend h2 { text-align: center; margin-bottom: 48px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .friend-body { max-width: 600px; margin: 0 auto; }
-    .friend-body p { font-size: 1.18rem; line-height: 1.85; color: var(--mid); }
-    .friend-quote {
+    /* ── FEEDBACK TESTIMONIALS ── */
+    .feedback { background: var(--cream); }
+    .feedback h2 { text-align: center; margin-bottom: 18px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .feedback h2 em { color: var(--accent); }
+    .feedback .feedback-sub {
       text-align: center;
-      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      max-width: 600px;
+      margin: 0 auto 64px;
+      font-size: 1.18rem;
+      font-style: italic;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+    .feedback-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .feedback-card {
+      background: var(--warm);
+      padding: 18px;
+      box-shadow: 0 8px 28px rgba(20,20,18,0.08);
+      border: 1px solid var(--border);
+    }
+    .feedback-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .feedback-card.combined { display: flex; flex-direction: column; gap: 18px; }
+    .feedback-card.combined img + img { padding-top: 18px; border-top: 1px solid var(--border); }
+    .feedback-closer {
+      max-width: 640px;
+      margin: 72px auto 0;
+      text-align: center;
+      font-size: clamp(1.3rem, 2.8vw, 1.65rem);
       font-style: italic;
       color: var(--dark);
-      border-top: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
-      padding: 40px 16px;
-      margin: 48px 0;
-      line-height: 1.45;
+      line-height: 1.5;
       font-weight: 500;
     }
-    .friend-quote em { color: var(--accent); }
+    .feedback-closer em { color: var(--accent); }
+    @media (max-width: 700px) {
+      .feedback-grid { grid-template-columns: 1fr; gap: 20px; }
+      .feedback-container { padding: 0 16px; }
+    }
 
     /* ── FOR WHO ── */
     .forwho { background: var(--warm); }
@@ -577,6 +610,67 @@
       font-weight: 500;
     }
     .pricing-statement em { color: var(--accent); }
+    .countdown {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      padding: 28px 32px;
+      background: var(--dark-bg);
+      color: #fff;
+      text-align: center;
+      border-top: 3px solid var(--accent);
+      border-bottom: 3px solid var(--accent);
+    }
+    .countdown-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 70px;
+    }
+    .time-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--cream-dk);
+      letter-spacing: -0.02em;
+    }
+    .time-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C4A882;
+      font-weight: 500;
+    }
+    .time-sep {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--accent);
+      align-self: flex-start;
+      line-height: 1.2;
+    }
+    @media (max-width: 480px) {
+      .countdown-timer { gap: 14px; }
+      .time-unit { min-width: 56px; }
+      .time-num { font-size: 2rem; }
+      .time-sep { font-size: 1.7rem; }
+    }
     .pricing-table {
       max-width: 480px;
       margin: 0 auto 36px;
@@ -588,27 +682,42 @@
       display: flex; justify-content: space-between; align-items: baseline;
       padding: 16px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       color: var(--mid);
+      gap: 16px;
     }
     .pricing-row:last-child { border-bottom: none; }
+    .pricing-row .amount {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
     .pricing-row.total { font-weight: 600; color: var(--dark); font-size: 1.18rem; }
-    .pricing-row.total .amount { font-size: 1.4rem; }
-    .pricing-row.strike {
+    .pricing-row.total .amount { font-size: 1.32rem; font-weight: 700; }
+    .pricing-row.strike { color: var(--light); }
+    .pricing-row.strike .amount {
       color: var(--light);
       text-decoration: line-through;
       text-decoration-color: var(--accent);
-      text-decoration-thickness: 1.5px;
+      text-decoration-thickness: 2.5px;
+      text-underline-offset: 0.05em;
     }
-    .pricing-row.strike .amount { color: var(--light); }
     .pricing-row.preorder {
       background: var(--accent); color: #fff;
       margin: 16px -36px -36px;
       padding: 28px 36px;
     }
-    .pricing-row.preorder span:first-child { font-weight: 500; }
+    .pricing-row.preorder span:first-child { font-weight: 500; color: #fff; }
     .pricing-row.preorder .amount {
-      font-size: 2rem; font-weight: 600; font-style: italic; line-height: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1;
+      color: #fff;
+      letter-spacing: -0.02em;
     }
     .pricing-deadline {
       font-size: 1.05rem;
@@ -1015,7 +1124,7 @@
     <div class="reason-block">
       <h2>Bước ngoặt cùng Seiwa</h2>
       <p>Rồi mình gặp Seiwa.</p>
-      <p>Tháng đầu tiên, bọn mình chia tay 10 lần. Không phải vì không có tình cảm, mà vì mình của năm 27 tuổi đã không còn có thể thoả hiệp với sự mơ hồ thêm một giây nào nữa. Mình cần sự rõ ràng tuyệt đối về cam kết.</p>
+      <p>6 tháng đầu tiên, bọn mình chia tay 10 lần. Không phải vì không có tình cảm, mà vì mình của năm 27 tuổi đã không còn có thể thoả hiệp với sự mơ hồ thêm một giây nào nữa. Mình cần sự rõ ràng tuyệt đối về cam kết.</p>
       <p>Mình đã nói với anh:</p>
       <p class="reason-quote">Thời gian sống của em rất quý. Nếu anh không thể trở thành <em>người đồng hành nghiêm túc</em> trong tương lai của em, thì anh hãy <em>rời khỏi cuộc đời em</em>.</p>
       <p>Mình nói điều đó không phải để áp lực, mà để bảo vệ sự tôn trọng dành cho chính mình.</p>
@@ -1027,20 +1136,29 @@
 
 
 <!-- ══════════════════════════════════════════════
-     FRIEND TESTIMONY
+     FEEDBACK TESTIMONIALS
 ══════════════════════════════════════════════ -->
-<section class="friend">
+<section class="feedback">
   <div class="container">
     <div class="divider"><span class="dot"></span></div>
-    <h2>Một người bạn đã đọc thử<br>trước khi mình mở pre-order</h2>
-    <div class="friend-body">
-      <p>Mình đã gửi bản thảo cho một người bạn thân, để bạn ấy thử thực hành 7 ngày trước khi mình mở pre-order.</p>
-      <p>Bạn ấy đang trong một mối quan hệ mà không chắc về tương lai. Đã đọc nhiều bài về tình yêu. Đã tham vấn bạn bè. Vẫn không biết mình nên ở lại, hay nói chuyện thẳng.</p>
-      <p>Đến ngày thứ 6, bạn ấy nhắn cho mình một câu duy nhất:</p>
-      <p class="friend-quote">Em đã quan sát anh ấy lâu rồi mà em không nhận ra. Em chỉ đang nghe những gì anh <em>nói</em>. Em chưa bao giờ nhìn anh đang <em>làm gì</em>.</p>
-      <p>Bạn ấy không cần mình nói gì thêm. Bạn ấy đã có câu trả lời.</p>
-      <p>Mình không biết bạn ấy sẽ ở lại hay rời đi. Đó không phải việc của mình. Việc của mình là giúp bạn ấy <em>nhìn rõ</em>. Phần còn lại là sức mạnh của bạn ấy.</p>
+    <h2>Tin nhắn các bạn gửi về<br>sau khi thực hành <em>bộ mã</em></h2>
+    <p class="feedback-sub">Một số ở lại sau khi nhìn rõ. Một số bước ra. Cả hai đều là sức mạnh.</p>
+  </div>
+
+  <div class="feedback-container">
+    <div class="feedback-grid">
+      <div class="feedback-card"><img src="testimonial-3.png" alt="Phản hồi học viên" loading="lazy" /></div>
+      <div class="feedback-card"><img src="testimonial-5.png" alt="Phản hồi học viên" loading="lazy" /></div>
+      <div class="feedback-card"><img src="testimonial-1.png" alt="Phản hồi học viên" loading="lazy" /></div>
+      <div class="feedback-card combined">
+        <img src="testimonial-2.png" alt="Phản hồi học viên" loading="lazy" />
+        <img src="testimonial-4.png" alt="Phản hồi học viên" loading="lazy" />
+      </div>
+      <div class="feedback-card"><img src="testimonial-6.png" alt="Phản hồi học viên" loading="lazy" /></div>
+      <div class="feedback-card"><img src="testimonial-7.png" alt="Phản hồi học viên" loading="lazy" /></div>
     </div>
+
+    <p class="feedback-closer">Việc của bộ mã không phải bảo bạn ở lại hay rời đi.<br>Là giúp bạn <em>nhìn rõ</em>. Phần còn lại là sức mạnh của bạn.</p>
   </div>
 </section>
 
@@ -1089,20 +1207,45 @@
       <p class="offer-card-title">Guidebook chính</p>
       <h3>The Commitment Code &nbsp;·&nbsp; 7 Ngày Thực Hành</h3>
       <p>Không phải đọc cho vui rồi đóng lại. Mỗi ngày có bài tập cụ thể, có câu hỏi để viết ra, có kết quả rõ ràng. Bạn tự đi qua từng lớp. Không cần ai dẫn. Không cần partner đọc cùng.</p>
-      <p class="offer-value">PDF · Đọc được trên mọi thiết bị · Trị giá 500.000đ</p>
+      <p class="offer-value">PDF · Đọc được trên mọi thiết bị · Trị giá 1.000.000đ</p>
     </div>
 
     <div class="offer-card bonus">
-      <p class="offer-card-title">Bonus &nbsp;·&nbsp; Dành cho tất cả người mua</p>
-      <h3>Buổi Livestream Riêng với Jannie &amp; Seiwa</h3>
-      <p>Những gì không viết vào sách được, bọn mình sẽ kể trực tiếp. Trong buổi live, <strong>Seiwa</strong> sẽ chia sẻ trực tiếp 3 chủ đề mà các bạn nữ thường hỏi nhưng ít được nghe trả lời thật từ một người đàn ông:</p>
+      <p class="offer-card-title">Bonus 01 &nbsp;·&nbsp; Dành cho tất cả người mua</p>
+      <h3>Bản Ghi Buổi Livestream với Jannie &amp; Seiwa</h3>
+      <p style="margin-bottom:18px;">Sau buổi live, đây là điều bạn nhận được từ Seiwa:</p>
       <ol>
-        <li>Điều gì khiến một người đàn ông trưởng thành quyết định ở lại.</li>
-        <li>Hành vi và suy nghĩ của đàn ông trước khi cam kết.</li>
-        <li>Hành vi và suy nghĩ của đàn ông sau khi cam kết.</li>
+        <li>Hiểu lý do thật khiến một người đàn ông trưởng thành quyết định <em>ở lại</em>.</li>
+        <li>Đọc được suy nghĩ thật của anh ấy <em>trước khi</em> cam kết.</li>
+        <li>Nhận ra dấu hiệu thay đổi <em>sau khi</em> cam kết — và cách giữ kết nối bền lâu.</li>
       </ol>
-      <p style="margin-top:22px;">Bạn được hỏi trực tiếp bất cứ điều gì.</p>
-      <p class="offer-value">Live trong cộng đồng kín · Trị giá 1.000.000đ</p>
+      <p class="offer-value">Truy cập trọn đời · Trị giá 1.000.000đ</p>
+    </div>
+
+    <div class="offer-card">
+      <p class="offer-card-title">Bonus 02 &nbsp;·&nbsp; Dành cho tất cả người mua</p>
+      <h3>Attachment Style Decoding</h3>
+      <p style="font-style:italic;color:var(--accent);font-size:1.1rem;margin-top:-12px;margin-bottom:24px;">Phá vỡ vòng lặp tổn thương khiến hai người yêu nhau nhưng không bao giờ thật sự gần nhau</p>
+      <p style="font-weight:600;color:var(--dark);margin-bottom:0;">Bạn sẽ:</p>
+      <ol>
+        <li>Hiểu vì sao anh ấy <em>rút lui</em> — không phải do hết yêu.</li>
+        <li>Biết cách nói <em>"em cần X"</em> mà không bị anh phòng thủ.</li>
+        <li>Phân biệt được <em>kết nối qua tổn thương</em> với <em>tình yêu thật</em>.</li>
+      </ol>
+      <p class="offer-value">PDF · 15 trang · Trị giá 500.000đ</p>
+    </div>
+
+    <div class="offer-card bonus">
+      <p class="offer-card-title">Bonus 03 &nbsp;·&nbsp; Dành cho tất cả người mua</p>
+      <h3>30 Ngày Thực Hành &nbsp;·&nbsp; Đánh Giá Mối Quan Hệ</h3>
+      <p style="font-style:italic;color:var(--accent);font-size:1.1rem;margin-top:-12px;margin-bottom:24px;">Quan sát anh ấy bằng dữ liệu thật, không phải cảm xúc mơ hồ</p>
+      <p style="font-weight:600;color:var(--cream-dk);margin-bottom:0;">Sau 30 ngày bạn sẽ:</p>
+      <ol>
+        <li>Có bức tranh rõ về anh ấy từ <em>hành động thật</em>, không phải lời hứa.</li>
+        <li>Nhận ra pattern thật của mối quan hệ — không còn cảm giác mơ hồ.</li>
+        <li>Có dữ liệu cụ thể để quyết định: <em>ở lại</em> hay <em>bước ra</em>.</li>
+      </ol>
+      <p class="offer-value">PDF in được · 30 trang prompts · Trị giá 500.000đ</p>
     </div>
   </div>
 </section>
@@ -1124,17 +1267,28 @@
 
     <p class="pricing-statement">Mình không bán cho bạn một guidebook để giải quyết tất cả những điều đó. Mình bán cho bạn <em>7 ngày</em>, để bạn không phải dành thêm tháng năm tiếp theo trong sự không rõ ràng.</p>
 
-    <div class="pricing-table">
-      <div class="pricing-row strike"><span>Guidebook giá trị</span><span class="amount">500.000đ</span></div>
-      <div class="pricing-row strike"><span>Buổi livestream giá trị</span><span class="amount">1.000.000đ</span></div>
-      <div class="pricing-row total strike"><span>Tổng giá trị</span><span class="amount">1.500.000đ</span></div>
-      <div class="pricing-row preorder"><span>Pre-order hôm nay</span><span class="amount">199.000đ</span></div>
+    <div class="countdown" id="countdown" data-duration-hours="19">
+      <p class="countdown-label">Pre-order đóng trong</p>
+      <div class="countdown-timer">
+        <div class="time-unit"><span class="time-num" data-hours>--</span><span class="time-label">Giờ</span></div>
+        <span class="time-sep">:</span>
+        <div class="time-unit"><span class="time-num" data-mins>--</span><span class="time-label">Phút</span></div>
+        <span class="time-sep">:</span>
+        <div class="time-unit"><span class="time-num" data-secs>--</span><span class="time-label">Giây</span></div>
+      </div>
     </div>
 
-    <p class="pricing-deadline">Pre-order đóng ngày 29/04/2026</p>
-    <p class="pricing-note">Sau ngày này, giá guidebook quay về 500.000đ.</p>
+    <div class="pricing-table">
+      <div class="pricing-row strike"><span>Guidebook chính</span><span class="amount">1.000.000đ</span></div>
+      <div class="pricing-row strike"><span>Bonus 01 · Livestream với Jannie &amp; Seiwa</span><span class="amount">1.000.000đ</span></div>
+      <div class="pricing-row strike"><span>Bonus 02 · Ebook Attachment Decoding</span><span class="amount">500.000đ</span></div>
+      <div class="pricing-row strike"><span>Bonus 03 · 30 ngày Thực Hành đánh giá</span><span class="amount">500.000đ</span></div>
+      <div class="pricing-row total strike"><span>Tổng giá trị</span><span class="amount">3.000.000đ</span></div>
+      <div class="pricing-row preorder"><span>Pre-order hôm nay</span><span class="amount">499.000đ</span></div>
+    </div>
 
-    <p class="pricing-final">199.000đ. Ít hơn một buổi cà phê mỗi ngày trong 7 ngày. Để đổi lấy <em>sự rõ ràng</em>.</p>
+    <p class="pricing-final">499.000đ. Bằng một bữa tối nhà hàng hai người. Để đổi lấy <em>sự rõ ràng</em> về cuộc đời tình cảm của bạn.</p>
+    <p style="text-align:center;font-size:1.18rem;color:var(--mid);font-style:italic;margin-top:22px;">Sau khi hết pre-order, giá guidebook quay về <strong style="color:var(--accent);font-weight:600;font-style:normal;">900.000đ</strong>.</p>
   </div>
 </section>
 
@@ -1145,9 +1299,9 @@
 <section class="guarantee">
   <div class="container">
     <div class="guarantee-box">
-      <h2>Bảo đảm <em>100%</em></h2>
-      <p>Nếu bạn không cảm thấy nội dung trong cuốn sách này có giá trị, mình hoàn lại 100%.</p>
-      <p>Không cần giải thích. Không cần điều kiện.</p>
+      <h2>Hoàn tiền <em>30 ngày</em></h2>
+      <p>Đọc bộ mã. Thực hành. Nếu bạn không thấy giá trị, mình hoàn lại 100% trong vòng 30 ngày.</p>
+      <p>Không cần lý do. Không cần điều kiện.</p>
     </div>
   </div>
 </section>
@@ -1164,8 +1318,9 @@
     <div class="step-row">
       <div class="step-num">01</div>
       <div class="step-content">
-        <h3>Chuyển khoản 199.000đ</h3>
-        <p>Nội dung chuyển khoản: <code>Tên bạn + CCM</code></p>
+        <h3>Chuyển khoản 499.000đ</h3>
+        <p>Nội dung chuyển khoản: <code>SĐT + CCM</code></p>
+        <p style="font-size:0.92rem;color:var(--light);font-style:italic;margin-top:6px;">(để tụi mình check thông tin)</p>
         <div class="qr-block">
           <img src="qr-payment.jpg" alt="Mã QR chuyển khoản" />
           <div class="qr-info">
@@ -1231,8 +1386,53 @@
      FOOTER
 ══════════════════════════════════════════════ -->
 <footer>
-  © 2026 Jannie &amp; Seiwa &nbsp;·&nbsp; @jannievsseiwa
+  © 2026 Jannie &amp; Seiwa &nbsp;·&nbsp; @jannie-seiwa
 </footer>
 
+<script>
+(function() {
+  var el = document.getElementById('countdown');
+  if (!el) return;
+
+  var DURATION_HOURS = parseInt(el.dataset.durationHours || '19', 10);
+  var DURATION_MS = DURATION_HOURS * 60 * 60 * 1000;
+  var STORAGE_KEY = 'cccDeadline_v19';
+
+  // Persist deadline across visits via localStorage
+  var stored = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+  var deadline;
+  if (stored && !isNaN(stored) && stored > Date.now() - 7 * 24 * 60 * 60 * 1000) {
+    deadline = stored;
+  } else {
+    deadline = Date.now() + DURATION_MS;
+    try { localStorage.setItem(STORAGE_KEY, deadline); } catch (e) {}
+  }
+
+  var hourEl = el.querySelector('[data-hours]');
+  var minEl = el.querySelector('[data-mins]');
+  var secEl = el.querySelector('[data-secs]');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function update() {
+    var diff = deadline - Date.now();
+    if (diff <= 0) {
+      hourEl.textContent = '00';
+      minEl.textContent = '00';
+      secEl.textContent = '00';
+      return;
+    }
+    var hh = Math.floor(diff / 3600000);
+    var mm = Math.floor((diff / 60000) % 60);
+    var ss = Math.floor((diff / 1000) % 60);
+    hourEl.textContent = pad(hh);
+    minEl.textContent = pad(mm);
+    secEl.textContent = pad(ss);
+  }
+
+  update();
+  setInterval(update, 1000);
+})();
+</script>
 </body>
 </html>
