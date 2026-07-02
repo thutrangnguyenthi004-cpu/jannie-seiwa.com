@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Career Fast Track · Jannie &amp; Seiwa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --beige:#FBFAF8; --beige-dark:#EDE8E2; --beige-deeper:#E2DAD0;
+    --black:#141412; --black-soft:#252520;
+    --red:#A8190F; --red-light:#C42319;
+    --gray:#7A7670; --gray-light:#C0BBB4;
+    --dark-bg:#0C0B09; --cream-on-dark:#F5EFE6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--beige); color:var(--black); font-family:'Inter',sans-serif; font-weight:400; line-height:1.72; font-size:18px; -webkit-font-smoothing:antialiased;}
+  .serif{font-family:'Cormorant Garamond',serif;}
+  em{font-style:italic; color:var(--red); font-weight:500;}
+  strong{color:var(--black); font-weight:600;}
+  .wrap{max-width:720px; margin:0 auto; padding:0 28px;}
+  section{padding:64px 0;}
+  .eyebrow{text-transform:uppercase; letter-spacing:.28em; font-size:12px; font-weight:600; color:var(--red); margin-bottom:18px;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif; font-weight:600; line-height:1.08; letter-spacing:-.01em;}
+  h1{font-size:54px;} h2{font-size:40px; margin-bottom:22px;} h3{font-size:27px; margin-bottom:12px;}
+  p{margin-bottom:20px;} p.lead{font-size:21px; line-height:1.55;}
+  .ph{border-bottom:2px dashed var(--red-light); cursor:help; background:rgba(168,25,15,.05);}
+  .cta{display:inline-block; background:var(--black); color:var(--cream-on-dark); font-weight:600; font-size:17px; text-decoration:none; padding:19px 38px; border-radius:2px; transition:background .2s; margin-top:6px;}
+  .cta:hover{background:var(--red);}
+  .cta-sub{font-size:14px; color:var(--gray); margin-top:13px;}
+  .cta-row{margin:32px 0 0;}
+  .red-bar{width:80px; height:3px; background:var(--red); margin:28px 0;}
+  .dark{background:var(--dark-bg); color:var(--cream-on-dark);}
+  .dark h1,.dark h2,.dark h3{color:var(--cream-on-dark);} .dark strong{color:var(--cream-on-dark);}
+  .dark .eyebrow{color:#E8A39B;} .dark p{color:#D9D2C7; line-height:1.78;}
+  .dark .cta{background:var(--red); color:#fff;} .dark .cta:hover{background:var(--red-light);}
+  .pq{border-left:4px solid var(--red); padding:10px 0 10px 30px; margin:28px 0;}
+  .pq .serif{font-size:30px; font-style:italic; line-height:1.32; color:var(--black-soft);}
+  .dark .pq .serif{color:var(--cream-on-dark);}
+  .refrain{background:rgba(168,25,15,.05); border-left:4px solid var(--red); padding:16px 22px; border-radius:0 4px 4px 0; font-size:18px; margin:24px 0;}
+  .refrain strong{color:var(--red);}
+  .desire li{list-style:none; padding:15px 0 15px 34px; border-bottom:1px solid var(--beige-deeper); font-size:19px; position:relative;}
+  .desire li::before{content:"✓"; position:absolute; left:0; top:15px; color:var(--red); font-weight:700;}
+  .outcome li{list-style:none; padding:14px 0 14px 34px; border-bottom:1px solid var(--beige-deeper); font-size:18px; position:relative;}
+  .outcome li::before{content:"✓"; position:absolute; left:0; top:14px; color:var(--red); font-weight:700;}
+  /* want cards */
+  .want-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px;}
+  .want-card{background:#fff; border:1px solid var(--beige-deeper); border-radius:4px; padding:30px 28px; border-top:3px solid var(--red);}
+  .want-card .wn{font-family:'Cormorant Garamond'; font-style:italic; font-size:30px; color:var(--red); line-height:1; margin-bottom:12px;}
+  .want-card p{margin:0; font-size:18.5px;}
+  /* story images */
+  img.lp{width:100%; height:auto; display:block; border-radius:6px;}
+  .imgph{border:2px dashed var(--red-light); background:rgba(168,25,15,.05); border-radius:4px; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--red); font-size:13px; font-weight:600; letter-spacing:.03em; padding:20px; min-height:300px; line-height:1.6;}
+  .cap{font-size:12.5px; color:var(--gray); margin-top:8px; text-align:center;}
+  .dark .cap{color:#A39C90;}
+  .story-lead{display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; margin:26px 0;}
+  .awards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;}
+  .receipts{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0;}
+  .receipts span{background:rgba(255,255,255,.06); border:1px solid #33302A; border-radius:100px; padding:9px 17px; font-size:14px; font-weight:500; color:#E6DFD4;}
+  .receipts b{color:#E8A39B; font-weight:700;}
+  /* ảnh minh chứng (recruiter mời + nơi từng làm), fallback khi file chưa có */
+  .proofgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:20px 0 6px;}
+  .companyshots{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:20px 0 6px;}
+  .shot{position:relative; border-radius:6px; overflow:hidden;}
+  .shot img{width:100%; height:100%; object-fit:cover; object-position:top; display:block; border:1px solid #33302A; border-radius:6px;}
+  .proofgrid .shot{aspect-ratio:3/4;} .companyshots .shot{aspect-ratio:4/3; background:#151412;}
+  .companyshots .shot img{object-fit:contain; object-position:center;}
+  .shot .phlabel{display:none;}
+  .shot.miss{border:2px dashed #6B3A35; background:rgba(255,255,255,.04); display:flex; align-items:center; justify-content:center; text-align:center; padding:14px;}
+  .shot.miss .phlabel{display:block; color:#E8A39B; font-size:11.5px; font-weight:600; line-height:1.55;}
+  .bannershot{aspect-ratio:16/9; margin:24px 0;}
+  .award-feature{margin:24px 0; text-align:center;}
+  .awardshot{aspect-ratio:1/1; max-width:340px; margin:0 auto;}
+  .awardshot img{object-position:center;}
+  .award-feature .cap{margin-top:10px;}
+  @media(max-width:640px){ .proofgrid{grid-template-columns:1fr 1fr;} .companyshots{grid-template-columns:1fr;} }
+  /* stats (khoa học, nguồn lên trước) */
+  .statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:26px 0;}
+  .statcard{border:1px solid var(--beige-deeper); border-radius:8px; padding:22px 20px; background:#fff;}
+  .statcard .src{font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--gray); font-weight:700; display:block; min-height:46px; border-bottom:1px solid var(--beige-deeper); padding-bottom:10px; margin-bottom:14px;}
+  .statcard .n{font-family:'Cormorant Garamond'; font-size:50px; font-weight:600; color:var(--red); line-height:1;}
+  .statcard .c{font-size:14.5px; margin-top:8px; color:var(--black-soft);}
+  /* lifespan cards (dễ đọc) */
+  .lifecmp{margin:22px 0;}
+  .lifecmp .row{display:flex; justify-content:space-between; align-items:center; gap:18px; padding:17px 20px; border:1px solid var(--beige-deeper); border-radius:6px; margin-bottom:10px; background:#fff;}
+  .lifecmp .row.win{border:2px solid var(--red); background:rgba(168,25,15,.04);}
+  .lifecmp .act{font-size:16.5px; color:var(--black-soft);}
+  .lifecmp .row.win .act{color:var(--black); font-weight:600;}
+  .lifecmp .dur{font-family:'Cormorant Garamond'; font-weight:600; color:var(--gray); white-space:nowrap; font-size:18px; text-align:right; flex:none;}
+  .lifecmp .row.win .dur{color:var(--red);}
+  /* personas (card, gọi tên) */
+  .pgrid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px;}
+  .pcard{background:#fff; border:1px solid var(--beige-deeper); border-left:4px solid var(--red); border-radius:6px; padding:26px 26px;}
+  .pcard .n{font-family:'Cormorant Garamond'; font-style:italic; color:var(--red); font-size:26px; line-height:1; margin-bottom:12px;}
+  .pcard .hd{font-weight:600; font-size:18px; margin-bottom:8px; color:var(--black); line-height:1.35;}
+  .pcard p{margin:0; font-size:16px; color:var(--black-soft);}
+  /* buoi cards (KHÔNG ảnh) */
+  .buoi{border:1px solid var(--beige-deeper); background:#fff; border-radius:4px; padding:26px 30px; margin-bottom:16px; border-left:4px solid var(--red);}
+  .buoi .tag{text-transform:uppercase; letter-spacing:.18em; font-size:11px; font-weight:600; color:var(--red); margin-bottom:8px;}
+  .buoi .out{border-left:3px solid var(--beige-deeper); padding-left:14px; margin-top:12px; font-style:italic; color:var(--black-soft); font-size:15.5px;}
+  .buoi ul{margin:4px 0 0; padding-left:20px;} .buoi li{margin-bottom:6px; font-size:16.5px;}
+  /* bonus (grid để số + giá luôn thẳng hàng, hết lộn xộn) */
+  .bonus{display:grid; grid-template-columns:46px 1fr auto; gap:20px; padding:19px 0; border-bottom:1px solid var(--beige-deeper); align-items:start;}
+  .bonus .bn{font-family:'Cormorant Garamond'; font-style:italic; font-size:31px; color:var(--red); line-height:1;}
+  .bonus .val{font-weight:600; font-size:14px; color:var(--gray); white-space:nowrap; text-align:right;}
+  .bonus h3{font-size:22px; margin-bottom:4px;}
+  .bonus.tentpole-row{border:2px solid var(--red); border-radius:6px; background:rgba(168,25,15,.03); padding:22px; margin:10px 0;}
+  .bonus.tentpole-row .bd-eyebrow{text-transform:uppercase; letter-spacing:.2em; font-size:10.5px; font-weight:700; color:var(--red); margin-bottom:6px;}
+  /* ladder (kết quả hiện tại, trong story) */
+  .ladder{list-style:none; margin:20px 0;}
+  .ladder li{display:flex; gap:22px; align-items:baseline; padding:15px 0; border-bottom:1px solid #2A2721;}
+  .ladder .stage{flex:none; width:196px; font-size:15.5px; color:#D9D2C7;}
+  .ladder .amt{font-family:'Cormorant Garamond'; font-size:30px; font-weight:600; color:#E8A39B; line-height:1;}
+  .ladder .note{display:block; font-size:12.5px; color:#A39C90; margin-top:3px;}
+  /* value table */
+  .vtable{width:100%; border-collapse:collapse; margin:22px 0; font-size:16.5px;}
+  .vtable td{padding:11px 0; border-bottom:1px solid var(--beige-deeper);}
+  .vtable td.r{text-align:right; color:var(--gray); white-space:nowrap;}
+  .vtable tr.total td{font-weight:700; color:var(--black); border-bottom:2px solid var(--black); font-size:18px;}
+  .vtable tr.price td{font-family:'Cormorant Garamond'; font-size:27px; font-weight:600; color:var(--red); border:none; padding-top:16px;}
+  /* deal box (giảm giá thật + khan hiếm) */
+  .deal{background:#fff; border:2px solid var(--red); border-radius:10px; padding:34px 30px; max-width:480px; margin:24px auto 0; text-align:center;}
+  .deal .off{display:inline-block; background:var(--red); color:#fff; font-weight:700; font-size:13px; letter-spacing:.05em; padding:7px 16px; border-radius:100px; margin-bottom:16px;}
+  .deal .wasnow{display:flex; gap:14px; justify-content:center; align-items:baseline;}
+  .deal .was{font-size:21px; color:var(--gray); text-decoration:line-through;}
+  .deal .now{font-family:'Cormorant Garamond'; font-size:58px; font-weight:600; color:var(--red); line-height:1;}
+  .deal .save{font-size:15px; color:var(--black-soft); margin-top:6px;}
+  .seats{margin:22px auto 0; max-width:340px;}
+  .seats .bar{height:12px; background:var(--beige-deeper); border-radius:100px; overflow:hidden;}
+  .seats .fill{height:100%; width:60%; background:var(--red); border-radius:100px;}
+  .seats .lbl{font-size:14.5px; color:var(--red); font-weight:600; margin-top:9px;}
+  /* pricebox (close) */
+  .pricebox{background:#fff; border:1px solid var(--beige-deeper); border-radius:4px; padding:32px; text-align:center; margin:24px auto; max-width:420px;}
+  .pricebox .old{font-size:16px; color:var(--gray); text-decoration:line-through;}
+  .pricebox .now{font-family:'Cormorant Garamond'; font-size:58px; font-weight:600; color:var(--red); line-height:1; margin:6px 0;}
+  .pricebox .unit{font-size:13.5px; color:var(--gray);}
+  .hprice{display:flex; gap:14px; flex-wrap:wrap; align-items:baseline; margin-top:6px;}
+  .hprice .now{font-family:'Cormorant Garamond'; font-size:28px; font-weight:600; color:var(--red);}
+  .hprice .old{font-size:14px; color:var(--gray); text-decoration:line-through;}
+  /* guarantee + faq */
+  .guarantee{border:2px solid var(--red); border-radius:4px; padding:32px; background:rgba(168,25,15,.03); position:relative;}
+  .badge{position:absolute; top:-18px; right:24px; width:74px; height:74px; border-radius:50%; background:var(--red); color:#fff; font-family:'Cormorant Garamond'; font-weight:600; font-size:14px; line-height:1.1; display:flex; align-items:center; justify-content:center; text-align:center; padding:8px;}
+  .faq details{border-bottom:1px solid var(--beige-deeper); padding:18px 0;}
+  .faq summary{font-family:'Cormorant Garamond'; font-size:22px; font-weight:600; cursor:pointer; list-style:none; color:var(--black);}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::before{content:"+ "; color:var(--red);} .faq details[open] summary::before{content:"– ";}
+  .faq .ans{padding-top:12px; color:var(--black-soft); font-size:16.5px;}
+  footer{padding:46px 0; text-align:center; font-size:14px; color:var(--gray); border-top:1px solid var(--beige-deeper);}
+  .handle{font-family:'Cormorant Garamond'; font-style:italic; font-size:18px; color:var(--gray);}
+  @media(max-width:640px){
+    h1{font-size:36px;} h2{font-size:29px;} body{font-size:17px;} section{padding:44px 0;}
+    .pricebox .now,.deal .now{font-size:46px;} .bonus{grid-template-columns:36px 1fr auto; gap:12px;}
+    .statgrid{grid-template-columns:1fr;} .statcard .src{min-height:0;}
+    .want-grid{grid-template-columns:1fr;} .story-lead{grid-template-columns:1fr;} .awards{grid-template-columns:1fr;} .pgrid{grid-template-columns:1fr;}
+    .ladder li{flex-direction:column; gap:4px;} .ladder .stage{width:auto;}
+    .lifecmp .row{flex-direction:column; align-items:flex-start; gap:6px;} .lifecmp .dur{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 01 NAV -->
+<div style="border-bottom:1px solid var(--beige-deeper);">
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; padding:16px 28px;">
+    <span class="serif" style="font-size:22px; font-weight:600;">Global Career Fast Track</span>
+    <span class="handle">@jannievsseiwa</span>
+  </div>
+</div>
+
+<!-- 02 HERO (KHÔNG ảnh) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Khoá học online · cho sinh viên Việt</div>
+    <h1>Xây một bộ hồ sơ ngay khi còn đi học, để công ty <em>tự tìm tới mời bạn</em>.</h1>
+    <div class="red-bar"></div>
+    <p class="lead">Một công ty lớn, lương tốt, phúc lợi tốt chủ động mời bạn về, ngay khi bạn còn là sinh viên. Kể cả khi trường không top, không thành tích, và trong CV gần như chưa có gì. Bí mật không nằm ở tấm bằng, mà ở một thứ bạn bắt đầu chuẩn bị được ngay từ trên ghế nhà trường: một bộ hồ sơ.</p>
+    <div class="hprice">
+      <span class="now">1.999.000đ</span>
+      <span class="old">5.000.000đ</span>
+      <span style="font-size:13.5px; color:var(--gray);">Giá pre-order nhóm đầu</span>
+    </div>
+    <div class="cta-row">
+      <a href="#giu-suat" class="cta">Giữ suất pre-order</a>
+      <div class="cta-sub">Học thử trọn Buổi 1, không hợp thì hoàn tiền, không cần lý do.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROBLEM -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <h2>Đi học, đi làm thêm, lặp lại. Rồi năm cuối tới, và trong CV bạn vẫn gần như chưa có gì.</h2>
+    <p>Bạn đổ hàng trăm giờ vào việc làm thêm, nhưng cuối tháng tiền tiêu là hết, và không việc nào ở lại trong CV quá một dòng. Tiền thì tiêu hết. Giờ thì trôi hết. Còn hồ sơ để đi xin việc thì vẫn đứng yên.</p>
+    <p>Trong khi đó, bạn bè quanh bạn lần lượt có thực tập, có chỗ nhận, có hướng đi. Còn bạn chỉ có một tấm bằng sắp cầm, và một nỗi lo lớn dần về cái ngày ra trường.</p>
+    <p><strong>Nói thẳng: đó không phải lỗi của bạn.</strong> Suốt bao năm, người ta bảo bạn cứ học cho tốt cái đã, chuyện việc làm để ra trường rồi tính. Không một ai ở trường dạy bạn rằng một công việc tốt phải được chuẩn bị từ trước. Bạn đã làm đúng mọi thứ được dặn, nên bạn chẳng có gì để tự trách.</p>
+    <p style="margin-bottom:0;">Nhưng sâu trong lòng, có lẽ bạn đã ngờ ngợ: tấm bằng thôi hình như không đủ. Bạn từng thấy những người học giỏi hơn mình vẫn chật vật xin việc. <strong>Linh cảm đó của bạn đúng.</strong></p>
+    <div class="refrain">Chính lời khuyên "cứ ra trường rồi tính" đã âm thầm bỏ rơi cả một thế hệ sinh viên. Sự thật ngược lại: một công việc tốt cần được chuẩn bị <strong>ngay từ khi bạn còn ngồi trên ghế nhà trường</strong>.</div>
+  </div>
+</section>
+
+<!-- 04 CÂU CHUYỆN CHÍNH (Jannie), story-proof, ảnh nằm ở đây -->
+<section class="dark">
+  <div class="wrap">
+    <div class="eyebrow">Câu chuyện của mình</div>
+    <h2>Sáu năm trước, mình ở đúng vị trí của bạn bây giờ.</h2>
+    <p>Hiện tại, mình làm trong ngành nhân sự cho các tập đoàn lớn trên thế giới, và được xếp <strong>TOP 1 HR Consultant của khu vực châu Á</strong>. Mỗi ngày mình ngồi ở phía bên kia bàn tuyển dụng, cùng bàn với các giám đốc của những tập đoàn lớn trên thế giới, tham gia quyết định ai được nhận và ai bị loại. Nhưng mình không sinh ra ở đó.</p>
+    <div class="shot bannershot"><img src="assets/proof/jannie-top1-asia.png" alt="Jannie Nguyen, TOP 1 HR Consultant khu vực châu Á" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>jannie-top1-asia.jpg<br>TOP 1 HR Consultant châu Á</span></div>
+    <p>Mình là một du học sinh, học bổng toàn phần đại học Tokyo. Mình đi làm thêm để trang trải, và mình từng tin chắc: chỉ cần học cho xong, cứ thế bốn năm, ra trường ắt sẽ có việc.</p>
+    <p>Rồi Covid tới. Chỗ làm thêm của mình đóng cửa. Mình mất việc, mà thật ra đó cũng chỉ là một công việc làm thêm. Điều đáng sợ đến sau đó.</p>
+    <p>Mình bắt đầu đi rải hồ sơ. Hơn <strong>50 bộ</strong>. Mình xin cả một chân <strong>giúp việc</strong>, công việc mà mình từng nghĩ mình sẽ không bao giờ phải đi xin. Vậy mà cũng không một nơi nào nhận. Có nơi còn từ chối thẳng vì mình "còn đi học".</p>
+    <div class="pq"><span class="serif">Mình vẫn nhớ cái đêm nhìn lá thư từ chối cuối cùng. Mình không sợ vì bị từ chối. Mình sợ vì mình chợt hiểu: nếu đến một chân rửa bát cũng không ai nhận, thì tấm bằng mình sắp cầm chẳng cứu được mình. Mình đã đi học và đi làm thêm suốt bốn năm, để rồi cầm trên tay đúng con số không, không một dòng nào chứng minh mình làm được việc. Ngày mình tốt nghiệp, mình sẽ không tự nhiên giỏi lên. Mình chỉ là đúng con người này, cộng thêm một tấm bằng và vài tuổi.</span></div>
+    <p>Đêm đó đổi hẳn cách mình sống. Mình thôi đi kiếm tiền, và bắt đầu đi kiếm bằng chứng. Mỗi giờ rảnh, thay vì đổi lấy đồng lương tiêu hết trong tháng, mình lặng lẽ đắp nó vào hồ sơ của mình.</p>
+    <p>Năm hai, mình vào <strong>Mitsubishi Fuso</strong>, và làm tới mức sếp đề nghị giữ mình lại làm nhân viên chính thức sau tốt nghiệp. <strong>Bosch</strong> từng loại mình vì mình không làm đủ 40 giờ một tuần, rồi phá lệ để nhận mình làm thực tập sinh đầu tiên với hợp đồng 20 giờ. Cuối năm ba, một công ty top trong ngành gửi mình offer chính thức, <strong>sớm nguyên một năm trước ngày mình tốt nghiệp</strong>. Mình bước ra khỏi trường không phải đi xin việc. Mình được chọn việc.</p>
+    <div class="companyshots">
+      <div class="shot"><img src="assets/proof/jannie-fuso-1.jpg" alt="Jannie tại nhà máy Mitsubishi Fuso" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>jannie-fuso-1.jpg<br>Fuso, nhà máy</span></div>
+      <div class="shot"><img src="assets/proof/jannie-fuso-2.jpg" alt="Jannie thuyết trình tại Mitsubishi Fuso" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>jannie-fuso-2.jpg<br>Fuso, thuyết trình</span></div>
+      <div class="shot"><img src="assets/proof/jannie-bosch-id.jpg" alt="Thẻ nhân viên Bosch của Jannie" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>jannie-bosch-id.jpg<br>Thẻ Bosch</span></div>
+    </div>
+    <div class="cap" style="text-align:left; margin-top:2px;">Những ngày làm việc thật ở Mitsubishi Fuso và tấm thẻ nhân viên Bosch. Không phải chuyện kể suông.</div>
+    <div class="receipts">
+      <span>🎓 Học bổng toàn phần <b>ĐH Tokyo</b></span>
+      <span>💼 Thực tập <b>Mitsubishi Fuso</b> &amp; <b>Bosch</b></span>
+      <span>⚡ Offer chính thức <b>sớm 1 năm</b> trước tốt nghiệp</span>
+      <span>🧩 Nay làm <b>nhân sự</b> cho tập đoàn toàn cầu</span>
+    </div>
+    <p>Và đây là điều ít ai nói với bạn: cái offer đầu tiên chỉ là bàn đạp. Một bộ hồ sơ tốt không lớn thêm mỗi năm một chút, nó nhân lên theo cấp số nhân. Bộ hồ sơ mình đắp từ thời sinh viên cứ thế đưa mình đi xa:</p>
+    <ul class="ladder">
+      <li><span class="stage">Năm 1 sau tốt nghiệp</span><div><span class="amt">800tr</span><span class="note">trong 9 tháng làm việc.</span></div></li>
+      <li><span class="stage">Năm 2 sau tốt nghiệp</span><div><span class="amt">2 tỷ</span><span class="note">trong 9 tháng làm việc.</span></div></li>
+      <li><span class="stage">Từ năm 3 trở đi</span><div><span class="amt">1.5 tới 2.5 tỷ</span><span class="note">chỉ làm 3 ngày mỗi tuần, đi du lịch thường xuyên.</span></div></li>
+      <li><span class="stage">Tháng lương đỉnh</span><div><span class="amt">hơn 3 triệu yên</span><span class="note">khoảng 500 triệu đồng, nằm trong nhóm 1 tới 5% lương corporate tại Nhật, chỉ sau một năm rưỡi ra trường.</span></div></li>
+    </ul>
+    <figure class="award-feature">
+      <div class="shot awardshot"><img src="assets/proof/jannie-personal-best.png" alt="Giải Personal Best của Jannie tại tập đoàn" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>jannie-personal-best.jpg<br>Personal Best Award</span></div>
+      <figcaption class="cap">Giải Personal Best tại tập đoàn, ghi nhận thành tích xuất sắc: 15.27 triệu yên. Tất cả bắt đầu từ bộ hồ sơ đắp thời sinh viên.</figcaption>
+    </figure>
+    <p>Và đây là điều mình muốn bạn nhìn thẳng vào. Hôm nay mình không còn đi xin việc nữa. Chính các nhà tuyển dụng và giám đốc của những tập đoàn lớn tự tìm tới mình, gửi lời mời mỗi tháng, dù mình chưa đụng vào CV từ năm ba:</p>
+    <div class="proofgrid">
+      <div class="shot"><img src="assets/proof/proof-invite-1.jpg" alt="Talent Acquisition Lead chủ động mời" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>proof-invite-1.jpg<br>Talent Acquisition Lead</span></div>
+      <div class="shot"><img src="assets/proof/proof-invite-2.jpg" alt="Director Sales và Marketing mời gặp" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>proof-invite-2.jpg<br>Director Sales &amp; Marketing</span></div>
+      <div class="shot"><img src="assets/proof/proof-invite-3.jpg" alt="Global Talent Acquisition, verified recruiter" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>proof-invite-3.jpg<br>Global Talent Acquisition</span></div>
+      <div class="shot"><img src="assets/proof/proof-invite-4.jpg" alt="Managing Director mời một vị trí riêng" onerror="this.closest('.shot').classList.add('miss');this.style.display='none';"><span class="phlabel">[ẢNH]<br>proof-invite-4.jpg<br>Managing Director</span></div>
+    </div>
+    <div class="cap" style="text-align:left; margin-bottom:18px;">Ảnh chụp tin nhắn mời từ nhà tuyển dụng các tập đoàn, trải nhiều tháng khác nhau. Đó là thứ một bộ hồ sơ đúng làm được: nó tự đi mời việc về cho bạn.</div>
+    <p>Mình kể hết chuyện này không phải để khoe. Mình kể để bạn thấy: cuộc sống mình đang có hôm nay, một cuộc sống tự do, tài chính ổn định, được đi đây đi đó và tự chọn cách mình sống, đều bắt đầu từ một quyết định rất nhỏ hồi còn là sinh viên. Đắp hồ sơ, thay vì chỉ bán giờ.</p>
+    <p style="margin-bottom:0;">Giờ, ngồi ở ghế người tuyển dụng, mình hiểu vì sao chuyện đó xảy ra: <strong>công ty không tuyển tấm bằng đẹp nhất, họ tuyển người có bằng chứng làm được việc.</strong> Bằng chứng đó có tên là hồ sơ. Và thời điểm dễ nhất, rẻ nhất để bắt đầu đắp nó, là ngay bây giờ, khi bạn còn là sinh viên.</p>
+  </div>
+</section>
+
+<!-- 05 WHAT PEOPLE WANT (2 card) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Thứ bạn thật sự muốn</div>
+    <div class="want-grid">
+      <div class="want-card">
+        <div class="wn">01</div>
+        <p>Một bộ hồ sơ khiến công ty nước ngoài <strong>chủ động mời bạn</strong>, ngay khi bạn còn là sinh viên, trước cả khi cầm bằng.</p>
+      </div>
+      <div class="want-card">
+        <div class="wn">02</div>
+        <p>Một tài sản <strong>tự lớn lên theo năm tháng</strong>, thay vì những giờ làm thêm tiêu sạch mỗi cuối tháng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 STATISTICS (khoa học, nguồn lên trước, khách quan) -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="eyebrow">Số liệu nói gì</div>
+    <h2>Đây không phải chuyện riêng của một người may mắn. Đây là cách hệ thống tuyển dụng quốc tế vận hành.</h2>
+    <p>Cơ hội lớn nhất của cả sự nghiệp mở ra đúng lúc bạn còn là sinh viên, qua các luồng chỉ dành cho sinh viên: thực tập, management trainee, early-career. Số liệu độc lập xác nhận điều đó.</p>
+    <div class="statgrid">
+      <div class="statcard"><span class="src">NACE · Internship &amp; Co-op Report 2025 (Mỹ)</span><div class="n">62%</div><div class="c">thực tập sinh được doanh nghiệp mời ở lại làm nhân viên chính thức.</div></div>
+      <div class="statcard"><span class="src">Hệ thống tuyển tân cử nhân Nhật Bản</span><div class="n">~1 năm</div><div class="c">sinh viên nhận offer trước khi tốt nghiệp, từ năm ba tới nửa đầu năm tư.</div></div>
+      <div class="statcard"><span class="src">Khảo sát việc làm du học sinh tại Nhật</span><div class="n">86%</div><div class="c">du học sinh nhận được offer trước khi ra trường.</div></div>
+    </div>
+    <div class="refrain">Kết luận rất rõ: cánh cửa rộng nhất mở ra đúng lúc bạn còn là sinh viên, và nó khép lại khi bạn tốt nghiệp. Ai chuẩn bị hồ sơ sớm thì bước qua.</div>
+    <div class="cta-row"><a href="#giu-suat" class="cta">Mình muốn bước qua cánh cửa đó</a></div>
+  </div>
+</section>
+
+<!-- 07 LIFESPAN (redesign card dễ đọc) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Cùng một giờ, hai kết cục</div>
+    <h2>Một giờ bạn bỏ ra hôm nay sẽ sống được bao lâu?</h2>
+    <div class="lifecmp">
+      <div class="row"><span class="act">Một giờ lướt mạng xã hội</span><span class="dur">hết trong ngày</span></div>
+      <div class="row"><span class="act">Một giờ làm thêm đổi lấy lương</span><span class="dur">hết trong tháng</span></div>
+      <div class="row"><span class="act">Một môn học thi xong rồi để đó</span><span class="dur">còn tới lúc thi</span></div>
+      <div class="row win"><span class="act">Một giờ đắp vào hồ sơ của bạn</span><span class="dur">còn nhiều năm, tự sinh offer</span></div>
+    </div>
+    <p style="margin-bottom:0;">Một lớp hồ sơ sống lâu hơn cả tấm bằng của bạn. Nó vẫn đi mời việc về cho bạn rất lâu sau khi bạn ngừng đi xin. Đó là lý do cùng một buổi tối, người đắp hồ sơ và người chỉ bán giờ sẽ ở hai thế giới khác nhau sau bốn năm.</p>
+  </div>
+</section>
+
+<!-- 09 AUDIENCE + course intro framing -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="eyebrow">Đọc và tự nhận ra mình</div>
+    <h2 style="margin-bottom:8px;">Nếu bạn thấy mình trong một trong bốn người này, khoá dựng cho bạn.</h2>
+    <div class="pgrid">
+      <div class="pcard"><div class="n">01</div><div class="hd">Bạn là sinh viên năm 2 tới năm 4, và trong lòng đã âm thầm muốn làm cho công ty nước ngoài.</div><p>Bạn biết tấm bằng không tự đẻ ra chỗ nhận. Bạn vẫn còn thời gian, và bạn không muốn phí nó.</p></div>
+      <div class="pcard"><div class="n">02</div><div class="hd">Bạn là sinh viên năm cuối, và mỗi lần ai hỏi "ra trường tính làm gì" là tim bạn hẫng một nhịp.</div><p>Ngày tốt nghiệp tới gần mà bạn chưa có gì đặt lên bàn nhà tuyển dụng. Bạn cần một lộ trình kịp, ngay bây giờ.</p></div>
+      <div class="pcard"><div class="n">03</div><div class="hd">Bạn là du học sinh, và bạn mang cả sự đánh đổi của bố mẹ trên vai mình.</div><p>Bạn muốn những năm này đổi thành một chỗ đứng thật, không chỉ thành một tấm bằng và một cái hạn visa.</p></div>
+      <div class="pcard"><div class="n">04</div><div class="hd">Bạn đã tự mò mẫm đủ lâu, đọc đủ lời khuyên miễn phí, mà vẫn thấy mình đứng yên.</div><p>Những lời khuyên đó không biết bạn là ai. Bạn cần ai đó ngồi xuống với chính hồ sơ của bạn.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PRODUCT INTRO (journey roadmap framing) -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Giới thiệu</div>
+    <h2>Global Career Fast Track</h2>
+    <p class="lead">Từ tất cả những gì mình đi qua, kinh nghiệm đi xin việc, kinh nghiệm tự đắp hồ sơ, và giờ là kinh nghiệm ngồi ghế tuyển dụng, mình đúc kết thành một lộ trình gọn trong 3 buổi. Để giúp bạn có <strong>một offer tốt từ một công ty tốt, ngay khi còn ngồi trên ghế nhà trường</strong>, kể cả khi bạn không học trường top và trong CV gần như chưa có gì.</p>
+    <p style="margin-bottom:0;">Đây không phải một khoá luyện CV. CV chỉ là phần bề nổi. Đây là cách xây một <strong>bộ hồ sơ năng lực</strong> khiến nhà tuyển dụng khao khát chọn bạn, thứ khác hẳn những mẫu CV đại trà ngoài kia, và đáng giá hơn cả một tấm bằng.</p>
+  </div>
+</section>
+
+<!-- 11-13 MODULE BLOCK = 3 BUỔI (KHÔNG ảnh) -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="eyebrow">Bên trong khoá, theo 3 buổi</div>
+    <div class="buoi">
+      <div class="tag">Buổi 1 · Lý thuyết</div>
+      <h3>Hiểu thị trường và tìm ra lợi thế riêng của bạn</h3>
+      <p style="margin:0;">Công ty nước ngoài thật sự cần gì ở một sinh viên, cách định vị con người bạn trong mắt họ, và trọn bí mật lộ trình mình đã dùng để xây hồ sơ từ thời sinh viên.</p>
+      <div class="out">Rời buổi học: bạn có bản thiết kế hồ sơ của riêng mình.</div>
+    </div>
+    <div class="buoi">
+      <div class="tag">Buổi 2 · Thực hành</div>
+      <h3>Bắt tay dựng hồ sơ với bộ công cụ AI</h3>
+      <p style="margin:0;">Dựng CV theo từng vị trí, trang LinkedIn thu hút nhà tuyển dụng, kế hoạch hồ sơ, và bộ luyện phỏng vấn cá nhân hoá. Bộ công cụ làm sẵn phần nặng, bạn giữ dùng mãi.</p>
+      <div class="out">Rời buổi học: hồ sơ thật trong tay, không phải ý tưởng.</div>
+    </div>
+    <div class="buoi">
+      <div class="tag">Buổi 3 · Q&amp;A · sau 3 tháng</div>
+      <h3>Gỡ vướng khi hồ sơ đã chạy thật</h3>
+      <p style="margin:0;">Chỉ cho người đã thực hành và có tiến triển. Mình ngồi xuống gỡ đúng chỗ bạn đang mắc.</p>
+      <div class="out">Rời buổi học: bạn không bị bỏ lại tự bơi.</div>
+    </div>
+    <div class="cta-row"><a href="#giu-suat" class="cta">Mình muốn bắt đầu đắp hồ sơ</a></div>
+  </div>
+</section>
+
+<!-- 15 OUTCOMES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Đích đến</div>
+    <h2>Học xong, bạn sẵn sàng cho một offer từ chính công ty bạn mơ.</h2>
+    <p class="lead">Một công ty lớn, cái tên mà bạn từng nghĩ chỉ dành cho người khác. Mức lương đủ để bạn tự lo cho mình và bắt đầu đỡ đần bố mẹ. Phúc lợi tốt, môi trường quốc tế, những đồng nghiệp giỏi mà bạn được học mỗi ngày. Và điều ngọt nhất: chính họ chọn bạn, khi bạn còn chưa ra trường.</p>
+    <p>Để tới được đó, bạn rời khoá với:</p>
+    <ul class="outcome">
+      <li>Một bộ hồ sơ năng lực của riêng bạn, biết rõ cần chuẩn bị gì.</li>
+      <li>Một CV và trang LinkedIn khiến nhà tuyển dụng phải dừng lại nhìn.</li>
+      <li>Một bộ công cụ phỏng vấn để bước vào phòng ở tư thế người được mời.</li>
+    </ul>
+    <div class="cta-row"><a href="#giu-suat" class="cta">Mình muốn tới đích đó</a></div>
+  </div>
+</section>
+
+<!-- 17 BONUS INTRO -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow">Và khi bạn giữ suất hôm nay</div>
+    <h2 style="margin-bottom:0;">Thêm sáu bộ công cụ đi cùng bạn về sau, mỗi cái giúp bạn đắp một lớp của hồ sơ.</h2>
+  </div>
+</section>
+
+<!-- 18-26 BONUSES (tentpole KHÔNG ảnh) -->
+<section>
+  <div class="wrap">
+    <div class="bonus"><div class="bn">01</div><div><h3>Bộ Khám Phá Lợi Thế Riêng</h3><p style="margin:0;">AI skill tìm ra thứ bạn đang có đáng đặt vào hồ sơ.</p></div><div class="val">600k</div></div>
+    <div class="bonus"><div class="bn">02</div><div><h3>Bộ Định Vị Thị Trường</h3><p style="margin:0;">AI skill chỉ đúng công ty đang cần thứ bạn có, để nhắm trúng.</p></div><div class="val">600k</div></div>
+    <div class="bonus"><div class="bn">03</div><div><h3>Bộ Dựng LinkedIn &amp; Cold DM</h3><p style="margin:0;">Trang LinkedIn thu hút nhà tuyển dụng, kèm cách nhắn chủ động.</p></div><div class="val">500k</div></div>
+    <div class="bonus"><div class="bn">04</div><div><h3>Bộ Tạo CV Theo Từng Vị Trí</h3><p style="margin:0;">AI skill may riêng một bản CV cho mỗi vị trí bạn apply.</p></div><div class="val">700k</div></div>
+    <div class="bonus tentpole-row"><div class="bn">05</div><div><div class="bd-eyebrow">Món mạnh nhất</div><h3>Bộ Luyện Phỏng Vấn Cá Nhân Hoá</h3><p style="margin:0;">Nạp hồ sơ và tên công ty, nó sinh đúng bộ câu hỏi và đáp án mẫu may riêng cho bạn, dựa trên kinh nghiệm mình ngồi phỏng vấn sinh viên. Bạn bước vào phòng đã tập đúng những câu sẽ gặp.</p></div><div class="val">1.200k</div></div>
+    <div class="bonus"><div class="bn">06</div><div><h3>Buổi 3 Q&amp;A sau 3 tháng, ngồi cùng mình</h3><p style="margin:0;">Buổi gỡ vướng trực tiếp, chỉ cho người đã thực hành.</p></div><div class="val">900k</div></div>
+  </div>
+</section>
+
+<!-- 27 VALUE CALCULATION -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="eyebrow">Cộng lại</div>
+    <h2>Tổng giá trị 8.000.000đ. Pre-order hôm nay chỉ 1.999.000đ.</h2>
+    <table class="vtable">
+      <tr><td>Buổi 1 · Lý thuyết (thị trường, lợi thế, định vị, lộ trình hồ sơ)</td><td class="r">1.500k</td></tr>
+      <tr><td>Buổi 2 · Thực hành (hồ sơ, CV, LinkedIn, bộ phỏng vấn)</td><td class="r">2.000k</td></tr>
+      <tr><td>Bonus 01 · Khám Phá Lợi Thế Riêng</td><td class="r">600k</td></tr>
+      <tr><td>Bonus 02 · Định Vị Thị Trường</td><td class="r">600k</td></tr>
+      <tr><td>Bonus 03 · LinkedIn &amp; Cold DM</td><td class="r">500k</td></tr>
+      <tr><td>Bonus 04 · Tạo CV Theo Vị Trí</td><td class="r">700k</td></tr>
+      <tr><td>Bonus 05 · Luyện Phỏng Vấn Cá Nhân Hoá</td><td class="r">1.200k</td></tr>
+      <tr><td>Bonus 06 · Buổi 3 Q&amp;A sau 3 tháng</td><td class="r">900k</td></tr>
+      <tr class="total"><td>Tổng giá trị</td><td class="r">8.000k</td></tr>
+      <tr class="price"><td>Pre-order của bạn</td><td class="r">1.999k</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 28 PRICING (giảm giá THẬT + khan hiếm 10 suất còn 4) -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center;">Ưu đãi nhóm sáng lập</div>
+    <h2 style="text-align:center;">Giá gốc 5.000.000đ. Nhóm pre-order đầu tiên chỉ trả 1.999.000đ.</h2>
+    <div class="deal">
+      <div class="off">GIẢM 60% CHO NHÓM SÁNG LẬP</div>
+      <div class="wasnow">
+        <span class="was">5.000.000đ</span>
+        <span class="now">1.999.000đ</span>
+      </div>
+      <div class="save">Bạn tiết kiệm 3.000.000đ so với giá launch chính thức.</div>
+      <div class="seats">
+        <div class="bar"><div class="fill"></div></div>
+        <div class="lbl">10 suất pre-order đầu tiên · chỉ còn 4 suất</div>
+      </div>
+      <div style="margin-top:22px;"><a href="#giu-suat" class="cta">Giữ 1 trong 4 suất còn lại</a></div>
+      <div class="cta-sub">Hết 10 suất đầu, giá trở lại 5.000.000đ.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 30 BRANDED GUARANTEE -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="badge serif">Hoàn tiền<br>sau Buổi 1</div>
+      <div class="eyebrow">Rủi ro ở phía bọn mình</div>
+      <h3 style="font-size:29px;">Hoàn tiền không lý do sau Buổi 1.</h3>
+      <p>Buổi 1 là trọn phần lý thuyết. Nghe hết Buổi 1, nếu bạn thấy khoá không đúng cho mình, bạn lấy lại tiền ngay lập tức, không cần giải thích một câu nào. Bạn không phải tin bọn mình trước.</p>
+      <p style="margin-bottom:0;">Bọn mình làm vậy vì biết với nhiều bạn, đây có thể là tiền bố mẹ, hoặc khoản dành dụm không nhỏ của một sinh viên. Nên rủi ro phải nằm ở phía bọn mình, không phải phía bạn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 32 VISION -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Hình dung</div>
+    <h2>Tua nhanh tới buổi chiều cuối cùng của đời sinh viên.</h2>
+    <ul class="desire">
+      <li>Cả nhóm bạn đang cuống lên hỏi nhau "giờ nộp vào đâu, viết CV kiểu gì", còn bạn thì nhẹ tênh.</li>
+      <li>Vì trong hộp thư của bạn đã nằm sẵn một lời mời từ một công ty nước ngoài, đến từ chính bộ hồ sơ bạn lặng lẽ chuẩn bị mấy năm nay.</li>
+      <li>Bạn nhấc máy gọi về nhà, và chỉ qua giọng nói, bố mẹ biết những gì họ đánh đổi đã thành một chỗ đứng thật cho con.</li>
+      <li>Và lần đầu tiên, cái ý nghĩ "chắc mình cũng chỉ tới đây thôi" biến mất khỏi đầu bạn.</li>
+    </ul>
+    <p class="serif" style="font-size:22px; margin-bottom:0;"><em>Buổi chiều đó bắt đầu được từ hôm nay, khi bạn còn là sinh viên.</em></p>
+  </div>
+</section>
+
+<!-- 34 FAQ (ngôn từ sinh viên, trả lời đi sâu gỡ rối) -->
+<section style="background:var(--beige-dark);">
+  <div class="wrap">
+    <div class="eyebrow">Câu hỏi thường gặp</div>
+    <h2>Điều bạn đang lăn tăn, nói thẳng luôn.</h2>
+    <div class="faq">
+      <details><summary>Em không có gì trong CV, thì liệu có ai tuyển không?</summary><div class="ans">Có. Vì "không có gì trong CV" không phải là chuyện của riêng em, đó là điểm xuất phát của gần như mọi sinh viên. Mình cũng từng nộp hơn 50 hồ sơ và bị từ chối sạch. Vấn đề không phải CV trống, mà là chưa ai chỉ em cách nhìn ra em đang có gì đáng giá. Buổi 1 làm đúng việc đó: tìm ra lợi thế riêng của em để đặt viên gạch đầu tiên vào hồ sơ. Em không cần có sẵn thành tích mới được vào học, tìm ra nó chính là việc của khoá.</div></details>
+      <details><summary>Em còn chưa ra trường, xin việc công ty nước ngoài giờ có sớm quá không?</summary><div class="ans">Ngược lại, giờ là đúng lúc. Các tập đoàn có luồng riêng chỉ mở cho sinh viên: thực tập, management trainee, early-career. Người đã tốt nghiệp đi làm vài năm thường không còn vào được nữa. Cánh cửa rộng nhất mở ra đúng lúc em còn đi học, và khép lại khi em cầm bằng. Đợi ra trường mới bắt đầu mới là muộn.</div></details>
+      <details><summary>Em đang đi làm thêm gần như kín lịch, học khóa này có kịp không?</summary><div class="ans">Không cần bỏ việc làm thêm. Khoá online, học vào cuối tuần, và điều hay là nó dạy em biến chính công việc đang làm thành từng lớp hồ sơ, thay vì những giờ tiêu hết mỗi tháng. Em không phải tìm thêm thời gian, em chỉ đổi cách dùng số giờ em vốn đã bỏ ra. Bộ công cụ AI làm sẵn phần nặng nhất.</div></details>
+      <details><summary>Em vẫn chưa biết mình hợp ngành gì, giờ học có phí tiền không?</summary><div class="ans">Không, đó chính là lý do nên học sớm. Phần lớn Buổi 1 là để em tìm ra lợi thế và hướng đi hợp với mình, trước khi em lãng phí thêm vài năm đi sai đường. Em không cần biết câu trả lời trước khi vào. Khoá giúp em tìm ra nó.</div></details>
+      <details><summary>Lớp mới mở, chưa có ai học, sao em tin được?</summary><div class="ans">Câu hỏi rất đúng, và bọn mình trả lời thẳng: đây là lớp sáng lập, nên bọn mình không có review học viên để khoe, và cũng không bịa ra. Thứ em có thể tin nằm ở ba chỗ: con đường thật của người đứng lớp (không giấu một cái tên công ty nào), số liệu độc lập của cả hệ thống, và việc em được hoàn tiền, nếu nghe hết Buổi 1 mà thấy không đúng cho em, em lấy lại tiền ngay.</div></details>
+      <details><summary>1.999.000đ với sinh viên là một khoản không nhỏ. Có đáng không?</summary><div class="ans">Đáng hay không, đừng so với giá một khoá luyện CV. Hãy so với cái giá của việc để trôi mất mấy năm sinh viên rồi ra trường tay trắng, bắt đầu lại từ số 0 đúng lúc mọi thứ đắt hơn. Đó mới là khoản đắt nhất, và em trả góp nó suốt những năm đầu đi làm. 1.999.000đ là để em không phải trả cái giá đó. Và nếu Buổi 1 không thuyết phục em, em được hoàn tiền.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 37 PRE-CLOSE + 38 FINAL PRICING -->
+<section id="giu-suat" class="dark">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow">Giữ suất pre-order</div>
+    <h2 style="font-size:44px;">Bạn chỉ còn là sinh viên thêm một lần này nữa thôi.</h2>
+    <p style="max-width:560px; margin:0 auto 26px;">Đại học là giai đoạn rẻ nhất đời bạn để chuẩn bị cho một công việc tốt. Mỗi tháng trôi qua chỉ để bán giờ lấy tiền là một tháng hồ sơ đứng yên, và cánh cửa dành cho sinh viên sẽ khép lại đúng ngày bạn tốt nghiệp. Bắt đầu ngay bây giờ, khi bạn còn là sinh viên.</p>
+    <div class="pricebox">
+      <div class="old">Giá launch 5.000.000đ</div>
+      <div class="now">1.999.000đ</div>
+      <div class="unit">Pre-order · 10 suất đầu tiên, chỉ còn 4 suất</div>
+    </div>
+    <a href="https://instagram.com/jannievsseiwa" class="cta" style="font-size:19px; padding:22px 46px;">Nhắn @jannievsseiwa để giữ suất</a>
+    <div class="cta-sub" style="color:#A39C90;">Bọn mình gửi bạn link thanh toán và mẫu đăng ký. Xong là bạn được khoá giá pre-order và nhận lịch học.</div>
+    <div style="margin-top:26px;">
+      <div class="eyebrow">Hoặc chuyển khoản giữ suất</div>
+      <img class="lp" src="assets/proof/jannie-qr.jpg" alt="Mã QR VietQR chuyển khoản giữ suất" style="max-width:230px; margin:0 auto; border-radius:8px; background:#fff; padding:8px;">
+      <div class="cta-sub" style="color:#A39C90;">Quét mã VietQR (Eximbank) để chuyển khoản, rồi nhắn @jannievsseiwa để xác nhận suất của bạn.</div>
+    </div>
+    <p class="serif" style="margin-top:30px; font-style:italic; color:#A39C90;">Một bộ hồ sơ chuẩn bị từ thời sinh viên tự đi mời việc về cho bạn nhiều năm. Nhưng nó chỉ bắt đầu được, khi bạn còn là sinh viên.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="handle">@jannievsseiwa</div>
+  <div style="margin-top:8px;">Global Career Fast Track · Jannie &amp; Seiwa</div>
+</footer>
+
+</body>
+</html>
