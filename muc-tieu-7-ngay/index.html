@@ -359,8 +359,8 @@ body.noscroll{overflow:hidden}
 </div>
 
 <script>
-/* Đổi ENDPOINT thành link Google Apps Script để lưu đăng ký vào Google Sheet. Để trống thì chỉ chuyển sang bước thanh toán. */
-var ENDPOINT = "";
+/* Đăng ký gửi ngầm vào Google Form "[Jannie] thông tin đăng ký 499k", câu trả lời đổ về Sheet của chủ form. Để trống thì chỉ chuyển sang bước thanh toán. */
+var ENDPOINT = "https://docs.google.com/forms/d/e/1FAIpQLScgiM8KTxusLVBbpLA7m-cHuCu9YnhE-6OnYD7i-XJIKZcXQQ/formResponse";
 (function(){
   var form=document.getElementById('reg-form'), err=document.getElementById('f-err');
   var landing=document.querySelector('[data-landing]'), pay=document.getElementById('thanh-toan');
@@ -387,7 +387,7 @@ var ENDPOINT = "";
     var ok=d.name&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)&&d.phone.replace(/\D/g,'').length>=9;
     err.hidden=ok; if(!ok) return;
     try{sessionStorage.setItem('cck-reg',JSON.stringify(d))}catch(x){}
-    if(ENDPOINT){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)})}catch(x){}}
+    if(ENDPOINT){try{var f=new URLSearchParams();f.append('entry.2005620554',d.name);f.append('entry.1045781291',d.email);f.append('entry.1166974658',d.phone);fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:f})}catch(x){}}
     closeForm(); showPay(d);
   });
   document.getElementById('back').addEventListener('click',function(e){
